@@ -1,0 +1,68 @@
+﻿<Page x:Class="WpfMarathon.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      Title="MainPage" Height="1080" Width="1920">
+
+    <Grid Background="white">
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False">
+            <StackPanel DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,20"/>
+                <TextBlock Text="Казань, Россия" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                <TextBlock Text="пятница 30 мая 2025" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,20"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Основная часть формы -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Кнопки -->
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0">
+                <Button Content="Я хочу стать бегуном" Width="718" Height="98" Margin="0,0,0,0" FontSize="36" Click="Button_Click" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <Button Content="Я хочу стать спонсором бегуна" Width="718" Height="98" Margin="0,30,0,0" FontSize="36" Click="Button_Click_2" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <Button Content="Я хочу узнать больше о событии" Width="718" Height="98" Margin="0,30,0,0" FontSize="36" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+            </StackPanel>
+
+            <!-- Кнопка Login -->
+            <Button Grid.Row="0" Content="Login" Width="228" HorizontalAlignment="Right" Margin="0,818,92,135" FontSize="36" Click="Button_Click_1" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+
+           
+        </Grid>
+    </Grid>
+</Page>
