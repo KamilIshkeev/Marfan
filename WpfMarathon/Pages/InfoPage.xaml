@@ -1,0 +1,77 @@
+﻿<Page x:Class="WpfMarathon.Pages.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="InfoPage">
+
+    <Grid Background="white">
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+
+            </StackPanel>
+            <StackPanel Width="955" Height="570">
+                <Button Content="Marathon Skills 2025" Width="680" Height="170" Margin="40,0,40,0" FontSize="38" Click="Button_Click" HorizontalAlignment="Right" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <Button Content="Предыдущие результаты" Width="680" Height="170" Margin="40,30,40,0" FontSize="38" Click="Button_Click_2" HorizontalAlignment="Right" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <Button Content="BMI калькулятор" Width="680" Height="170" Margin="40,30,40,0" FontSize="38" HorizontalAlignment="Right" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+            </StackPanel>
+            <StackPanel Width="955" Height="570">
+                <Button Content="Насколько долгий марафон" Width="680" Height="170" Margin="40,0,40,0" FontSize="38" Click="Button_Click" HorizontalAlignment="Left" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <Button  Width="680" Height="170" Margin="40,30,40,0" FontSize="38" Click="Button_Click_2" HorizontalAlignment="Left" >
+                    <TextBlock TextAlignment="Center"> Список благотворительных <LineBreak/> организаций</TextBlock>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+                <Button Content="BMR калькулятор" Width="680" Height="170" Margin="40,30,40,0" FontSize="38" HorizontalAlignment="Left" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <!-- Заголовок формы -->
+        <TextBlock Grid.Row="0" Text="Подробная информация" FontSize="44" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,150,0,856" Foreground="DimGray"/>
+
+    </Grid>
+</Page>

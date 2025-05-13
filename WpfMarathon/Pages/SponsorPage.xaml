@@ -11,10 +11,11 @@
     <Grid Background="White">
         <!-- Верхняя панель с заголовком -->
         <DockPanel LastChildFill="False">
-            <StackPanel DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
-                <TextBlock Text="MARATHON SKILLS 2016" Foreground="White" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,20"/>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+
             </StackPanel>
-            <Button Content="Назад" Width="100" Height="30" FontSize="14" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </DockPanel>
 
         <!-- Основная часть формы -->
@@ -31,11 +32,11 @@
             </Grid.RowDefinitions>
 
             <!-- Заголовок формы -->
-            <TextBlock Grid.Row="0" Text="Спонсор бегуна" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,50,0,10"/>
+            <TextBlock Grid.Row="0" Text="Спонсор бегуна" FontSize="44" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,150,0,10" Foreground="DimGray"/>
 
             <!-- Информационный текст -->
             <TextBlock Grid.Row="1" Text="Пожалуйста, выберите бегуна, которого вы хотите спонсировать, и сумму, которую вы хотите пожертвовать. Спасибо за вашу поддержку бегунов и их благотворительных учреждений."
-                       FontSize="16" HorizontalAlignment="Center" Margin="0,17,0,13" TextWrapping="Wrap" Width="1200"/>
+                       FontSize="36" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap" Width="1314" TextAlignment="Center" LineHeight="1"/>
 
             <!-- Основная форма -->
             <Grid Grid.Row="2">
@@ -59,78 +60,86 @@
                     </Grid.RowDefinitions>
 
                     <!-- Заголовок -->
-                    <TextBlock Grid.Row="0" Text="Информация о спонсоре" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,20,0,10"/>
+                    <TextBlock Grid.Row="0" Text="Информация о спонсоре" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Margin="230,-1,0,31" TextAlignment="Center"/>
 
                     <!-- Ваше имя -->
-                    <TextBlock Grid.Row="1" Text="Ваше имя:" VerticalAlignment="Center" Margin="20,0,10,10"/>
-                    <TextBox Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Ваше имя" Width="400" Height="35" FontSize="16" Margin="20,0,20,10"/>
+                    <TextBlock Grid.Row="1" Text="Ваше имя:" VerticalAlignment="Top" Margin="100,8,10,0" FontSize="36"/>
+                    <TextBox Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Ваше имя" Width="600" Height="55" FontSize="36" Margin="280,10,156,10"/>
 
                     <!-- Бегун -->
-                    <TextBlock Grid.Row="2" Text="Бегун:" VerticalAlignment="Center" Margin="20,0,10,10"/>
-                    <ComboBox Grid.Row="2" Width="400" Height="35" FontSize="16" Margin="20,0,20,10">
+                    <TextBlock Grid.Row="2" Text="Бегун:" VerticalAlignment="Top" Margin="170,3,10,0" FontSize="36"/>
+                    <ComboBox Grid.Row="2" Width="600" Height="55" FontSize="36" Margin="220,0,20,10">
                         <ComboBoxItem Content="Иван Прудов - 204 (Russia)"/>
                         <!-- Добавьте другие бегуны здесь -->
                     </ComboBox>
 
                     <!-- Владелец карты -->
-                    <TextBlock Grid.Row="3" Text="Карта:" VerticalAlignment="Center" Margin="20,0,10,10"/>
-                    <TextBox Grid.Row="3" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Владелец карты" Width="400" Height="35" FontSize="16" Margin="20,0,20,10"/>
+                    <TextBlock Grid.Row="3" Text="Карта:" VerticalAlignment="Top" Margin="168,3,10,0" FontSize="36"/>
+                    <TextBox Grid.Row="3" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Владелец карты" Width="600" Height="55" FontSize="36" Margin="220,0,20,10"/>
 
                     <!-- Номер карты -->
-                    <TextBlock Grid.Row="4" Text="Номер карты:" VerticalAlignment="Center" Margin="20,0,10,10"/>
-                    <TextBox Grid.Row="4" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="1234 1234 1234 1234" Width="400" Height="35" FontSize="16" Margin="20,0,20,10"/>
+                    <TextBlock Grid.Row="4" Text="Номер карты:" VerticalAlignment="Top" Margin="40,3,10,0" FontSize="36"/>
+                    <TextBox Grid.Row="4" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="1234 1234 1234 1234" Width="600" Height="55" FontSize="36" Margin="220,0,20,10"/>
 
                     <!-- Срок действия -->
-                    <TextBlock Grid.Row="5" Text="Срок действия:" VerticalAlignment="Center" Margin="20,0,10,10"/>
-                    <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="20,0,20,10">
-                        <TextBox Width="60" Height="35" FontSize="16" Margin="0,0,10,0" Text="01"/>
-                        <TextBox Width="80" Height="35" FontSize="16" Margin="0,0,0,0" Text="2017"/>
+                    <TextBlock Grid.Row="5" Text="Срок действия:" VerticalAlignment="Center" Margin="20,0,10,10" FontSize="36"/>
+                    <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="280,0,20,10">
+                        <TextBox Width="70" Height="55" FontSize="36" Margin="0,0,10,0" Text="01"/>
+                        <TextBox Width="100" Height="55" FontSize="36" Margin="0,0,0,0" Text="2017"/>
                     </StackPanel>
 
                     <!-- CVC -->
-                    <TextBlock Grid.Row="6" Text="CVC:" VerticalAlignment="Center" Margin="20,0,10,10"/>
-                    <TextBox Grid.Row="6" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="123" Width="100" Height="35" FontSize="16" Margin="20,0,20,10"/>
+                    <TextBlock Grid.Row="6" Text="CVC:" VerticalAlignment="Top" Margin="196,3,10,0" FontSize="36"/>
+                    <TextBox Grid.Row="6" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="123" Width="100" Height="55" FontSize="36" Margin="280,0,580,10"/>
                 </Grid>
 
                 <!-- Правая колонка: Благотворительность -->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="100,0,0,0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="189"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="144.06"/>
                     </Grid.RowDefinitions>
 
                     <!-- Заголовок -->
-                    <TextBlock Grid.Row="0" Text="Благотворительность" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,20,0,10"/>
+                    <TextBlock Grid.Row="0" Text="Благотворительность" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Margin="230,-1,0,31" TextAlignment="Center" Width="379"/>
 
                     <!-- Фонд Кошек -->
                     <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,0,20,10">
-                        <TextBlock Text="Фонд Кошек" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Text="Фонд Кошек" FontSize="36" VerticalAlignment="Center" Margin="300,0,10,0" TextAlignment="Center"/>
+                        <Image Margin="20,0,0,0" Source="/Image1.png" Stretch="Fill" Height="50" Width="50"/>
                     </StackPanel>
+
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="250,0,220,36">
+                        <TextBlock Text="$50" FontSize="96" TextAlignment="Center" Width="386" Height="150" />
+                    </StackPanel>
+
+
 
                     <!-- Сумма пожертвования -->
-                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20,0,20,10">
-                        <TextBlock Text="Сумма пожертвования" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <Button Content="-" Width="50" Height="35" FontSize="16" Margin="0,0,5,0" Padding="10,0"/>
-                            <TextBox Text="$50" Width="100" Height="35" FontSize="24" IsReadOnly="True" Margin="0,0,5,0"/>
-                            <Button Content="+" Width="50" Height="35" FontSize="16" Margin="0,0,0,0" Padding="10,0"/>
-                        </StackPanel>
-                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="250,0,220,0" Height="56" VerticalAlignment="Top">
+                        <TextBlock Text="Сумма пожертвования" FontSize="36" Height="56" Margin="0,0,10,0" Width="388"/>
 
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="315,0,0,144" Height="55" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="277" Grid.RowSpan="2" >
+                        <Button Content="-" Width="61" Height="55" FontSize="36" Margin="0,0,15,0" Padding="10,0" HorizontalAlignment="Center"/>
+                        <TextBox Text="$50" Width="122" Height="55" FontSize="36" IsReadOnly="True" Margin="0,0,15,0" HorizontalAlignment="Center"/>
+                        <Button Content="+" Width="61" Height="55" FontSize="36" Margin="0,0,0,0" Padding="10,0" HorizontalAlignment="Center"/>
+                    </StackPanel>
                     <!-- Кнопки "Заплатить" и "Отмена" -->
-                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20,20,20,20" HorizontalAlignment="Right">
-                        <Button Content="Заплатить" Width="150" Height="40" FontSize="16" Margin="0,0,10,0" Padding="10,0" BorderBrush="Gray" BorderThickness="1"/>
-                        <Button Content="Отмена" Width="150" Height="40" FontSize="16" Padding="10,0" BorderBrush="Gray" BorderThickness="1"/>
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,48,101,43" HorizontalAlignment="Right" Width="574">
+                        <Button Content="Заплатить" Width="250" Height="60" FontSize="36" Margin="0,0,30,0" Padding="10,0" BorderBrush="Gray" BorderThickness="1"/>
+                        <Button Content="Отмена" Width="250" Height="60" FontSize="36" Padding="10,0" BorderBrush="Gray" BorderThickness="1"/>
                     </StackPanel>
                 </Grid>
             </Grid>
 
-            <!-- Нижняя панель -->
-            <Grid Grid.Row="3" Background="#333333" Margin="0,20,0,0">
-                <TextBlock Text="18 дней 8 часов и 17 минут до старта марафона!" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10"/>
-            </Grid>
+
+
+
         </Grid>
     </Grid>
 </Page>
