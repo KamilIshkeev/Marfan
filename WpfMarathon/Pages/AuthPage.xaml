@@ -36,20 +36,20 @@
                        FontSize="44" HorizontalAlignment="Center" Margin="0,17,0,13" TextWrapping="Wrap" Width="1658" TextAlignment="Center"/>
 
             <!-- Поле Email -->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,170,0,9" HorizontalAlignment="Center" Width="722" Grid.RowSpan="2">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,170,0,9" HorizontalAlignment="Center" Width="752" Grid.RowSpan="2">
                 <TextBlock Text="Email:" FontSize="44" Width="121" VerticalAlignment="Center"/>
-                <TextBox x:Name="EmailTextBox" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Введите свой Email адрес" Width="600" Height="70" FontSize="14" Margin="10,0,0,0" Padding="5" TextBlock.FontSize="44" />
+                <TextBox x:Name="txb_email" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Введите свой Email адрес" Width="600" Height="70" FontSize="14" Margin="10,0,0,0" Padding="5" TextBlock.FontSize="44" />
 
             </StackPanel>
 
             <!-- Поле Password -->
-            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,30,0,15" HorizontalAlignment="Center" Width="722">
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,30,0,15" HorizontalAlignment="Center" Width="752">
                 <TextBlock Text="Password:" FontSize="45" Width="205" VerticalAlignment="Center"/>
-                <PasswordBox x:Name="PasswordBox"  Width="507" Height="70" FontSize="14" Margin="10,0,0,0" TextBlock.FontSize="44" />
+                <PasswordBox x:Name="txb_pass"  Width="507" Height="70" FontSize="14" Margin="10,0,0,0" TextBlock.FontSize="44" />
             </StackPanel>
 
             <!-- Кнопки Login и Cancel -->
-            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,140,0,360" HorizontalAlignment="Center" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.796">
+            <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,25,0,327" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.796">
                 <Button Content="Login" Width="195" Height="100" FontSize="16" Margin="0,0,10,0" Padding="10,0" TextBlock.FontSize="44" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">

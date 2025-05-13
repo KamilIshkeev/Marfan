@@ -17,7 +17,7 @@
 
             </StackPanel>
             <StackPanel Width="955" Height="570">
-                <Button Content="Marathon Skills 2025" Width="680" Height="170" Margin="40,0,40,0" FontSize="38" Click="Button_Click" HorizontalAlignment="Right" >
+                <Button Content="Marathon Skills 2025" Width="680" Height="170" Margin="40,0,40,0" FontSize="38" HorizontalAlignment="Right" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>
@@ -25,7 +25,7 @@
                     </Button.Resources>
 
                 </Button>
-                <Button Content="Предыдущие результаты" Width="680" Height="170" Margin="40,30,40,0" FontSize="38" Click="Button_Click_2" HorizontalAlignment="Right" >
+                <Button Content="Предыдущие результаты" Width="680" Height="170" Margin="40,30,40,0" FontSize="38"  HorizontalAlignment="Right" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>
@@ -43,7 +43,7 @@
                 </Button>
             </StackPanel>
             <StackPanel Width="955" Height="570">
-                <Button Content="Насколько долгий марафон" Width="680" Height="170" Margin="40,0,40,0" FontSize="38" Click="Button_Click" HorizontalAlignment="Left" >
+                <Button Content="Насколько долгий марафон" Width="680" Height="170" Margin="40,0,40,0" FontSize="38"  HorizontalAlignment="Left" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>
@@ -51,7 +51,7 @@
                     </Button.Resources>
 
                 </Button>
-                <Button  Width="680" Height="170" Margin="40,30,40,0" FontSize="38" Click="Button_Click_2" HorizontalAlignment="Left" >
+                <Button  Width="680" Height="170" Margin="40,30,40,0" FontSize="38"  HorizontalAlignment="Left" >
                     <TextBlock TextAlignment="Center"> Список благотворительных <LineBreak/> организаций</TextBlock>
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">

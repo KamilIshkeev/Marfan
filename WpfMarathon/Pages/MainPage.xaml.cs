@@ -45,5 +45,10 @@ namespace WpfMarathon.Pages
         {
             _mainWindow.MainFrame.NavigationService.Navigate(new SponsorPage(_mainWindow));
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new InfoPage(_mainWindow));
+        }
     }
 }

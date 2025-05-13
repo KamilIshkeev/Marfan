@@ -20,9 +20,28 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class ProverkaPage : Page
     {
-        public ProverkaPage(MainWindow _mainWindow)
+        static MainWindow _mainWindow;
+        public ProverkaPage(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new RegBegunPage(_mainWindow));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
     }
 }

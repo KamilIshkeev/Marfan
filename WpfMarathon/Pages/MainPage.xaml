@@ -42,7 +42,7 @@
                     </Button.Resources>
 
                 </Button>
-                <Button Content="Я хочу узнать больше о событии" Width="718" Height="98" Margin="0,30,0,0" FontSize="36" >
+                <Button Content="Я хочу узнать больше о событии" Width="718" Height="98" Margin="0,30,0,0" FontSize="36" Click="Button_Click_3" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>

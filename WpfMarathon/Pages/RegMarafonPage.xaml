@@ -10,78 +10,60 @@
 
     <Grid Background="white">
         <!-- Верхняя панель с заголовком -->
-        <DockPanel LastChildFill="False" Grid.ColumnSpan="9" Margin="0,0,0,10" Grid.RowSpan="2">
+        <DockPanel LastChildFill="False" Margin="0,0,0,931">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
                 <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
                 <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
-
             </StackPanel>
         </DockPanel>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="312.5"/>
-            <ColumnDefinition Width="577.5"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="375.8325"/>
-            <ColumnDefinition Width="266.6675"/>
-            <ColumnDefinition Width="57.5"/>
-            <ColumnDefinition Width="240"/>
-            <ColumnDefinition Width="92.5*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="125"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="62.5"/>
-            <RowDefinition Height="63.75"/>
-            <RowDefinition Height="64.1675"/>
-            <RowDefinition Height="155.8325"/>
-            <RowDefinition Height="37.5*"/>
-            <RowDefinition Height="62.5"/>
-        </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,432.5,0" TextWrapping="Wrap" Text="Регистрация на марафон" VerticalAlignment="Top" FontSize="55" Foreground="#FF6C6C6C"/>
-            <TextBlock HorizontalAlignment="Left" Margin="25,85,0,12.5" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="35" Width="1365" TextAlignment="Center" Foreground="#FF6C6C6C" Height="140"><Run Text="Пожалуйста заполните всю информацию, чтобы зарегистрироваться на "/><Run Text="Skills Marathon 2016"/><Run Text=" проводимом в Москве. "/><Run Text="Russia"/><Run Text=". С вами свяжутся после регистрации для уточнения оплаты и другой информации."/></TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="0,112,667,0" TextWrapping="Wrap" Text="Регистрация на марафон" VerticalAlignment="Top" FontSize="55" Foreground="#FF6C6C6C"/>
+        <TextBlock HorizontalAlignment="Left" Margin="267,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="35" Width="1365" TextAlignment="Center" Foreground="#FF6C6C6C" Height="140">
+            <Run Text="Пожалуйста заполните всю информацию, чтобы зарегистрироваться на "/>
+            <Run Text="Skills Marathon 2016"/><Run Text=" проводимом в Москве. "/>
+            <Run Text="Russia"/><Run Text=". С вами свяжутся после регистрации для уточнения оплаты и другой информации."/>
+        </TextBlock>
 
-        <Button x:Name="btn_reg" Content="Регистрация" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="35" Foreground="#FF474747" HorizontalAlignment="Right" Width="240" Height="60" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="12" Margin="0,0,0,95" Click="btn_reg_Click">
+        <Button x:Name="btn_reg" Content="Регистрация" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="35" Foreground="#FF474747" HorizontalAlignment="Right" Width="240" Height="60" VerticalAlignment="Bottom" Margin="0,0,1144,140" Click="btn_reg_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="17.5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="btn_cancel" Content="Отмена" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="35" Foreground="#FF474747" HorizontalAlignment="Right" Width="240" Height="60" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="12" Margin="0,0,295,95" Click="btn_cancel_Click">
+        <Button x:Name="btn_cancel" Content="Отмена" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="35" Foreground="#FF474747" HorizontalAlignment="Right" Width="240" Height="60" VerticalAlignment="Bottom" Margin="0,0,1439,140" Click="btn_cancel_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="17.5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBlock HorizontalAlignment="Right" Grid.Row="3" TextWrapping="Wrap" Text="Вид марафона" VerticalAlignment="Top" Height="47.5" Margin="0,7.5,237.5,0" Grid.Column="2" FontFamily="Open Sans Light" FontSize="35" Width="255" FontWeight="Bold" Foreground="#FF7F7F7F"/>
-        <TextBlock HorizontalAlignment="Right" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Height="47.5" Margin="0,7.5,25,0" Grid.Column="5" FontFamily="Open Sans Light" FontSize="35" Width="485" Grid.ColumnSpan="3" FontWeight="Bold" TextAlignment="Center" Foreground="#FF7F7F7F"><Run Text="Варианты комплектов"/></TextBlock>
-        <Grid Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Left" Height="250" Margin="80,0,0,0" Grid.Row="10" Grid.RowSpan="3" VerticalAlignment="Top" Width="427.5">
-            <TextBlock x:Name="txt_price" Margin="110,97.5,42.5,0" TextWrapping="Wrap" Text="$185" VerticalAlignment="Top" Height="152.5" FontSize="120" TextAlignment="Center" Foreground="#FF7F7F7F"/>
-            <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Регистрационный взнос" VerticalAlignment="Top" Height="50" Margin="0,10,0,0" FontFamily="Open Sans Light" FontSize="35" Width="427.5" FontWeight="Bold" TextAlignment="Center" Foreground="#FF7F7F7F"/>
-            <TextBlock x:Name="txt_price_Copy" Margin="25,97.5,317.5,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Height="152.5" FontSize="120" TextAlignment="Center" Foreground="#FF7F7F7F"/>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Вид марафона" VerticalAlignment="Top" Height="47" Margin="353,366,0,0" FontFamily="Open Sans Light" FontSize="35" Width="254" FontWeight="Bold" Foreground="#FF7F7F7F"/>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Margin="0,366,263,0" FontFamily="Open Sans Light" FontSize="35" Width="485" FontWeight="Bold" TextAlignment="Center" Foreground="#FF7F7F7F">
+            <Run Text="Варианты комплектов"/>
+        </TextBlock>
+
+        <Grid HorizontalAlignment="Left" Height="240" Margin="1148,690,0,0" VerticalAlignment="Top" Width="595">
+            <TextBlock x:Name="txt_price" Margin="140,107,121,0" TextWrapping="Wrap" Text="185" VerticalAlignment="Top" Height="152" FontSize="120" TextAlignment="Center" Foreground="#FF7F7F7F"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Регистрационный взнос" VerticalAlignment="Top" Height="50" Margin="80,71,0,0" FontFamily="Open Sans Light" FontSize="35" Width="427" FontWeight="Bold" TextAlignment="Center" Foreground="#FF7F7F7F"/>
+            <TextBlock x:Name="txt_price_Copy" Margin="73,107,287,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Height="152" FontSize="120" TextAlignment="Center" Foreground="#FF7F7F7F"/>
         </Grid>
-        <CheckBox Name="check_full" Content="42km Полный марафон ($145)" Grid.Column="2" HorizontalAlignment="Left" Margin="13,12,0,0" Grid.Row="4" VerticalAlignment="Top" Width="540" Checked="check_full_Checked" Unchecked="check_full_Unchecked" FontSize="35" FontWeight="Bold" Height="40"/>
-        <CheckBox Name="check_half" Content="21km Полумарафон ($75)" Grid.Column="2" HorizontalAlignment="Left" Margin="12.5,12.5,0,0" Grid.Row="5" VerticalAlignment="Top" Width="540" Checked="check_half_Checked" Unchecked="check_half_Unchecked" FontSize="35" FontWeight="Bold"/>
-        <CheckBox Name="check_min" Content="5km Малая дистанция ($20)" Grid.Column="2" HorizontalAlignment="Left" Margin="12.5,12.5,0,0" Grid.Row="6" VerticalAlignment="Top" Width="540" Checked="check_min_Checked" Unchecked="check_min_Unchecked" FontSize="35" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Right" Grid.Row="8" TextWrapping="Wrap" Text="Детали спонсорства " VerticalAlignment="Top" Height="47.5" Margin="0,7.5,185,0" Grid.Column="2" FontFamily="Open Sans Light" FontSize="35" Width="350" FontWeight="Bold" Foreground="#FF7F7F7F"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="192,8,0,0" Grid.Row="9" TextWrapping="Wrap" Text="Взнос:" VerticalAlignment="Top" Height="44" Width="120" FontSize="35"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="60,6,0,0" Grid.Row="10" TextWrapping="Wrap" Text="Сумма взноса:" VerticalAlignment="Top" Height="44" Width="252" FontSize="35"/>
-        <ComboBox Name="cmb_fund" Grid.Column="2" HorizontalAlignment="Left" Margin="12.5,5,0,0" Grid.Row="9" Width="485" Height="52.5" VerticalAlignment="Top" Foreground="Gray" FontSize="35" ItemStringFormat="" RenderTransformOrigin="0,0"/>
-        <Button Content="!" Grid.Column="2" HorizontalAlignment="Left" Margin="517.5,7.5,0,0" Grid.Row="9" VerticalAlignment="Top" Width="52.5" Height="45" FontSize="35"/>
-        <TextBox x:Name="txb_price" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="$500" IsReadOnly="True" Grid.Column="2" HorizontalAlignment="Left" Margin="12.5,7.5,0,0" Grid.Row="10" TextWrapping="Wrap" Text="" Width="485" Height="50" VerticalAlignment="Top" FontStyle="Italic" Foreground="Gray" FontSize="35"/>
-        <RadioButton x:Name="radio_a" Content="Вариант А ($0): Номер бегуна + &#xD;&#xA;RFID браслет." Grid.ColumnSpan="3" Grid.Column="5" Margin="17.5,12.5,25,12.5" Grid.Row="4" Grid.RowSpan="2" Checked="radio_a_Checked" Unchecked="radio_a_Unchecked" FontSize="35" FontWeight="Bold"/>
-        <RadioButton x:Name="radio_b" Content="Вариант B ($20): Вариант А + &#xA;бейсболка + бутылка воды." Grid.ColumnSpan="3" Grid.Column="5" Margin="17.5,12.5,25,12.5" Grid.Row="6"  Grid.RowSpan="2" Checked="radio_b_Checked" Unchecked="radio_b_Unchecked" FontSize="35" FontWeight="Bold"/>
-        <RadioButton Name="radio_c" Content="Вариант С ($45): Вариант B + &#xA;бейсболка + бутылка воды." Grid.ColumnSpan="3" Grid.Column="5" Margin="17.5,12.5,25,12.5" Grid.Row="8"  Grid.RowSpan="2" Checked="radio_c_Checked" Unchecked="radio_c_Unchecked" FontSize="35" FontWeight="Bold"/>
 
+        <CheckBox Name="check_full" Content="42km Полный марафон ($145)" HorizontalAlignment="Left" Margin="224,432,0,0" VerticalAlignment="Top" Width="628" Checked="check_full_Checked" Unchecked="check_full_Unchecked" FontSize="35" FontWeight="Bold" Height="52"/>
+        <CheckBox Name="check_half" Content="21km Полумарафон ($75)" HorizontalAlignment="Left" Margin="224,512,0,0" VerticalAlignment="Top" Width="628" Checked="check_half_Checked" Unchecked="check_half_Unchecked" FontSize="35" FontWeight="Bold" Height="59"/>
+        <CheckBox Name="check_min" Content="5km Малая дистанция ($20)" HorizontalAlignment="Left" Margin="224,593,0,0" VerticalAlignment="Top" Width="628" Checked="check_min_Checked" Unchecked="check_min_Unchecked" FontSize="35" FontWeight="Bold" Height="59"/>
+
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Детали спонсорства " VerticalAlignment="Top" Height="48" Margin="0,666,1255,0" FontFamily="Open Sans Light" FontSize="35" Width="350" FontWeight="Bold" Foreground="#FF7F7F7F"/>
+        <TextBlock HorizontalAlignment="Left" Margin="284,740,0,0" TextWrapping="Wrap" Text="Взнос:" VerticalAlignment="Top" Height="44" Width="120" FontSize="35"/>
+        <TextBlock HorizontalAlignment="Left" Margin="152,808,0,0" TextWrapping="Wrap" Text="Сумма взноса:" VerticalAlignment="Top" Height="44" Width="252" FontSize="35"/>
+
+        <ComboBox Name="cmb_fund" HorizontalAlignment="Left" Margin="400,745,0,0" Width="452" Height="53" VerticalAlignment="Top" Foreground="Gray" FontSize="35" ItemStringFormat="" RenderTransformOrigin="0,0"/>
+        <Button Content="!" HorizontalAlignment="Left" Margin="866,748,0,0" VerticalAlignment="Top" Width="52" Height="44" FontSize="35"/>
+        <TextBox x:Name="txb_price" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="$500" IsReadOnly="True" HorizontalAlignment="Left" Margin="400,808,0,0" TextWrapping="Wrap" Text="" Width="452" Height="48" VerticalAlignment="Top" FontStyle="Italic" Foreground="Gray" FontSize="35"/>
+
+        <RadioButton x:Name="radio_a" Content="Вариант А ($0): Номер бегуна + &#xD;&#xA;RFID браслет." Margin="1148,424,113,0" VerticalAlignment="Top" Height="93" Checked="radio_a_Checked" Unchecked="radio_a_Unchecked" FontSize="35" FontWeight="Bold"/>
+        <RadioButton x:Name="radio_b" Content="Вариант B ($20): Вариант А + &#xA;бейсболка + бутылка воды." Margin="1148,517,113,0" VerticalAlignment="Top" Height="94" Checked="radio_b_Checked" Unchecked="radio_b_Unchecked" FontSize="35" FontWeight="Bold"/>
+        <RadioButton Name="radio_c" Content="Вариант С ($45): Вариант B + &#xA;бейсболка + бутылка воды." Margin="1148,611,113,0" VerticalAlignment="Top" Height="93" Checked="radio_c_Checked" Unchecked="radio_c_Unchecked" FontSize="35" FontWeight="Bold"/>
     </Grid>
 </Page>

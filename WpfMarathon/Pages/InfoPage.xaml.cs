@@ -20,9 +20,11 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class InfoPage : Page
     {
-        public InfoPage()
+        public InfoPage(MainWindow mainWindow)
         {
             InitializeComponent();
         }
+
+       
     }
 }

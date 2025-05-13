@@ -8,10 +8,9 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="RunnerMenu">
 
-    <Grid Background="white">
-
+    <Grid Background="White">
         <!-- Верхняя панель с заголовком -->
-        <DockPanel LastChildFill="False" Grid.ColumnSpan="9" Margin="0,0,0,10" Grid.RowSpan="2">
+        <DockPanel LastChildFill="False">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
                 <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" Click="btn_back_Click" />
                 <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
@@ -19,64 +18,124 @@
             </StackPanel>
         </DockPanel>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="125"/>
-            <RowDefinition Height="165"/>
-            <RowDefinition Height="225"/>
-            <RowDefinition Height="225"/>
-            <RowDefinition Height="225"/>
-            <RowDefinition/>
-            <RowDefinition Height="62.5"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="800"/>
-            <ColumnDefinition Width="15"/>
-            <ColumnDefinition Width="800"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <!-- Основной контент -->
+        <Grid Margin="40,101,40,40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Заголовок -->
+                <RowDefinition Height="Auto" MinHeight="189"/>
+                <!-- Кнопка 1 -->
+                <RowDefinition Height="Auto" MinHeight="237"/>
+                <!-- Кнопка 2 -->
+                <RowDefinition Height="Auto" MinHeight="385"/>
+                <!-- Кнопка 3 -->
+                <RowDefinition/>
+                <!-- Дополнительное пространство -->
+            </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Меню бегуна" VerticalAlignment="Top" FontSize="55" Foreground="#FF6C6C6C" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center"/>
+            <!-- Заголовок -->
+            <TextBlock Grid.Row="1"
+                       Text="Меню бегуна"
+                       FontSize="55"
+                       Foreground="#FF6C6C6C"
+                       HorizontalAlignment="Center"
+                       Margin="0,101,0,210" Width="338" Grid.RowSpan="2"/>
 
-        <Button Name="btn_regmarathon" Content="Регистрация на марафон" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="2" Click="btn_regmarathon_Click" Grid.Column="1">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="35"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+            <!-- Кнопки -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,62,0,0" Width="1600" Grid.Row="2" >
+                <Button Name="btn_regmarathon"
+                        Content="Регистрация на марафон"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        Height="175"
+                        Width="800"
+                        VerticalAlignment="Top"
+                        FontStyle="Italic"
+                        Click="btn_regmarathon_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
 
-        <Button Name="btn_myresult" Content="Мои результаты" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="2" Grid.Column="3" Click="btn_myresult_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="35"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+                <Button Name="btn_myresult"
+                        Content="Мои результаты"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        Height="175"
+                        Width="800"
+                        VerticalAlignment="Top"
+                        FontStyle="Italic"
+                        Click="btn_myresult_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
 
-        <Button Name="btn_editprofile" Content="Редактирование профиля" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="3" Grid.Column="1" Click="btn_editprofile_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="35"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,19,0,5" Width="1600" >
+                <Button Name="btn_editprofile"
+                        Content="Редактирование профиля"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        Height="175"
+                        Width="800"
+                        VerticalAlignment="Top"
+                        FontStyle="Italic"
+                        Click="btn_editprofile_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
 
-        <Button x:Name="btn_sponsor" Content="Мой спонсор" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="3" Grid.Column="3" Click="btn_sponsor_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="35"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+                <Button x:Name="btn_sponsor"
+                        Content="Мой спонсор"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        Height="175"
+                        Width="800"
+                        VerticalAlignment="Top"
+                        FontStyle="Italic"
+                        Click="btn_sponsor_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
 
-        <Button x:Name="btn_contact" Content="Контакты" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="4" Grid.Column="1" Click="btn_contact_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="35"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,207,0,9" Width="800">
+                <Button x:Name="btn_contact"
+                        Content="Контакты"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        Height="169"
+                        Width="800"
+                        FontStyle="Italic"
+                        Click="btn_contact_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

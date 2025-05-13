@@ -25,9 +25,5 @@ namespace WpfMarathon.Pages
             InitializeComponent();
         }
 
-        private void grid_Results_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

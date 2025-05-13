@@ -22,7 +22,7 @@ namespace WpfMarathon.Pages
     {
         public ContactCoordinator()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
