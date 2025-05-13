@@ -1,0 +1,82 @@
+﻿<Page x:Class="WpfMarathon.Pages.RunnerMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="RunnerMenu">
+
+    <Grid Background="white">
+
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Grid.ColumnSpan="9" Margin="0,0,0,10" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" Click="btn_back_Click" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0" Click="btn_logout_Click" />
+            </StackPanel>
+        </DockPanel>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="165"/>
+            <RowDefinition Height="225"/>
+            <RowDefinition Height="225"/>
+            <RowDefinition Height="225"/>
+            <RowDefinition/>
+            <RowDefinition Height="62.5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Меню бегуна" VerticalAlignment="Top" FontSize="55" Foreground="#FF6C6C6C" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center"/>
+
+        <Button Name="btn_regmarathon" Content="Регистрация на марафон" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="2" Click="btn_regmarathon_Click" Grid.Column="1">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="btn_myresult" Content="Мои результаты" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="2" Grid.Column="3" Click="btn_myresult_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="btn_editprofile" Content="Редактирование профиля" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="3" Grid.Column="1" Click="btn_editprofile_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btn_sponsor" Content="Мой спонсор" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="3" Grid.Column="3" Click="btn_sponsor_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btn_contact" Content="Контакты" Margin="25,25,25,0" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" Height="175" VerticalAlignment="Top" FontStyle="Italic" Grid.Row="4" Grid.Column="1" Click="btn_contact_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Page>

@@ -144,6 +144,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ContactCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,11 +156,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MyResults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProverkaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegBegunPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegMarafonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,11 +185,17 @@
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ContactCoordinator.xaml.cs">
+      <DependentUpon>ContactCoordinator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyResults.xaml.cs">
+      <DependentUpon>MyResults.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PasswordToVisibilityConverter.cs" />
     <Compile Include="Pages\ProverkaPage.xaml.cs">
@@ -181,6 +203,12 @@
     </Compile>
     <Compile Include="Pages\RegBegunPage.xaml.cs">
       <DependentUpon>RegBegunPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegMarafonPage.xaml.cs">
+      <DependentUpon>RegMarafonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RunnerMenu.xaml.cs">
+      <DependentUpon>RunnerMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SponsorPage.xaml.cs">
       <DependentUpon>SponsorPage.xaml</DependentUpon>
