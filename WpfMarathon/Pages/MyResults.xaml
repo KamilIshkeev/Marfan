@@ -70,11 +70,11 @@
                       
                       Margin="0,84,0,156">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название" Binding="{Binding Marathon.Name}" Width="400"/>
-                    <DataGridTextColumn Header="Дистанция" Binding="{Binding Time}" Width="400"/>
-                    <DataGridTextColumn Header="Время" Binding="{Binding Time}" Width="300" />
-                    <DataGridTextColumn Header="Общее время" Binding="{Binding GeneralTime}" Width="350"/>
-                    <DataGridTextColumn Header="Моё место" Binding="{Binding MyPlace}" Width="0.3*"/>
+                    <DataGridTextColumn Header="RegEventId" Binding="{Binding RegistrationEventId}" Width="400"/>
+                    <DataGridTextColumn Header="RegistrationId" Binding="{Binding RegistrationId}" Width="400"/>
+                    <DataGridTextColumn Header="EventId" Binding="{Binding EventId}" Width="300" />
+                    <DataGridTextColumn Header="BibNumber" Binding="{Binding BibNumber}" Width="350"/>
+                    <DataGridTextColumn Header="RaceTime" Binding="{Binding RaceTime}" Width="0.3*"/>
                 </DataGrid.Columns>
             </DataGrid>
 

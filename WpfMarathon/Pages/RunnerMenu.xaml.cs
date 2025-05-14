@@ -35,8 +35,8 @@ namespace WpfMarathon.Pages
 
         private void btn_regmarathon_Click(object sender, RoutedEventArgs e)
         {
-            //RegMarathon rg = new RegMarathon(id);
-            //NavigationService.Navigate(rg);
+            RegMarafonPage rg = new RegMarafonPage(email);
+            NavigationService.Navigate(rg);
         }
 
         private void btn_myresult_Click(object sender, RoutedEventArgs e)

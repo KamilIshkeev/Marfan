@@ -96,7 +96,7 @@ namespace WpfMarathon.Pages
 
                                         db.User.Add(user);
                                         db.Runner.Add(runner);
-                                        db.SaveChanges();
+                                        //db.SaveChanges();
                                         this.NavigationService.Navigate(new Uri("Runner/AuthRunner.xaml", UriKind.Relative));
                                     }
                                     catch

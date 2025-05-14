@@ -1,0 +1,114 @@
+﻿<Page x:Class="WpfMarathon.Pages.PerviousResult"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="PerviousResult">
+    <Grid Background="White" Margin="50">
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Margin="0,0,0,858">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Результат предыдущих гонок"
+                   FontSize="55"
+                   Foreground="#FF6C6C6C"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,124,0,0"/>
+
+        <!-- Фильтры -->
+        <Grid Margin="60,230,30,-15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Марафон -->
+            <TextBlock Text="Марафон:" FontSize="35" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cmbMarathon" DisplayMemberPath="Name" Grid.Column="1" FontSize="35" Height="55" Margin="27,0,277,0"/>
+
+            <!-- Пол -->
+            <TextBlock Text="Пол:" Grid.Column="2" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <ComboBox x:Name="cmbGender" Grid.Column="3" FontSize="35" Height="55" Margin="17,0,288,0"/>
+
+            <!-- Дистанция -->
+            <TextBlock Text="Дистанция:" Grid.Row="1" FontSize="35" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,719,0"/>
+            <ComboBox x:Name="cmbDistance" Grid.Row="1" Grid.Column="1" FontSize="35" Height="55" Margin="27,3,277,3"/>
+
+            <!-- Категория -->
+            <TextBlock Text="Категория:" Grid.Row="1" Grid.Column="2" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <ComboBox x:Name="cmbAge" Grid.Row="1" Grid.Column="3" FontSize="35" Height="55" Margin="17,3,288,3"/>
+
+            <!-- Кнопка поиска -->
+            <Button x:Name="btnSearch" Content="Поиск"
+                    Background="#FFF2F2F2"
+                    FontFamily="Open Sans Light"
+                    FontSize="35"
+                    Foreground="#FF474747"
+                    Width="180"
+                    Height="60"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Click="btnSearch_Click" Margin="481,0,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="17.5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <!-- Таблица результатов -->
+        <DataGrid x:Name="gridResult"
+                  AutoGenerateColumns="False"
+                  Margin="58,415,64,147"
+                  FontSize="35">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding EventName}" Width="3*"/>
+                <DataGridTextColumn Header="Начало" Binding="{Binding StartDateTime}" Width="2.5*"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" Width="2.5*"/>
+                <DataGridTextColumn Header="Количество участников" Binding="{Binding MaxParticipants}" Width="2.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Статистика -->
+        <Grid Margin="69,360,30,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Всего бегунов:" FontWeight="Bold" FontSize="40" HorizontalAlignment="Left" Margin="-6.25,-5,0,5"/>
+            <TextBlock Name="txtRunnerAllCount" Text="1234" FontSize="35" HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Top" Margin="291,0,0,0"/>
+
+            <TextBlock Text="Финишировало:" FontWeight="Bold" FontSize="40" HorizontalAlignment="Left" Margin="545,-5,0,5" Grid.ColumnSpan="2"/>
+            <TextBlock Name="txtRunnerFinishCount" Text="1234" FontSize="35" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Top" Margin="299,0,0,0"/>
+
+            <TextBlock Text="Среднее время:" FontWeight="Bold" FontSize="40" HorizontalAlignment="Left" Grid.Column="1" Margin="545,-5,0,5" Grid.ColumnSpan="2"/>
+            <TextBlock Name="txtTime" Text="4h 02m 10s" FontSize="35" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" Margin="293.75,0,0,0"/>
+        </Grid>
+    </Grid>
+</Page>

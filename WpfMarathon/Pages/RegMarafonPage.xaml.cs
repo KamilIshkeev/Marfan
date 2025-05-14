@@ -27,7 +27,7 @@ namespace WpfMarathon.Pages
         string id = "";
 
         public static MarafonEntities db = new MarafonEntities();
-        public RegMarafonPage()
+        public RegMarafonPage(object id)
         {
             InitializeComponent();
             
@@ -49,8 +49,10 @@ namespace WpfMarathon.Pages
                         {
                             try
                             {
-                                //Registration stm = new Registration();
-                                //stm.RunnerId = id;
+                                Runner runner = new Runner();
+                                runner.Email = id;
+                                Registration stm = new Registration();
+                                stm.RunnerId = runner.RunnerId;
 
                                 //if (check_full.IsChecked == true)
                                 //{
