@@ -25,10 +25,10 @@ namespace WpfMarathon.Pages
         public SponsorPage(MainWindow _mainWindow)
         {
             InitializeComponent();
-            cmbRunner.ItemsSource = db.User.Where(x => x.RoleId == "User").ToList();
+            cmbRunner.ItemsSource = db.User.Where(x => x.RoleId == "U").ToList();
         }
 
-        
+
         private void btn_pay_Click(object sender, RoutedEventArgs e)
         {
             if (txb_cardholder.Text != null && txb_cardnum.Text != null && txb_month.Text != null && txb_name.Text != null && txb_year.Text != null && cmbRunner.SelectedIndex != -1)

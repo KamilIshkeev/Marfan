@@ -50,7 +50,7 @@
 
             <!-- Кнопки Login и Cancel -->
             <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,25,0,327" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.796">
-                <Button Content="Login" Width="195" Height="100" FontSize="16" Margin="0,0,10,0" Padding="10,0" TextBlock.FontSize="44" >
+                <Button Content="Login" Width="195" Height="100" FontSize="16" Margin="0,0,10,0" Padding="10,0" TextBlock.FontSize="44" Click="btn_Reg_Click" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -58,7 +58,7 @@
                     </Button.Resources>
 
                 </Button>
-                <Button Content="Cancel" Width="195" Height="100" FontSize="16" Padding="10,0" TextBlock.FontSize="44" >
+                <Button Content="Cancel" Width="195" Height="100" FontSize="16" Padding="10,0" TextBlock.FontSize="44" Click="btn_cancel_Click" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>

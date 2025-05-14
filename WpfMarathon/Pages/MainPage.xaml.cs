@@ -33,7 +33,7 @@ namespace WpfMarathon.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
-            _mainWindow.MainFrame.NavigationService.Navigate(new ProverkaPage(_mainWindow));
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthRegRunner(_mainWindow));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

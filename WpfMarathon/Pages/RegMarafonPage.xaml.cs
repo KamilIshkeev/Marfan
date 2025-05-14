@@ -24,13 +24,49 @@ namespace WpfMarathon.Pages
     {
         int price;
         int fundMoney;
-        string id = "";
-
+        int id = 0;
         public static MarafonEntities db = new MarafonEntities();
-        public RegMarafonPage(object id)
+        public RegMarafonPage(int _id)
         {
             InitializeComponent();
-            
+            id = _id;
+
+            List<Sponsorship> fun = db.Sponsorship.ToList();
+            List<Registration> us = db.Registration.ToList();
+
+            foreach (var f in fun)
+            {
+                foreach (var u in us)
+                {
+                    if (f.RegistrationId == u.RegistrationId && u.RegistrationId == id)
+                    {
+                        txb_price.Text = f.Amount.ToString();
+                        fundMoney = (int)f.Amount;
+                    }
+                }
+            }
+            var re = from f in db.Sponsorship.ToList()
+                     from u in db.Registration.ToList()
+                     where f.RegistrationId == u.RegistrationId && u.RegistrationId == id
+                     select f.SponsorName;
+
+            cmb_fund.ItemsSource = re;
+
+            foreach (var b in db.RaceKitOption)
+            {
+                if (b.RaceKitOptionId == "A")
+                {
+                    check_full.Content = $"{b.RaceKitOptionId}km {b.RaceKitOption1} (${b.Cost})";
+                }
+                if (b.RaceKitOptionId == "B")
+                {
+                    check_half.Content = $"{b.RaceKitOptionId}km {b.RaceKitOption1} (${b.Cost})";
+                }
+                if (b.RaceKitOptionId == "C")
+                {
+                    check_min.Content = $"{b.RaceKitOptionId}km {b.RaceKitOption1} (${b.Cost})";
+                }
+            }
             txt_price.Text = "";
         }
 
@@ -40,68 +76,69 @@ namespace WpfMarathon.Pages
             {
                 if (fundMoney > 0)
                 {
-                    List<User> us = new List<User>();
-                    us = db.User.ToList();
+                    List<Registration> us = new List<Registration>();
+                    us = db.Registration.ToList();
 
                     foreach (var u in us)
                     {
-                        if (u.Email == id)
+                        if (u.RegistrationId == id)
                         {
                             try
                             {
-                                Runner runner = new Runner();
-                                runner.Email = id;
                                 Registration stm = new Registration();
-                                stm.RunnerId = runner.RunnerId;
+                                stm.RunnerId = id;
+                                RegistrationEvent regev = new RegistrationEvent();
+                                regev.RegistrationId = stm.RegistrationId;
+                                Event ev = new Event();
+                                ev.EventId = regev.EventId;
+                                if (check_full.IsChecked == true)
+                                {
+                                    ev.EventTypeId = "FM";
+                                    db.Event.Add(ev);
+                                    db.SaveChanges();
+                                }
+                                if (check_half.IsChecked == true)
+                                {
+                                    ev.EventTypeId = "FR"; 
+                                    db.Event.Add(ev);
+                                    db.SaveChanges();
+                                }
+                                if (check_min.IsChecked == true)
+                                {
+                                    ev.EventTypeId = "HM"; 
+                                    db.Event.Add(ev);
+                                    db.SaveChanges();
+                                }
 
-                                //if (check_full.IsChecked == true)
-                                //{
-                                //    stm.ID_Marathon = 1;
-                                //    db.StatisticsMarathon.Add(stm);
-                                //    db.SaveChanges();
-                                //}
-                                //if (check_half.IsChecked == true)
-                                //{
-                                //    stm.ID_Marathon = 2;
-                                //    db.StatisticsMarathon.Add(stm);
-                                //    db.SaveChanges();
-                                //}
-                                //if (check_min.IsChecked == true)
-                                //{
-                                //    stm.ID_Marathon = 3;
-                                //    db.StatisticsMarathon.Add(stm);
-                                //    db.SaveChanges();
-                                //}
+                                List<Sponsorship> fun = new List<Sponsorship>();
+                                fun = db.Sponsorship.ToList();
 
-                                //List<Fund> fun = new List<Fund>();
-                                //fun = db.Fund.ToList();
+                                foreach (var f in fun)
+                                {
 
-                                //foreach (var f in fun)
-                                //{
+                                    //Донат
+                                    if (f.RegistrationId == u.RegistrationId)
+                                    {
+                                        f.Amount -= price;
+                                        db.SaveChanges();
+                                    }
+                                }
 
-                                //    //Донат
-                                //    if (f.ID == u.ID_Fund)
-                                //    {
-                                //        f.Money -= price;
-                                //        db.SaveChanges();
-                                //    }
-                                //}
-
-                                //if (radio_a.IsChecked == true)
-                                //{
-                                //    u.ID_Inventory = 1;
-                                //    db.SaveChanges();
-                                //}
-                                //else if (radio_b.IsChecked == true)
-                                //{
-                                //    u.ID_Inventory = 2;
-                                //    db.SaveChanges();
-                                //}
-                                //else if (radio_c.IsChecked == true)
-                                //{
-                                //    u.ID_Inventory = 3;
-                                //    db.SaveChanges();
-                                //}
+                                if (radio_a.IsChecked == true)
+                                {
+                                    u.RaceKitOptionId = "A";
+                                    db.SaveChanges();
+                                }
+                                else if (radio_b.IsChecked == true)
+                                {
+                                    u.RaceKitOptionId = "B";
+                                    db.SaveChanges();
+                                }
+                                else if (radio_c.IsChecked == true)
+                                {
+                                    u.RaceKitOptionId = "C";
+                                    db.SaveChanges();
+                                }
                             }
                             catch
                             {

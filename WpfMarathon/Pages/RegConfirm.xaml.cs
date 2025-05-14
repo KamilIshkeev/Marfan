@@ -24,5 +24,12 @@ namespace WpfMarathon.Pages
         {
             InitializeComponent();
         }
+
+
+        private void btn_cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("RunnerMenu.xaml", UriKind.Relative));
+        }
+
     }
 }

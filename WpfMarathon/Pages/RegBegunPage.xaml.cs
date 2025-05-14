@@ -83,7 +83,7 @@ namespace WpfMarathon.Pages
                                             FirstName = txb_name.Text,
                                             LastName = txb_surname.Text,
                                             
-                                            RoleId = "",
+                                            RoleId = "U",
                                         };
                                         Runner runner = new Runner
                                         {
@@ -96,8 +96,8 @@ namespace WpfMarathon.Pages
 
                                         db.User.Add(user);
                                         db.Runner.Add(runner);
-                                        //db.SaveChanges();
-                                        this.NavigationService.Navigate(new Uri("Runner/AuthRunner.xaml", UriKind.Relative));
+                                        db.SaveChanges();
+                                        this.NavigationService.Navigate(new Uri("AuthPage.xaml", UriKind.Relative));
                                     }
                                     catch
                                     {
@@ -138,7 +138,7 @@ namespace WpfMarathon.Pages
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Runner/AuthRegRunner.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("AuthRegRunner.xaml", UriKind.Relative));
         }
 
         private void txb_email_GotFocus(object sender, RoutedEventArgs e)
