@@ -58,10 +58,8 @@
                     <TextBox x:Name="txb_name" Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Ваше имя" Width="600" Height="55" FontSize="36" Margin="280,10,156,10"/>
                     <!-- Бегун -->
                     <TextBlock x:Name="txt_runner" Grid.Row="2" Text="Бегун:" VerticalAlignment="Top" Margin="170,3,10,0" FontSize="36"/>
-                    <ComboBox x:Name="cmbRunner" DisplayMemberPath="Name" Grid.Row="2" Width="600" Height="55" FontSize="36" Margin="220,0,20,10">
-                        <ComboBoxItem Content="Иван Прудов - 204 (Russia)"/>
-                        <!-- Добавьте другие бегуны здесь -->
-                    </ComboBox>
+                    <ComboBox x:Name="cmbRunner" DisplayMemberPath="Name" Grid.Row="2" Width="600" Height="55" FontSize="36" Margin="220,0,20,10" SelectionChanged="cmbRunner_SelectionChanged"/>
+
                     <!-- Владелец карты -->
                     <TextBlock x:Name="txt_cardholder" Grid.Row="3" Text="Карта:" VerticalAlignment="Top" Margin="168,3,10,0" FontSize="36"/>
                     <TextBox x:Name="txb_cardholder" Grid.Row="3" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Владелец карты" Width="600" Height="55" FontSize="36" Margin="220,0,20,10"/>
@@ -96,21 +94,22 @@
                         <Image x:Name="img_cat_fund" Margin="20,0,0,0" Source="/Image1.png" Stretch="Fill" Height="50" Width="50"/>
                     </StackPanel>
                     <StackPanel x:Name="sp_donation_amount" Grid.Row="3" Orientation="Horizontal" Margin="250,0,220,36">
-                        <TextBlock x:Name="txt_donation_amount" Text="$50" FontSize="96" TextAlignment="Center" Width="386" Height="150" />
+                        <TextBlock x:Name="txt_donation_amount" Text="$" FontSize="96" TextAlignment="Center" Width="135" Height="150" />
+                        <TextBlock x:Name="txt_price" Text="50" FontSize="96" Width="282" Height="150" />
                     </StackPanel>
                     <!-- Сумма пожертвования -->
                     <StackPanel x:Name="sp_donation_summary" Grid.Row="2" Orientation="Horizontal" Margin="250,0,220,0" Height="56" VerticalAlignment="Top">
                         <TextBlock x:Name="txt_donation_summary" Text="Сумма пожертвования" FontSize="36" Height="56" Margin="0,0,10,0" Width="388"/>
                     </StackPanel>
                     <StackPanel x:Name="sp_donation_controls" Grid.Row="3" Orientation="Horizontal" Margin="315,0,0,144" Height="55" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="277" Grid.RowSpan="2" >
-                        <Button x:Name="btn_pricemin" Content="-" Width="61" Height="55" FontSize="36" Margin="0,0,15,0" Padding="10,0" HorizontalAlignment="Center"/>
-                        <TextBox x:Name="txb_price_num" Text="$50" Width="122" Height="55" FontSize="36" IsReadOnly="True" Margin="0,0,15,0" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_pricesum" Content="+" Width="61" Height="55" FontSize="36" Margin="0,0,0,0" Padding="10,0" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_pricemin" Content="-" Width="61" Height="55" FontSize="36" Margin="0,0,15,0" Padding="10,0" HorizontalAlignment="Center" Click="btn_pricemin_Click1"/>
+                        <TextBox x:Name="txb_price_num" Text="50" Width="122" Height="55" FontSize="36"  Margin="0,0,15,0" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_pricesum" Content="+" Width="61" Height="55" FontSize="36" Margin="0,0,0,0" Padding="10,0" HorizontalAlignment="Center" Click="btn_pricesum_Click"/>
                     </StackPanel>
                     <!-- Кнопки "Заплатить" и "Отмена" -->
                     <StackPanel x:Name="sp_buttons" Grid.Row="4" Orientation="Horizontal" Margin="0,48,101,43" HorizontalAlignment="Right" Width="574">
-                        <Button x:Name="btn_pay" Content="Заплатить" Width="250" Height="60" FontSize="36" Margin="0,0,30,0" Padding="10,0" BorderBrush="Gray" BorderThickness="1"/>
-                        <Button x:Name="btn_cancel" Content="Отмена" Width="250" Height="60" FontSize="36" Padding="10,0" BorderBrush="Gray" BorderThickness="1"/>
+                        <Button x:Name="btn_pay" Content="Заплатить" Width="250" Height="60" FontSize="36" Margin="0,0,30,0" Padding="10,0" BorderBrush="Gray" BorderThickness="1" Click="btn_pay_Click"/>
+                        <Button x:Name="btn_cancel" Content="Отмена" Width="250" Height="60" FontSize="36" Padding="10,0" BorderBrush="Gray" BorderThickness="1" Click="btn_cancel_Click"/>
                     </StackPanel>
                 </Grid>
             </Grid>

@@ -20,9 +20,11 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class ContactCoordinator : Page
     {
-        public ContactCoordinator()
+        static MainWindow _mainWindow;
+        public ContactCoordinator(MainWindow mainWindow)
         {
-            //InitializeComponent();
+            InitializeComponent();
+            _mainWindow = mainWindow;
         }
     }
 }

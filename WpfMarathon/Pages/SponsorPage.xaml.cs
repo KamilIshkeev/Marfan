@@ -25,7 +25,7 @@ namespace WpfMarathon.Pages
         public SponsorPage(MainWindow _mainWindow)
         {
             InitializeComponent();
-            cmbRunner.ItemsSource = db.User.Where(x => x.RoleId == "U").ToList();
+            cmbRunner.ItemsSource = db.User.Where(x => x.RoleId == "R").Select(x=> x.Email).ToList();
         }
 
 
@@ -37,13 +37,24 @@ namespace WpfMarathon.Pages
                 var check = (from b in db.Sponsorship
                              where b.SponsorName == sponsor_name
                              select b).SingleOrDefault();
+                decimal count = Convert.ToDecimal(txb_price_num.Text);
+                var run = cmbRunner.SelectedItem;
+                var ryn = db.Runner.FirstOrDefault(x => x.Email == run);
+                var user = db.Registration.FirstOrDefault(x => x.RunnerId == ryn.RunnerId).RegistrationId;
+                List<Sponsorship> fund = db.Sponsorship.ToList();
+                List<Sponsorship> sponsor = db.Sponsorship.ToList();
+                int id_sponsor = sponsor.Where(x => x.SponsorName == sponsor_name).Select(x => x.SponsorshipId).SingleOrDefault();
+                decimal money = count;
+                int money_int = Convert.ToInt32(money);
                 if (check == null)
                 {
                     db.Sponsorship.Add(new Sponsorship
                     {
-                        SponsorName = sponsor_name
+                        SponsorName = sponsor_name,
+                        RegistrationId = user,
+                        Amount = money,
                     });
-                    //db.SaveChanges();
+                    db.SaveChanges();
                 }
                 else
                 {
@@ -52,15 +63,9 @@ namespace WpfMarathon.Pages
 
                 try
                 {
-                    decimal count = Convert.ToDecimal(txb_price_num.Text);
-                    var user = (cmbRunner.SelectedItem as Registration).SponsorshipTarget;
-                    List<Sponsorship> fund = db.Sponsorship.ToList();
-                    List<Sponsorship> sponsor = db.Sponsorship.ToList();
-                    decimal countref = (decimal)fund.Where(x => x.SponsorshipId == user).Select(x => x.Amount).SingleOrDefault();
-                    int id_sponsor = sponsor.Where(x => x.SponsorName == sponsor_name).Select(x => x.SponsorshipId).SingleOrDefault();
-                    decimal money = count + countref;
-                    int money_int = Convert.ToInt32(money);
-                    db.Database.ExecuteSqlCommand($"UPDATE Fund SET Money={money_int}, ID_Sponsor={id_sponsor} WHERE ID={user}");
+                    decimal countref = (decimal)fund.Where(x => x.RegistrationId == user).Select(x => x.Amount).SingleOrDefault();
+                    money = count + countref;
+                    db.Database.ExecuteSqlCommand($"UPDATE Sponsorship SET Amount = {money_int} WHERE SponsorshipId = {id_sponsor} And RegistrationId = {user}");
                     db.SaveChanges();
                     ThanksPay thxForPay = new ThanksPay(txb_price_num.Text, txt_fund.Text, Convert.ToString(cmbRunner.SelectedValue));
                     NavigationService.Navigate(thxForPay);
@@ -85,17 +90,18 @@ namespace WpfMarathon.Pages
 
         private void btn_pricesum_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToInt64(Convert.ToInt64(txb_price_num.Text) + Convert.ToInt64(txb_price_num.Text)) <= 10000)
+            if (Convert.ToInt64(Convert.ToInt64(txt_price.Text) + Convert.ToInt64(txb_price_num.Text)) <= 10000)
             {
-                txb_price_num.Text = Convert.ToString(Convert.ToInt32(txb_price_num.Text) + Convert.ToInt32(txb_price_num.Text));
+                txb_price_num.Text = Convert.ToString(Convert.ToInt32(txt_price.Text) + Convert.ToInt32(txb_price_num.Text));
             }
         }
 
-        private void btn_pricemin_Click(object sender, RoutedEventArgs e)
+        private void btn_pricemin_Click1(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToInt32(Convert.ToInt32(txb_price_num.Text) - Convert.ToInt32(txb_price_num.Text)) > 0)
+            txb_price_num.Text = Convert.ToString(Convert.ToInt32(txb_price_num.Text) - Convert.ToInt32(txt_price.Text));
+            if (Convert.ToInt32(Convert.ToInt32(txt_price.Text) - Convert.ToInt32(txb_price_num.Text)) > 0)
             {
-                txb_price_num.Text = Convert.ToString(Convert.ToInt32(txb_price_num.Text) - Convert.ToInt32(txb_price_num.Text));
+                txb_price_num.Text = "0";
             }
         }
 
@@ -115,9 +121,11 @@ namespace WpfMarathon.Pages
 
         private void cmbRunner_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var user = cmbRunner.SelectedItem as Registration;
-            List<Sponsorship> fund = db.Sponsorship.ToList();
-            txt_fund.Text = fund.Where(x => x.SponsorshipId == user.SponsorshipTarget).Select(x => x.SponsorName).SingleOrDefault();
+            var run = cmbRunner.SelectedItem;
+            var ryn = db.Runner.FirstOrDefault(x => x.Email == run);
+            var user = db.Registration.FirstOrDefault(x => x.RunnerId == ryn.RunnerId).CharityId;
+            List<Charity> fund = db.Charity.ToList();
+            txt_fund.Text = fund.Where(x => x.CharityId == user).Select(x => x.CharityName).SingleOrDefault();
         }
         private void txb_cardnum_GotFocus(object sender, RoutedEventArgs e)
         {

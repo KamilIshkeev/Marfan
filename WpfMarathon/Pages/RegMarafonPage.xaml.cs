@@ -22,13 +22,15 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class RegMarafonPage : Page
     {
+        static MainWindow _mainWindow;
         int price;
         int fundMoney;
         int id = 0;
         public static MarafonEntities db = new MarafonEntities();
-        public RegMarafonPage(int _id)
+        public RegMarafonPage(MainWindow mainWindow, int _id)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             id = _id;
 
             List<Sponsorship> fun = db.Sponsorship.ToList();
@@ -45,28 +47,9 @@ namespace WpfMarathon.Pages
                     }
                 }
             }
-            var re = from f in db.Sponsorship.ToList()
-                     from u in db.Registration.ToList()
-                     where f.RegistrationId == u.RegistrationId && u.RegistrationId == id
-                     select f.SponsorName;
+            var re = db.Charity.Select(x=> x.CharityName);
 
             cmb_fund.ItemsSource = re;
-
-            foreach (var b in db.RaceKitOption)
-            {
-                if (b.RaceKitOptionId == "A")
-                {
-                    check_full.Content = $"{b.RaceKitOptionId}km {b.RaceKitOption1} (${b.Cost})";
-                }
-                if (b.RaceKitOptionId == "B")
-                {
-                    check_half.Content = $"{b.RaceKitOptionId}km {b.RaceKitOption1} (${b.Cost})";
-                }
-                if (b.RaceKitOptionId == "C")
-                {
-                    check_min.Content = $"{b.RaceKitOptionId}km {b.RaceKitOption1} (${b.Cost})";
-                }
-            }
             txt_price.Text = "";
         }
 
@@ -85,33 +68,55 @@ namespace WpfMarathon.Pages
                         {
                             try
                             {
-                                Registration stm = new Registration();
-                                stm.RunnerId = id;
+                                var chartId = db.Charity.FirstOrDefault(x=> x.CharityName == cmb_fund.SelectedItem).CharityId;
+                                Registration stm = new Registration 
+                                { 
+                                    RunnerId = id,
+                                    RegistrationDateTime = DateTime.Now,
+                                    RegistrationStatusId = 4,
+                                    SponsorshipTarget = fundMoney,
+                                    CharityId = chartId,
+                                };
+                                
                                 RegistrationEvent regev = new RegistrationEvent();
                                 regev.RegistrationId = stm.RegistrationId;
                                 Event ev = new Event();
                                 ev.EventId = regev.EventId;
+                                RegistrationEvent regevent = new RegistrationEvent
+                                {
+                                    RegistrationId = stm.RegistrationId,
+
+                                };
                                 if (check_full.IsChecked == true)
                                 {
-                                    ev.EventTypeId = "FM";
-                                    db.Event.Add(ev);
+                                    Random rn = new Random();
+                                    int rno = rn.Next(1, 2200);
+                                    regevent.BibNumber = Convert.ToInt16(rno);
+                                    regevent.EventId = "15_5FM";
+                                    db.RegistrationEvent.Add(regevent);
                                     db.SaveChanges();
                                 }
                                 if (check_half.IsChecked == true)
                                 {
-                                    ev.EventTypeId = "FR"; 
-                                    db.Event.Add(ev);
+                                    Random rn = new Random();
+                                    int rno = rn.Next(1, 5000);
+                                    regevent.BibNumber = Convert.ToInt16(rno);
+                                    regevent.EventId = "15_5FR"; 
+                                    db.RegistrationEvent.Add(regevent);
                                     db.SaveChanges();
                                 }
                                 if (check_min.IsChecked == true)
                                 {
-                                    ev.EventTypeId = "HM"; 
-                                    db.Event.Add(ev);
+                                    Random rn = new Random();
+                                    int rno = rn.Next(1, 2500);
+                                    regevent.EventId = "15_5HM";
+                                    regevent.BibNumber = Convert.ToInt16(rno);
+                                    db.RegistrationEvent.Add(regevent);
                                     db.SaveChanges();
                                 }
 
-                                List<Sponsorship> fun = new List<Sponsorship>();
-                                fun = db.Sponsorship.ToList();
+                                List<Registration> fun = new List<Registration>();
+                                fun = db.Registration.ToList();
 
                                 foreach (var f in fun)
                                 {
@@ -119,26 +124,30 @@ namespace WpfMarathon.Pages
                                     //Донат
                                     if (f.RegistrationId == u.RegistrationId)
                                     {
-                                        f.Amount -= price;
+                                        f.SponsorshipTarget -= price;
                                         db.SaveChanges();
                                     }
                                 }
 
                                 if (radio_a.IsChecked == true)
                                 {
-                                    u.RaceKitOptionId = "A";
+                                    stm.RaceKitOptionId = "A";
+                                    stm.Cost = 0;
                                     db.SaveChanges();
                                 }
                                 else if (radio_b.IsChecked == true)
                                 {
-                                    u.RaceKitOptionId = "B";
+                                    stm.RaceKitOptionId = "B";
+                                    stm.Cost = 15;
                                     db.SaveChanges();
                                 }
                                 else if (radio_c.IsChecked == true)
                                 {
-                                    u.RaceKitOptionId = "C";
+                                    stm.RaceKitOptionId = "C";
+                                    stm.Cost = 20;
                                     db.SaveChanges();
                                 }
+
                             }
                             catch
                             {
@@ -147,7 +156,7 @@ namespace WpfMarathon.Pages
                         }
                     }
 
-                    this.NavigationService.Navigate(new Uri("Runner/RegConfirm.xaml", UriKind.Relative));
+                    _mainWindow.MainFrame.NavigationService.Navigate(new RegConfirm(_mainWindow, id));
                 }
                 else
                 {

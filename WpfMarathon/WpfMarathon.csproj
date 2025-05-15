@@ -141,6 +141,9 @@
     <Compile Include="Pages\AuthRegRunner.xaml.cs">
       <DependentUpon>AuthRegRunner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ContactCoordinator.xaml.cs">
+      <DependentUpon>ContactCoordinator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PerviousResult.xaml.cs">
       <DependentUpon>PerviousResult.xaml</DependentUpon>
     </Compile>
@@ -283,9 +286,6 @@
   <ItemGroup>
     <Compile Include="Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ContactCoordinator.xaml.cs">
-      <DependentUpon>ContactCoordinator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>

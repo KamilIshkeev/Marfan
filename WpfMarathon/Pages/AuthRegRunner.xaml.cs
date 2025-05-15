@@ -20,25 +20,28 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class AuthRegRunner : Page
     {
-        public AuthRegRunner(MainWindow _mainWindow)
+        static MainWindow _mainWindow;
+        public AuthRegRunner(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
 
 
         private void btn_oldrunner_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("AuthPage.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
         private void btn_newrunner_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("RegBegunPage.xaml", UriKind.Relative));
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new RegBegunPage(_mainWindow));
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("AuthPage.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
     }

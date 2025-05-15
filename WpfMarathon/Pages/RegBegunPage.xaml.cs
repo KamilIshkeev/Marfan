@@ -25,15 +25,16 @@ namespace WpfMarathon.Pages
     public partial class RegBegunPage : Page
     {
 
+        static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
         public RegBegunPage(MainWindow mainWindow)
         {
             InitializeComponent();
-            var gender = new List<string> { "Мужчина", "Женщина" };
-            var country = new List<string>
-            {
-                "Andora", "Argentina", "Australia","Austria","Belgium","Botswana","Brazil","Bulgaria","Cameroon","Canada","Central Africa","Chile","China","Chinese Taipei","Colombia","Croatia","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Esonia","Finland","France","Germany","Greece","Guatemala","Guinea","Guinea-Bissau","Honduras","Hong Kong","Hungary","India","Indonesia","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kenya","Latvia", "Liechtenstein","Lithuania","Luxemburg", "Macau", "Macedonia", "Madagascar", "Malaysia", "Mali", "Malta", "Mauritius", "Mexico", "Moldova", "Monaco", "Montenegro", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Norway", "Panama", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Romania", "Russia", "Saudi Arabia", "Senegal", "Singapore","Slovakia", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Thailand", "Turkey", "Unitied Arab Emirates", "Inited Kingdom", "Uruguay", "USA", "Vatican", "Venezuela", "Vietnam"
-            };
+            _mainWindow = mainWindow;
+            var gender = new List<string>();
+            gender = db.Gender.Select(g=> g.Gender1).ToList();
+            var country = new List<string>();
+            country = db.Country.Select(c=> c.CountryCode).ToList();
             cmb_gender.ItemsSource = gender;
             cmbCountry.ItemsSource = country;
         }
@@ -82,22 +83,22 @@ namespace WpfMarathon.Pages
                                             Password = txb_pass.Text,
                                             FirstName = txb_name.Text,
                                             LastName = txb_surname.Text,
-                                            
-                                            RoleId = "U",
+                                            RoleId = "R",
                                         };
+
+                                        db.User.Add(user);
+                                        db.SaveChanges();
                                         Runner runner = new Runner
                                         {
-                                            Email = txb_email.Text,
+                                            Email = user.Email,
                                             Gender = cmb_gender.SelectedItem.ToString(),
-                                            //Photo = Img.ImageToByteArray(imgAvatar.Source as BitmapImage),
                                             CountryCode = cmbCountry.Text,
                                             DateOfBirth = dateBirth.SelectedDate,
                                         };
 
-                                        db.User.Add(user);
                                         db.Runner.Add(runner);
                                         db.SaveChanges();
-                                        this.NavigationService.Navigate(new Uri("AuthPage.xaml", UriKind.Relative));
+                                        _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
                                     }
                                     catch
                                     {
@@ -138,7 +139,7 @@ namespace WpfMarathon.Pages
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("AuthRegRunner.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthRegRunner(_mainWindow));
         }
 
         private void txb_email_GotFocus(object sender, RoutedEventArgs e)

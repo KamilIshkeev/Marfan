@@ -23,13 +23,15 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class RunnerMenu : Page
     {
+        static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
 
         string email;
         int _id;
-        public RunnerMenu(string email1)
+        public RunnerMenu(MainWindow mainWindow, string email1)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             this.email = email1;
             Runner runner = new Runner();
             runner.Email = email;
@@ -39,14 +41,12 @@ namespace WpfMarathon.Pages
 
         private void btn_regmarathon_Click(object sender, RoutedEventArgs e)
         {
-            RegMarafonPage rg = new RegMarafonPage(_id);
-            NavigationService.Navigate(rg);
+            _mainWindow.MainFrame.NavigationService.Navigate(new RegMarafonPage(_mainWindow, _id));
         }
 
         private void btn_myresult_Click(object sender, RoutedEventArgs e)
         {
-            MyResults rg = new MyResults(_id);
-            NavigationService.Navigate(rg);
+            _mainWindow.MainFrame.NavigationService.Navigate(new MyResults(_mainWindow, _id));
         }
 
         private void btn_editprofile_Click(object sender, RoutedEventArgs e)
@@ -65,8 +65,7 @@ namespace WpfMarathon.Pages
 
         private void btn_contact_Click(object sender, RoutedEventArgs e)
         {
-            ContactCoordinator cc = new ContactCoordinator();
-            NavigationService.Navigate(cc);
+            _mainWindow.MainFrame.NavigationService.Navigate(new ContactCoordinator(_mainWindow));
         }
 
         private void btn_logout_Click(object sender, RoutedEventArgs e)

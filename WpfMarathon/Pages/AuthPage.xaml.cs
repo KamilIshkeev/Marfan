@@ -22,10 +22,12 @@ namespace WpfMarathon.Pages
     public partial class AuthPage : Page
     {
 
+        static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
-        public AuthPage(MainWindow _mainWindow)
+        public AuthPage(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
 
 
@@ -52,18 +54,17 @@ namespace WpfMarathon.Pages
                                 i = 0;
                                 if (us.RoleId == "R")
                                 {
-                                    RunnerMenu rm = new RunnerMenu(us.Email);
-                                    this.NavigationService.Navigate(rm);
+                                    _mainWindow.MainFrame.NavigationService.Navigate(new RunnerMenu(_mainWindow, us.Email));
                                     j = 1;
                                 }
                                 if (us.RoleId == "A")
                                 {
-                                    this.NavigationService.Navigate(new Uri("Admin/AdminMenu.xaml", UriKind.Relative));
+                                    //this.NavigationService.Navigate(new Uri("Admin/AdminMenu.xaml", UriKind.Relative));
                                     j = 1;
                                 }
                                 if (us.RoleId == "C")
                                 {
-                                    this.NavigationService.Navigate(new Uri("Coordinator/MenuCoordinator.xaml", UriKind.Relative));
+                                    //this.NavigationService.Navigate(new Uri("Coordinator/MenuCoordinator.xaml", UriKind.Relative));
                                     j = 1;
                                 }
                             }

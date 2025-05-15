@@ -24,10 +24,12 @@ namespace WpfMarathon.Pages
     {
         public static MarafonEntities db = new MarafonEntities();
         int id;
-        public MyResults(int _id)
+        static MainWindow _mainWindow;
+        public MyResults(MainWindow mainWindow, int _id)
         {
             id = _id;
             InitializeComponent();
+            _mainWindow = mainWindow;
             txt_gender.Text = db.Runner.Where(x => x.RunnerId == id).Select(x => x.Gender).ToString();
             DateTime birth = (DateTime)db.Runner.Where(x => x.RunnerId == id).Select(x => x.DateOfBirth).SingleOrDefault();
             DateTime date = DateTime.Now;
