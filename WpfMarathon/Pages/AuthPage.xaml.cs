@@ -64,7 +64,7 @@ namespace WpfMarathon.Pages
                                 }
                                 if (us.RoleId == "C")
                                 {
-                                    //this.NavigationService.Navigate(new Uri("Coordinator/MenuCoordinator.xaml", UriKind.Relative));
+                                    _mainWindow.MainFrame.NavigationService.Navigate(new MenuCoordinator(_mainWindow)); 
                                     j = 1;
                                 }
                             }

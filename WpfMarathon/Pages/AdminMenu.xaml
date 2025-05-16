@@ -1,0 +1,122 @@
+﻿<Page x:Class="WpfMarathon.Pages.AdminMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AdminMenu">
+    <Grid Background="White">
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"/>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Основной контент -->
+        <Grid Margin="0,100,0,0">
+            <!-- Заголовок -->
+            <TextBlock Text="Меню администратора"
+                       FontSize="55"
+                       Foreground="#FF6C6C6C"
+                       HorizontalAlignment="Center"
+                       Margin="0,78,0,682"/>
+
+            <!-- Кнопки -->
+            <Grid HorizontalAlignment="Center" Margin="0,223,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Пользователи -->
+                <Button Name="btnUser"
+                        Content="Пользователи"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        FontStyle="Italic"
+                        Width="600"
+                        Height="175"
+                        Click="btnUser_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <!-- Благотворительные организации -->
+                <Button Name="btnFund"
+                        Content="Благотворительные&#x0A;организации"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        FontStyle="Italic"
+                        Width="600"
+                        Height="175"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Click="btnFund_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <!-- Волонтеры -->
+                <Button x:Name="btnValunteer"
+                        Content="Волонтеры"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        FontStyle="Italic"
+                        Width="600"
+                        Height="175"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Click="btnValunteer_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <!-- Инвентарь -->
+                <Button x:Name="btnInventory"
+                        Content="Инвентарь"
+                        Background="#FFF2F2F2"
+                        FontFamily="Arial"
+                        FontSize="55"
+                        Foreground="#FF474747"
+                        FontStyle="Italic"
+                        Width="600"
+                        Height="175"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Click="btnInventory_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="35"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

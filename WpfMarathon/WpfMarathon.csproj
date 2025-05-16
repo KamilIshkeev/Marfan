@@ -138,17 +138,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AdminMenu.xaml.cs">
+      <DependentUpon>AdminMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AuthRegRunner.xaml.cs">
       <DependentUpon>AuthRegRunner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BMIcalculator.xaml.cs">
+      <DependentUpon>BMIcalculator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ContactCoordinator.xaml.cs">
       <DependentUpon>ContactCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManagRunner.xaml.cs">
+      <DependentUpon>ManagRunner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MenuCoordinator.xaml.cs">
+      <DependentUpon>MenuCoordinator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PerviousResult.xaml.cs">
       <DependentUpon>PerviousResult.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegConfirm.xaml.cs">
       <DependentUpon>RegConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowFund.xaml.cs">
+      <DependentUpon>ShowFund.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThanksPay.xaml.cs">
       <DependentUpon>ThanksPay.xaml</DependentUpon>
@@ -230,11 +245,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AdminMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AuthRegRunner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BMIcalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +270,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ManagRunner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MenuCoordinator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RunnerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShowFund.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -353,6 +388,18 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Pages\icons\bmi-healthy-icon.png" />
+    <Resource Include="Pages\icons\bmi-obese-icon.png" />
+    <Resource Include="Pages\icons\bmi-overweight-icon.png" />
+    <Resource Include="Pages\icons\bmi-underweight-icon.png" />
+    <Resource Include="Pages\icons\female-icon.png" />
+    <Resource Include="Pages\icons\male-icon.png" />
+    <Resource Include="Pages\icons\map-icon-drinks.png" />
+    <Resource Include="Pages\icons\map-icon-energy-bars.png" />
+    <Resource Include="Pages\icons\map-icon-information.png" />
+    <Resource Include="Pages\icons\map-icon-medical.png" />
+    <Resource Include="Pages\icons\map-icon-start.png" />
+    <Resource Include="Pages\icons\map-icon-toilets.png" />
     <Resource Include="Image1.png" />
   </ItemGroup>
   <ItemGroup>

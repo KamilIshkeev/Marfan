@@ -1,0 +1,53 @@
+﻿<Page x:Class="WpfMarathon.Pages.MenuCoordinator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="MenuCoordinator">
+    <Grid Background="White">
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0" />
+            </StackPanel>
+        </DockPanel>
+
+
+        <!-- Заголовок "Меню координатора" -->
+        <TextBlock Margin="656,222,652,761" TextWrapping="Wrap" FontSize="55" Foreground="#FF6C6C6C" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.808"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="7.986"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+            <Run Text="Меню "/>
+            <Run Text="координатора"/>
+        </TextBlock>
+
+        <!-- Кнопка "Бегуны" -->
+        <Button Name="btnRun" Content="Бегуны" Margin="272,364,0,534" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" FontStyle="Italic" Click="btnRun_Click" HorizontalAlignment="Left" Width="652">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <!-- Кнопка "Спонсоры" -->
+        <Button x:Name="btnFund" Content="Спонсоры" Margin="996,364,272,534" Background="#FFF2F2F2" FontFamily="Arial" FontSize="55" Foreground="#FF474747" FontStyle="Italic" Click="btnFund_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="35"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>
