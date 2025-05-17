@@ -97,7 +97,7 @@
             </Image>
         </Grid>
         <Grid x:Name="gridTriangle_Copy" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="143,75,0,0" Grid.Row="9" VerticalAlignment="Top" Width="22" Grid.ColumnSpan="2">
-            <Polygon x:Name="triangle1" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="203,367,-225,-385" RenderTransformOrigin="0.5,0.5" >
+            <Polygon x:Name="triangle1" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="335,367,-357,-385" RenderTransformOrigin="0.5,0.5" >
                 <Polygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -109,7 +109,7 @@
             </Polygon>
         </Grid>
         <Grid x:Name="gridTriangle_Copy1" Grid.Column="9" HorizontalAlignment="Left" Height="23" Margin="139,333,0,0" Grid.Row="10" VerticalAlignment="Top" Width="22">
-            <Polygon x:Name="triangle2" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="145,-23,-164,4" RenderTransformOrigin="0.5,0.5" >
+            <Polygon x:Name="triangle2" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="125,-23,-144,4" RenderTransformOrigin="0.5,0.5" >
                 <Polygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -125,7 +125,7 @@
                 <RowDefinition Height="0*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Polygon x:Name="triangle3" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="200,-24,-219,5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" >
+            <Polygon x:Name="triangle3" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="184,-24,-203,5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" >
                 <Polygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -141,7 +141,7 @@
                 <RowDefinition Height="0*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Polygon x:Name="triangle" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="200,-22,-219,3" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" >
+            <Polygon x:Name="triangle" Points="40,0 0,20 40,40" Stroke="Black" Fill="Black" Margin="23,-22,-42,3" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" >
                 <Polygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
