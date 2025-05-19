@@ -138,6 +138,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\BMRcalculator.xaml.cs">
+      <DependentUpon>BMRcalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddNewUser.xaml.cs">
+      <DependentUpon>AddNewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminEditUser.xaml.cs">
+      <DependentUpon>AdminEditUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminMenu.xaml.cs">
       <DependentUpon>AdminMenu.xaml</DependentUpon>
     </Compile>
@@ -171,7 +180,22 @@
     <Compile Include="Pages\ThanksPay.xaml.cs">
       <DependentUpon>ThanksPay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UserManagement.xaml.cs">
+      <DependentUpon>UserManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validate.cs" />
+    <Page Include="Pages\BMRcalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddNewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -320,6 +344,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UserManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AuthPage.xaml.cs">
@@ -388,6 +416,8 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="cross-icon.png" />
+    <Resource Include="tick-icon.png" />
     <Resource Include="Pages\icons\bmi-healthy-icon.png" />
     <Resource Include="Pages\icons\bmi-obese-icon.png" />
     <Resource Include="Pages\icons\bmi-overweight-icon.png" />

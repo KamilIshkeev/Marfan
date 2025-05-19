@@ -20,19 +20,21 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class InfoMenu : Page
     {
-        public InfoMenu()
+        static MainWindow _mainWindow;
+        public InfoMenu(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
 
-        private void btn_bmicalc_Click(object sender, RoutedEventArgs e)
+        private void btn_listfund_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Info/BMIcalculator.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new BMIcalculator(_mainWindow));
         }
 
         private void btn_bmrcalc_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Info/BMRcalculator.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new BMRcalculator(_mainWindow));
         }
 
         private void btn_lastresult_Click(object sender, RoutedEventArgs e)
@@ -40,7 +42,7 @@ namespace WpfMarathon.Pages
             this.NavigationService.Navigate(new Uri("Runner/PerviousResult.xaml", UriKind.Relative));
         }
 
-        private void btn_listfund_Click(object sender, RoutedEventArgs e)
+        private void btn_bmicalc_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Info/ListFund.xaml", UriKind.Relative));
         }

@@ -48,7 +48,7 @@ namespace WpfMarathon.Pages
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            _mainWindow.MainFrame.NavigationService.Navigate(new InfoPage(_mainWindow));
+            _mainWindow.MainFrame.NavigationService.Navigate(new InfoMenu(_mainWindow));
         }
     }
 }

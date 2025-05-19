@@ -1,0 +1,135 @@
+﻿<Page x:Class="WpfMarathon.BMRcalculator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="BMRcalculator">
+
+    <Canvas Background="White">
+
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False"  Height="132" VerticalAlignment="Center" HorizontalAlignment="Left" Width="1920">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+            </StackPanel>
+        </DockPanel>
+        <!-- Заголовок -->
+        <TextBlock Canvas.Left="800" Canvas.Top="153"
+                   Text="BMR калькулятор" FontSize="44" Foreground="#FF6C6C6C" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <!-- Информация -->
+        <TextBlock Canvas.Left="268" Canvas.Top="226"
+                   Text="Информация о том, что такое BMR и как калькулятор работает"
+                   FontSize="36" Foreground="#FF474747" Width="623" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <!-- Пол мужской -->
+        <Grid Canvas.Left="308" Canvas.Top="371" Width="209" Height="207" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button x:Name="btnMale" Click="btnMale_Click" Margin="0,-2,8,0"/>
+            <Image Source="icons/male-icon.png" Width="77" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Height="162"/>
+            <TextBlock Text="Мужской" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="#FF6C6C6C" Margin="0,173,0,0"/>
+            <CheckBox x:Name="check_male" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-10,0,0" Height="44" Width="44"/>
+        </Grid>
+
+        <!-- Пол женский -->
+        <Grid Canvas.Left="537" Canvas.Top="371" Width="209" Height="207" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button x:Name="btnFemale" Click="btnFemale_Click" Margin="0,-2,8,0"/>
+            <Image Source="icons/female-icon.png" Width="73" HorizontalAlignment="Center" VerticalAlignment="Top" Height="171" Margin="0,10,0,0"/>
+            <TextBlock Text="Женский" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="#FF6C6C6C" Margin="0,173,0,0"/>
+            <CheckBox x:Name="check_female" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-10,0,0" Height="44" Width="44"/>
+        </Grid>
+
+        <!-- Рост -->
+        <TextBlock Canvas.Left="212" Canvas.Top="597" Text="Рост:" FontSize="36" Width="196" TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56"/>
+        <TextBox x:Name="txbHeight" Canvas.Left="428" Canvas.Top="594" Width="196" Height="69" FontSize="20" Text="170" Foreground="#FF999999" FontStyle="Italic" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" GotFocus="txbHeight_GotFocus" TextBlock.FontSize="36"/>
+        <TextBlock Canvas.Left="644" Canvas.Top="597" Text="см" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="46"/>
+
+        <!-- Вес -->
+        <TextBlock Canvas.Left="212" Canvas.Top="679" Text="Вес:" FontSize="36" Width="196" TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Top" Height="54"/>
+        <TextBox x:Name="txbWeight" Canvas.Left="428" Canvas.Top="675" Width="196" Height="69" FontSize="20" Text="70" Foreground="#FF999999" FontStyle="Italic" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" GotFocus="txbWeight_GotFocus" TextBlock.FontSize="36"/>
+        <TextBlock Canvas.Left="644" Canvas.Top="679" Text="кг" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Height="45" Width="35"/>
+
+        <!-- Возраст -->
+        <TextBlock Canvas.Left="212" Canvas.Top="762" Text="Возраст:" FontSize="36" Width="196" TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Top" Height="55"/>
+        <TextBox x:Name="txbAge" Canvas.Left="428" Canvas.Top="759" Width="196" Height="69" FontSize="20" Text="30" Foreground="#FF999999" FontStyle="Italic" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" GotFocus="txbAge_GotFocus" TextBlock.FontSize="36"/>
+        <TextBlock Canvas.Left="644" Canvas.Top="762" Text="лет" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Height="46" Width="58"/>
+
+        <!-- Кнопки -->
+        <Button x:Name="btn_calc" Content="Рассчитать" 
+                Canvas.Left="268" Canvas.Top="847" Width="213" Height="77" FontSize="22"
+                Background="#FFF2F2F2" Foreground="#FF474747" Click="btn_calc_Click" HorizontalAlignment="Center" VerticalAlignment="Top" TextBlock.FontSize="36">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btn_cancel" Content="Отмена" 
+                Canvas.Left="499" Canvas.Top="847" Width="178" Height="77" FontSize="22"
+                Background="#FFF2F2F2" Foreground="#FF474747" Click="btn_cancel_Click" HorizontalAlignment="Center" VerticalAlignment="Top" TextBlock.FontSize="36">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <!-- Информация справа -->
+        <TextBlock Canvas.Left="982" Canvas.Top="229"
+                   Text="Информация о показателях калорий показывается здесь"
+                   FontSize="36" Foreground="#FF474747" Width="620" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.285"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.995"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <!-- Ваш BMR -->
+        <TextBlock Canvas.Left="1141" Canvas.Top="343" Text="Ваш BMR" FontSize="36" Width="208" TextAlignment="Center" Foreground="#FF999999" HorizontalAlignment="Center" VerticalAlignment="Top" Height="46"/>
+        <TextBlock x:Name="txtYourBMR" Canvas.Left="1141" Canvas.Top="391" Text="" FontSize="36" Width="208" TextAlignment="Center" Foreground="#FF656565" HorizontalAlignment="Center" VerticalAlignment="Top" Height="95"/>
+
+        <!-- Ежедневно тратится калорий -->
+        <TextBlock Canvas.Left="962" Canvas.Top="486" Text="Ежедневно тратится калорий" FontSize="48" Width="676" TextAlignment="Center" Foreground="#FF999999" HorizontalAlignment="Center" VerticalAlignment="Top" Height="64"/>
+
+        <!-- Показатели активности -->
+        <TextBlock Canvas.Left="978" Canvas.Top="580" Text="Сидячий:" FontSize="36" Foreground="#FF0070C0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="188"/>
+        <TextBlock Name="txtSeat" Canvas.Left="1141" Canvas.Top="580" Text="" FontSize="36" Foreground="#FF0070C0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="569"/>
+
+        <TextBlock Canvas.Left="978" Canvas.Top="651" Text="Маленькая активность:" FontSize="36" Foreground="#FF00DF00" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="476"/>
+        <TextBlock Name="txtLowActivity" Canvas.Left="1378" Canvas.Top="651" Text="" FontSize="36" Foreground="#FF00DF00" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="332"/>
+
+        <TextBlock Canvas.Left="978" Canvas.Top="723" Text="Средняя активность:" FontSize="36" Foreground="#FFD6A300" HorizontalAlignment="Center" VerticalAlignment="Top" Height="66" Width="423"/>
+        <TextBlock Name="txtMidActivity" Canvas.Left="1333" Canvas.Top="723" Text="" FontSize="36" Foreground="#FFD6A300" HorizontalAlignment="Center" VerticalAlignment="Top" Height="66" Width="377"/>
+
+        <TextBlock Canvas.Left="978" Canvas.Top="794" Text="Сильная активность:" FontSize="36" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="421"/>
+        <TextBlock Name="txtHighActivity" Canvas.Left="1330" Canvas.Top="794" Text="" FontSize="36" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="380"/>
+
+        <TextBlock Canvas.Left="978" Canvas.Top="865" Text="Максимальная активность:" FontSize="36" Foreground="#FFC00000" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="554"/>
+        <TextBlock Name="txtMaxActivity" Canvas.Left="1435" Canvas.Top="865" Text="" FontSize="36" Foreground="#FFC00000" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="275"/>
+
+        <!-- Кнопка информации -->
+        <Button Content="i" Canvas.Left="1640" Canvas.Top="485"
+                Width="108" Height="109" FontSize="40" Foreground="#FFFFC000"
+                Background="White" BorderBrush="#FFFFC000" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="60"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Canvas>
+</Page>

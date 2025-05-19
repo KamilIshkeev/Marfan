@@ -1,0 +1,155 @@
+﻿<Page x:Class="WpfMarathon.Pages.UserManagement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="UserManagement">
+
+    <Grid Background="White">
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0" />
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Заголовок -->
+        <TextBlock Canvas.Left="503" Canvas.Top="142"
+                   TextWrapping="Wrap" 
+                   Text="Управление пользователями" 
+                   FontSize="44" 
+                   Foreground="#FF6C6C6C" 
+                   TextAlignment="Center"
+                   Width="828" Height="62" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,138,0,0"/>
+
+        <!-- Кнопка Добавить -->
+        <Button Name="btnAddUser" Content="+ Добавление&#xD;&#xA;нового" 
+                Canvas.Left="215" Canvas.Top="247"
+                Width="332" Height="121"
+                Background="#FFF2F2F2" 
+                FontFamily="Arial" 
+                FontSize="24" 
+                Foreground="Black"  
+                Click="btnAddUser_Click" TextBlock.FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,222,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <!-- Фильтр по ролям -->
+        <TextBlock Canvas.Left="906" Canvas.Top="230"
+                   Text="Фильтр по ролям:" 
+                   FontSize="36" 
+                   TextAlignment="Right"
+                   Width="372" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="885,222,0,0"/>
+
+        <ComboBox Name="cmbRole" 
+                  Canvas.Left="1295" Canvas.Top="225"
+                  Width="416" Height="62"
+                  FontSize="20" 
+                  Text="Все роли" TextBlock.FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1283,222,0,0"/>
+
+        <!-- Сортировать по -->
+        <TextBlock Canvas.Left="945" Canvas.Top="305"
+                   Text="Сортировать по:" 
+                   FontSize="36" 
+                   TextAlignment="Right"
+                   Width="334" Height="62" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="919,297,0,0"/>
+
+        <ComboBox Name="cmbSortBy" 
+                  Canvas.Left="1295" Canvas.Top="301"
+                  Width="416" Height="61"
+                  FontSize="20" 
+                  Text="Имени" TextBlock.FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1283,298,0,0"/>
+
+        <!-- Поиск -->
+        <TextBlock Canvas.Left="945" Canvas.Top="381"
+                   Text="Поиск:" 
+                   FontSize="36" 
+                   TextAlignment="Right"
+                   Width="334" Height="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="904,378,0,0"/>
+
+        <TextBox x:Name="txbFind" 
+                 Canvas.Left="1295" Canvas.Top="376"
+                 Width="416" Height="60"
+                 FontSize="20"
+                 TextWrapping="Wrap" 
+                 Text="" TextBlock.FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1283,372,0,0"/>
+
+        <!-- Кнопки -->
+        <Button x:Name="btnUser_Copy" Content="Обновить" 
+                Canvas.Left="1295" Canvas.Top="439"
+                Width="200" Height="59"
+                Background="#FFF2F2F2" 
+                FontFamily="Arial" 
+                FontSize="20" 
+                Foreground="Black"  
+                Click="btnUser_Copy_Click" TextBlock.FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1400,444,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btnClear" Content="X" 
+                Canvas.Left="1510" Canvas.Top="439"
+                Width="68" Height="59"
+                Background="#FFF2F2F2" 
+                FontFamily="Arial" 
+                FontSize="20" 
+                Foreground="Black"  
+                Click="btnClear_Click" TextBlock.FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1628,444,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <!-- Счётчик пользователей -->
+        <TextBlock Canvas.Left="215" Canvas.Top="429"
+                   Text="Всего пользователей:" 
+                   FontSize="36" 
+                   FontWeight="Bold" Height="49" Width="420" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,453,0,0"/>
+
+        <TextBlock x:Name="txbCountUser" 
+                   Canvas.Left="643" Canvas.Top="429"
+                   FontSize="36" Height="49" Width="169" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="601,453,0,0"/>
+
+        <!-- Таблица -->
+        <DataGrid x:Name="UserInAdmin" 
+                  Canvas.Left="215" Canvas.Top="525"
+                  Width="1496" Height="413"
+                  AutoGenerateColumns="False" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow" 
+                  IsReadOnly="True"
+                  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" TextBlock.FontSize="36" Margin="0,519,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="300"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="300"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="500"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role}"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click" Width="60" Height="30" FontSize="18">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">Edit</TextBlock>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

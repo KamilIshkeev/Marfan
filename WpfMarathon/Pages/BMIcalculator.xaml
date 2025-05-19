@@ -34,6 +34,19 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Grid.ColumnSpan="10" Grid.RowSpan="3" Height="132" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+            </StackPanel>
+        </DockPanel>
         <TextBlock HorizontalAlignment="Right" Margin="0,22,97,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="102" FontFamily="Open Sans Light" FontSize="36" Width="556" Grid.ColumnSpan="3" Grid.RowSpan="5" Foreground="#FF474747"><Run Text="Информация о том, что такое "/><Run Text="BMI "/><Run Text="и как калькулятор работает"/></TextBlock>
         <TextBlock Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" FontFamily="Open Sans Light" FontSize="36" Margin="251,165,188,0" Text="Рост:"/>
         <Grid Margin="192,61,85,3" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="7">
@@ -44,7 +57,7 @@
             </Grid.ColumnDefinitions>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="68" Margin="115,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="473" Grid.ColumnSpan="7" Grid.Column="2">
-            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="56" Foreground="#FF6C6C6C" Width="454" Margin="0,0,0,-1"><Run Text="BMI "/><Run Text="калькулятор"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="56" Foreground="#FF6C6C6C" Width="454" Margin="0,12,0,-13"><Run Text="BMI "/><Run Text="калькулятор"/></TextBlock>
         </Grid>
         <Button x:Name="btn_calc" Content="Рассчитать" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="36" Foreground="#FF474747" HorizontalAlignment="Right" Width="194" Height="77" VerticalAlignment="Bottom" Grid.Row="10" Margin="0,0,136,154" Click="btn_calc_Click">
             <Button.Resources>
@@ -164,6 +177,7 @@
             </Image.RenderTransform>
         </Image>
         <Image Name="imgmale" Source="icons/male-icon.png" HorizontalAlignment="Left" Width="120" Margin="146,14,0,448" Grid.Column="9" Grid.Row="9" Grid.RowSpan="2" />
+        <TextBlock x:Name="txbBMI" Grid.Column="9" HorizontalAlignment="Left" Height="50" Margin="139,247,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontSize="36"/>
 
 
 

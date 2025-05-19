@@ -20,9 +20,11 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class BMIcalculator : Page
     {
-        public BMIcalculator()
+        static MainWindow _mainWindow;
+        public BMIcalculator(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             triangle.Opacity = 0;
             triangle1.Opacity = 0;
             triangle2.Opacity = 0;
@@ -69,6 +71,7 @@ namespace WpfMarathon.Pages
                             double BMI = w / (hc * hc);
                             if (BMI < 18.5)
                             {
+                                txbBMI.Text = BMI.ToString();
                                 triangle1.Opacity = 0;
                                 triangle2.Opacity = 0;
                                 triangle3.Opacity = 0;
@@ -79,6 +82,7 @@ namespace WpfMarathon.Pages
                             }
                             if (BMI >= 18.5 && BMI < 24.9)
                             {
+                                txbBMI.Text = BMI.ToString();
                                 triangle.Opacity = 0;
                                 triangle1.Opacity = 0;
                                 triangle2.Opacity = 0;
@@ -89,6 +93,7 @@ namespace WpfMarathon.Pages
                             }
                             if (BMI >= 25 && BMI < 29.9)
                             {
+                                txbBMI.Text = BMI.ToString();
                                 triangle.Opacity = 0;
                                 triangle1.Opacity = 0;
                                 triangle2.Opacity = 0;
@@ -99,6 +104,7 @@ namespace WpfMarathon.Pages
                             }
                             if (BMI > 30)
                             {
+                                txbBMI.Text = BMI.ToString();
                                 triangle.Opacity = 0;
                                 triangle1.Opacity = 0;
                                 triangle2.Opacity = 0;
@@ -129,7 +135,7 @@ namespace WpfMarathon.Pages
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Info/InfoMenu.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new InfoMenu(_mainWindow));
         }
 
 
