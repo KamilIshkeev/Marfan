@@ -171,6 +171,9 @@
     <Compile Include="Pages\InteractiveMap.xaml.cs">
       <DependentUpon>InteractiveMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ListFund.xaml.cs">
+      <DependentUpon>ListFund.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ManagRunner.xaml.cs">
       <DependentUpon>ManagRunner.xaml</DependentUpon>
     </Compile>
@@ -310,6 +313,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\InteractiveMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListFund.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
