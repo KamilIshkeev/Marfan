@@ -4,23 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="54ad24176a0c453184692c4366a7416a" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="MarafonModel.Charity" Width="1.5" PointX="6" PointY="17.25" />
-        <EntityTypeShape EntityType="MarafonModel.Country" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="MarafonModel.Event" Width="1.5" PointX="5.25" PointY="13" />
-        <EntityTypeShape EntityType="MarafonModel.EventType" Width="1.5" PointX="3" PointY="10.625" />
-        <EntityTypeShape EntityType="MarafonModel.Gender" Width="1.5" PointX="0.75" PointY="3.5" />
-        <EntityTypeShape EntityType="MarafonModel.Marathon" Width="1.5" PointX="3" PointY="13.25" />
-        <EntityTypeShape EntityType="MarafonModel.RaceKitOption" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="MarafonModel.Registration" Width="1.5" PointX="8.25" PointY="6" />
-        <EntityTypeShape EntityType="MarafonModel.RegistrationEvent" Width="1.5" PointX="10.5" PointY="9.75" />
-        <EntityTypeShape EntityType="MarafonModel.RegistrationStatus" Width="1.5" PointX="6" PointY="3.375" />
-        <EntityTypeShape EntityType="MarafonModel.Role" Width="1.5" PointX="1.5" PointY="17.25" />
-        <EntityTypeShape EntityType="MarafonModel.Runner" Width="1.5" PointX="3" PointY="6.5" />
-        <EntityTypeShape EntityType="MarafonModel.Sponsorship" Width="1.5" PointX="10.5" PointY="6.875" />
-        <EntityTypeShape EntityType="MarafonModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="2" />
-        <EntityTypeShape EntityType="MarafonModel.User" Width="1.5" PointX="0.75" PointY="9.875" />
-        <EntityTypeShape EntityType="MarafonModel.Volunteer" Width="1.5" PointX="6" PointY="6.625" />
+      <Diagram DiagramId="54ad24176a0c453184692c4366a7416a" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="MarafonModel.Charity" Width="1.5" PointX="6" PointY="17.125" />
+        <EntityTypeShape EntityType="MarafonModel.Country" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="MarafonModel.Event" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="MarafonModel.EventType" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="MarafonModel.Gender" Width="1.5" PointX="3.75" PointY="3.25" />
+        <EntityTypeShape EntityType="MarafonModel.HowLong" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="MarafonModel.Marathon" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="MarafonModel.RaceKitOption" Width="1.5" PointX="6" PointY="3.25" />
+        <EntityTypeShape EntityType="MarafonModel.Registration" Width="1.5" PointX="8.25" PointY="5.75" />
+        <EntityTypeShape EntityType="MarafonModel.RegistrationEvent" Width="1.5" PointX="10.5" PointY="9.625" />
+        <EntityTypeShape EntityType="MarafonModel.RegistrationStatus" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="MarafonModel.Role" Width="1.5" PointX="1.5" PointY="10" />
+        <EntityTypeShape EntityType="MarafonModel.Runner" Width="1.5" PointX="6" PointY="6.25" />
+        <EntityTypeShape EntityType="MarafonModel.Sponsorship" Width="1.5" PointX="10.5" PointY="6.625" />
+        <EntityTypeShape EntityType="MarafonModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.75" />
+        <EntityTypeShape EntityType="MarafonModel.User" Width="1.5" PointX="3.75" PointY="9.625" />
+        <EntityTypeShape EntityType="MarafonModel.Volunteer" Width="1.5" PointX="3" PointY="6.5" />
         <AssociationConnector Association="MarafonModel.FK__Registrat__Chari__48CFD27E" />
         <AssociationConnector Association="MarafonModel.FK__Marathon__Countr__4D94879B" />
         <AssociationConnector Association="MarafonModel.FK__Runner__CountryC__4222D4EF" />

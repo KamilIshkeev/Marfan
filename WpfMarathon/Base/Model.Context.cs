@@ -30,6 +30,7 @@ namespace WpfMarathon.Base
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<EventType> EventType { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
+        public virtual DbSet<HowLong> HowLong { get; set; }
         public virtual DbSet<Marathon> Marathon { get; set; }
         public virtual DbSet<RaceKitOption> RaceKitOption { get; set; }
         public virtual DbSet<Registration> Registration { get; set; }

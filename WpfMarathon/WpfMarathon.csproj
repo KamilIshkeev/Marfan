@@ -138,6 +138,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\HowLong.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\BMRcalculator.xaml.cs">
       <DependentUpon>BMRcalculator.xaml</DependentUpon>
     </Compile>
@@ -159,8 +162,14 @@
     <Compile Include="Pages\ContactCoordinator.xaml.cs">
       <DependentUpon>ContactCoordinator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HowLongs.xaml.cs">
+      <DependentUpon>HowLongs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InfoMenu.xaml.cs">
       <DependentUpon>InfoMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InteractiveMap.xaml.cs">
+      <DependentUpon>InteractiveMap.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ManagRunner.xaml.cs">
       <DependentUpon>ManagRunner.xaml</DependentUpon>
@@ -292,7 +301,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HowLongs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\InfoMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InteractiveMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -416,6 +433,19 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Pages\marathon-skills-2016-marathon-map.jpg" />
+    <Resource Include="Images\airbus-a380.jpg" />
+    <Resource Include="Images\bus.jpg" />
+    <Resource Include="Images\capybara.jpg" />
+    <Resource Include="Images\f1-car.jpg" />
+    <Resource Include="Images\football-field.jpg" />
+    <Resource Include="Images\horse.png" />
+    <Resource Include="Images\jaguar.jpg" />
+    <Resource Include="Images\pair-of-havaianas.jpg" />
+    <Resource Include="Images\ronaldinho.jpg" />
+    <Resource Include="Images\sloth.jpg" />
+    <Resource Include="Images\slug.jpg" />
+    <Resource Include="Images\worm.jpg" />
     <Resource Include="cross-icon.png" />
     <Resource Include="tick-icon.png" />
     <Resource Include="Pages\icons\bmi-healthy-icon.png" />
@@ -435,8 +465,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Image\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

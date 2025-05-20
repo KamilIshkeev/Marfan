@@ -47,6 +47,16 @@
           </Key>
           <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="HowLong">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Speed" Type="varchar" MaxLength="50" />
+          <Property Name="Length" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Marathon">
           <Key>
             <PropertyRef Name="MarathonId" />
@@ -349,6 +359,7 @@
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HowLong" EntityType="Self.HowLong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marathon" EntityType="Self.Marathon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RaceKitOption" EntityType="Self.RaceKitOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
@@ -435,6 +446,7 @@
           <EntitySet Name="Event" EntityType="MarafonModel.Event" />
           <EntitySet Name="EventType" EntityType="MarafonModel.EventType" />
           <EntitySet Name="Gender" EntityType="MarafonModel.Gender" />
+          <EntitySet Name="HowLong" EntityType="MarafonModel.HowLong" />
           <EntitySet Name="Marathon" EntityType="MarafonModel.Marathon" />
           <EntitySet Name="RaceKitOption" EntityType="MarafonModel.RaceKitOption" />
           <EntitySet Name="Registration" EntityType="MarafonModel.Registration" />
@@ -562,6 +574,16 @@
           <Property Name="Gender1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Runner" Relationship="MarafonModel.FK__Runner__Gender__412EB0B6" FromRole="Gender" ToRole="Runner" />
           <NavigationProperty Name="Volunteer" Relationship="MarafonModel.FK__Volunteer__Gende__4316F928" FromRole="Gender" ToRole="Volunteer" />
+        </EntityType>
+        <EntityType Name="HowLong">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Speed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Marathon">
           <Key>
@@ -881,7 +903,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -931,6 +953,17 @@
             <EntityTypeMapping TypeName="MarafonModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
                 <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HowLong">
+            <EntityTypeMapping TypeName="MarafonModel.HowLong">
+              <MappingFragment StoreEntitySet="HowLong">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

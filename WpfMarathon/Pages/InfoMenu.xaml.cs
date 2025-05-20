@@ -49,12 +49,12 @@ namespace WpfMarathon.Pages
 
         private void btn_marathon_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Info/InteractiveMap.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new InteractiveMap(_mainWindow));
         }
 
         private void btn_statsmarathon_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Info/HowLongs.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new HowLongs(_mainWindow));
         }
     }
 }

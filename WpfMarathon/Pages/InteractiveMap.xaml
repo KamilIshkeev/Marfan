@@ -1,0 +1,126 @@
+﻿<Page x:Class="WpfMarathon.Pages.InteractiveMap"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="InteractiveMap">
+
+    <Grid Background="white">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel Grid.ColumnSpan="14" Grid.Row="12" LastChildFill="False" Margin="0,0,0,949">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+            </StackPanel>
+        </DockPanel>
+        <TextBlock Margin="517,149,362,857" TextWrapping="Wrap" FontSize="44" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="14" Grid.Row="12"><Run Text="Информация о "/><Run Text="Marathon Skills 2016"/></TextBlock>
+
+
+        <Image HorizontalAlignment="Left" Height="97" Margin="296,470,0,0" Grid.Row="12" VerticalAlignment="Top" Width="178"/>
+        <Image HorizontalAlignment="Center" Height="97" Margin="0,470,0,0" Grid.Row="12" VerticalAlignment="Top" Width="180"/>
+        <Rectangle Grid.Row="12" Stroke="Black" Margin="247,241,17,166">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="marathon-skills-2016-marathon-map.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button Name="btnCheck1" Content="1" Margin="847,250,36,751" Grid.Row="12" Click="btnCheck1_Click" FontSize="36">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button Name="btnCheck2" Content="2" Margin="581,515,293,473" Grid.Row="12" Click="btnCheck2_Click" FontSize="36">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button Name="btnCheck3" Content="3" Margin="841,697,37,284" Grid.Row="12" Click="btnCheck3_Click" RenderTransformOrigin="0.556,0.167" FontSize="36">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnCheck5" Content="5" Margin="366,455,527,544" Grid.Row="12" Click="btnCheck5_Click" FontSize="36">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnCheck4" Content="4" Margin="495,812,392,170" Grid.Row="12" Click="btnCheck4_Click" FontSize="36">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button Name="btnCheck6" Content="6" Margin="295,246,597,745" Grid.Row="12" Click="btnCheck6_Click" FontSize="36">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="txtCheckpoint" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Checkpoint" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Width="316" Grid.Column="12" Grid.Row="12" Height="60" Margin="145,255,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="12" HorizontalAlignment="Left" Grid.Row="12" TextWrapping="Wrap" Text="Особенности:" VerticalAlignment="Top" FontSize="36" Margin="145,320,0,0" Height="59" Width="316" Grid.ColumnSpan="2"/>
+        <Image x:Name="imgDrink" Grid.Column="12" Margin="145,396,639,527" Grid.Row="12" Grid.ColumnSpan="2"/>
+        <Image x:Name="imgEnergy" Grid.Column="12" Margin="145,579,639,343" Grid.Row="12" Grid.ColumnSpan="2"/>
+        <Image x:Name="imgWC" Grid.Column="12" Margin="145,757,639,178" Grid.Row="12" Grid.ColumnSpan="2"/>
+        <Image x:Name="imgMed" Grid.Column="13" Margin="370,396,432,539" Grid.Row="12"/>
+        <Image x:Name="imgInfo" Grid.Column="13" Margin="370,577,432,352" Grid.Row="12"/>
+
+    </Grid>
+</Page>
