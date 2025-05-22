@@ -420,6 +420,8 @@
     <None Include="Base\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
+    <None Include="Images\charity-descriptions.pdf" />
+    <None Include="Images\charity-logos.pptx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -440,6 +442,20 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\arise-logo.png" />
+    <Resource Include="Images\aves-do-brazil-logo.png" />
+    <Resource Include="Images\clara-santos-oliveira-institute-logo.png" />
+    <Resource Include="Images\conquer-cancer-brazil.png" />
+    <Resource Include="Images\diabetes-brazil-logo.png" />
+    <Resource Include="Images\heart-health-sao-paulo-logo.png" />
+    <Resource Include="Images\human-rights-centre-logo.png" />
+    <Resource Include="Images\oxfam-international-logo.png" />
+    <Resource Include="Images\querstadtein-logo.png" />
+    <Resource Include="Images\save-the-children-fund-logo.png" />
+    <Resource Include="Images\stay-pumped-logo.png" />
+    <Resource Include="Images\the-red-cross-logo.png" />
+    <Resource Include="Images\upbeat-logo.png" />
+    <Resource Include="Images\wwsm-rescue-logo.png" />
     <Resource Include="Pages\marathon-skills-2016-marathon-map.jpg" />
     <Resource Include="Images\airbus-a380.jpg" />
     <Resource Include="Images\bus.jpg" />

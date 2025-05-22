@@ -37,7 +37,7 @@ namespace WpfMarathon.Pages
                 {
                     ID = hl.ID,
                     Image = $"C:/Users/222209/source/repos/Marfan/WpfMarathon/Images/{hl.Image}",
-                    Length = hl.Length?.ToString() + " м"
+                    Length = hl.Length?.ToString()
                 })
                 .ToList();
 
@@ -51,7 +51,7 @@ namespace WpfMarathon.Pages
                 {
                     ID = hl.ID,
                     Image = $"C:/Users/222209/source/repos/Marfan/WpfMarathon/Images/{hl.Image}",
-                    Speed = hl.Speed?.ToString() + " км/ч"
+                    Speed = hl.Speed?.ToString()
                 })
                 .ToList();
 

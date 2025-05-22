@@ -29,7 +29,7 @@ namespace WpfMarathon.Pages
 
         private void btn_listfund_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindow.MainFrame.NavigationService.Navigate(new BMIcalculator(_mainWindow));
+            _mainWindow.MainFrame.NavigationService.Navigate(new ListFund(_mainWindow));
         }
 
         private void btn_bmrcalc_Click(object sender, RoutedEventArgs e)
@@ -39,12 +39,13 @@ namespace WpfMarathon.Pages
 
         private void btn_lastresult_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Runner/PerviousResult.xaml", UriKind.Relative));
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new PerviousResult(_mainWindow)); 
         }
 
         private void btn_bmicalc_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Info/ListFund.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new BMIcalculator(_mainWindow));
         }
 
         private void btn_marathon_Click(object sender, RoutedEventArgs e)

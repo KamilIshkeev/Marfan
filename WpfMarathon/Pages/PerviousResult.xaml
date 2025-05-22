@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="PerviousResult">
-    <Grid Background="White" Margin="50">
+    <Grid Background="White" >
         <!-- Верхняя панель с заголовком -->
         <DockPanel LastChildFill="False" Margin="0,0,0,858">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
@@ -45,7 +45,7 @@
 
             <!-- Марафон -->
             <TextBlock Text="Марафон:" FontSize="35" VerticalAlignment="Center"/>
-            <ComboBox x:Name="cmbMarathon" DisplayMemberPath="Name" Grid.Column="1" FontSize="35" Height="55" Margin="27,0,277,0"/>
+            <ComboBox x:Name="cmbMarathon" Grid.Column="1" FontSize="35" Height="55" Margin="27,0,277,0"/>
 
             <!-- Пол -->
             <TextBlock Text="Пол:" Grid.Column="2" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -86,10 +86,10 @@
                   Margin="58,415,64,147"
                   FontSize="35">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding EventName}" Width="3*"/>
-                <DataGridTextColumn Header="Начало" Binding="{Binding StartDateTime}" Width="2.5*"/>
-                <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" Width="2.5*"/>
-                <DataGridTextColumn Header="Количество участников" Binding="{Binding MaxParticipants}" Width="2.5*"/>
+                <DataGridTextColumn Header="Место" Binding="{Binding EventName}" Width="3*"/>
+                <DataGridTextColumn Header="Время" Binding="{Binding StartDateTime}" Width="2.5*"/>
+                <DataGridTextColumn Header="Бегун" Binding="{Binding Cost}" Width="2.5*"/>
+                <DataGridTextColumn Header="Страна" Binding="{Binding MaxParticipants}" Width="2.5*"/>
             </DataGrid.Columns>
         </DataGrid>
 

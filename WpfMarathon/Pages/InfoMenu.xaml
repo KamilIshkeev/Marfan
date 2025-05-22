@@ -33,7 +33,7 @@
                     </Button.Resources>
 
                 </Button>
-                <Button x:Name="btn_bmicalc" Content="BMI калькулятор" Width="680" Height="170" Margin="40,30,40,0" FontSize="38" HorizontalAlignment="Right" Click="btn_listfund_Click">
+                <Button x:Name="btn_bmicalc" Content="BMI калькулятор" Width="680" Height="170" Margin="40,30,40,0" FontSize="38" HorizontalAlignment="Right" Click="btn_bmicalc_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>

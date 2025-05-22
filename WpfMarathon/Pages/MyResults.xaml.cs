@@ -51,8 +51,7 @@ namespace WpfMarathon.Pages
 
         private void btn_showallresults_Click(object sender, RoutedEventArgs e)
         {
-            PerviousResult pr = new PerviousResult();
-            NavigationService.Navigate(pr);
+            _mainWindow.MainFrame.NavigationService.Navigate(new PerviousResult(_mainWindow));
         }
 
     }

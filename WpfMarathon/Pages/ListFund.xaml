@@ -5,10 +5,73 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfMarathon.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ListFund">
 
-    <Grid>
-        
+    <Grid Background="white">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="101.667"/>
+            <ColumnDefinition Width="289"/>
+            <ColumnDefinition Width="98"/>
+            <ColumnDefinition Width="23"/>
+            <ColumnDefinition Width="96"/>
+            <ColumnDefinition Width="37*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25.5"/>
+            <RowDefinition Height="87.5"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Margin="0,-4,0,117" Grid.ColumnSpan="8" Grid.RowSpan="3">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+            </StackPanel>
+        </DockPanel>
+
+        <Grid HorizontalAlignment="Left" Height="287" Margin="346,3,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1193" Grid.ColumnSpan="8" Grid.RowSpan="8">
+            <TextBlock HorizontalAlignment="Left" Margin="163,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="44" Foreground="#FF6C6C6C" TextAlignment="Center" Width="842" Text="Список благотворительных организаций" Height="60"/>
+            <TextBlock HorizontalAlignment="Left" Margin="30,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Width="1163" TextAlignment="Center" Foreground="#FF6C6C6C" Height="148"><Run Text="Это - список все"/><Run Text="х благотворительных учреждений, которые поддерживаются в "/><Run Text="Marathon Skills 2016. "/><Run Text="Спасибо за помощь вы поддерживаете их, спонсируя бегунов!"/></TextBlock>
+        </Grid>
+
+        <DataGrid x:Name="FundDb" Grid.ColumnSpan="8" Grid.Row="10" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="True" IsReadOnly="True" RenderTransformOrigin="0.466,0.167" Margin="136,5,136,135" Grid.RowSpan="2" TextBlock.FontSize="36" FontSize="32">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Logo" Width="300">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="120" Source="{Binding CharityLogo}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                
+                
+                <DataGridTextColumn Header="Наименование" Binding="{Binding CharityName}" Width="400"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding CharityDescription}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfMarathon.Base;
 
 namespace WpfMarathon.Pages
 {
@@ -20,9 +21,29 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class ListFund : Page
     {
-        public ListFund()
+        static MainWindow _mainWindow;
+        public static MarafonEntities db = new MarafonEntities();
+        public ListFund(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+
+            var query = db.Charity
+                .ToList()
+                .Select(hl => new CharityItem
+                {
+                    CharityLogo = $"C:/Users/222209/source/repos/Marfan/WpfMarathon/Images/{hl.CharityLogo}",
+                    CharityName = hl.CharityName,
+                    CharityDescription = hl.CharityDescription
+                })
+                .ToList();
+            FundDb.ItemsSource = query;
         }
+    }
+    public class CharityItem
+    {
+        public string CharityLogo { get; set; }
+        public string CharityName { get; set; }
+        public string CharityDescription { get; set; }
     }
 }
