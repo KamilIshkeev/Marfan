@@ -83,6 +83,11 @@ namespace WpfMarathon.Pages
 
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();

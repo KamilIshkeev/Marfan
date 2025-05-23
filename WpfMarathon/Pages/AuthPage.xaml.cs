@@ -30,10 +30,13 @@ namespace WpfMarathon.Pages
             _mainWindow = mainWindow;
         }
 
-
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ChoicePage.xaml", UriKind.Relative));
+            NavigationService.GoBack();
         }
 
         private void btn_Reg_Click(object sender, RoutedEventArgs e)
@@ -59,7 +62,7 @@ namespace WpfMarathon.Pages
                                 }
                                 if (us.RoleId == "A")
                                 {
-                                    //this.NavigationService.Navigate(new Uri("Admin/AdminMenu.xaml", UriKind.Relative));
+                                    _mainWindow.MainFrame.NavigationService.Navigate(new AdminMenu(_mainWindow));
                                     j = 1;
                                 }
                                 if (us.RoleId == "C")

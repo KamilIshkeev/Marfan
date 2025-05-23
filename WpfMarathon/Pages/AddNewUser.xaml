@@ -26,7 +26,7 @@
         <!-- Верхняя панель с заголовком -->
         <DockPanel LastChildFill="False" Grid.Row="10" Margin="0,0,0,960">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
-                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  Click="Back_btn_Click" />
                 <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
                 <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0" />
             </StackPanel>
@@ -36,9 +36,9 @@
         <TextBlock Grid.Row="10" Margin="0,162,0,831"
                    TextWrapping="Wrap" Text="Добавление нового пользователя"
                    FontSize="44" Foreground="#FF6C6C6C" HorizontalAlignment="Center" Width="692"/>
-        <TextBlock Grid.Row="10" Margin="1195,322,0,720"
+        <TextBlock Grid.Row="10" Margin="1195,322,0,700"
             Text="Новый пароля" FontFamily="Open Sans Light" FontSize="36"
-            HorizontalAlignment="Left" Width="253"/>
+            HorizontalAlignment="Left" Width="277"/>
         <TextBlock Grid.Row="10" Margin="1040,415,0,589"
             Text="Пароль:" FontFamily="Open Sans Light" FontSize="36" 
             TextAlignment="Right" Width="308" HorizontalAlignment="Left"/>

@@ -1,0 +1,86 @@
+﻿<Page x:Class="WpfMarathon.Pages.ManageCharities"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfMarathon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="ManageCharities">
+
+    <Grid Background="white">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="31"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="203"/>
+            <ColumnDefinition Width="117"/>
+            <ColumnDefinition Width="184"/>
+            <ColumnDefinition Width="141.712"/>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Grid.ColumnSpan="10" Grid.RowSpan="3" Height="132" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
+                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  Click="Back_btn_Click" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+            </StackPanel>
+        </DockPanel>
+
+        <TextBlock Margin="255,21,237,800" TextWrapping="Wrap" FontSize="44" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="6" Grid.Column="1" Grid.Row="3"><Run Text="Управление "/><Run Text="благотворительными организациями"/></TextBlock>
+        <Button Name="btnAddFund" Content="+ Добавить нового" Margin="206,118,34,698" Background="#FFF2F2F2" FontFamily="Arial" FontSize="36" Foreground="Black"  Grid.Row="3" Click="btnAddFund_Click" Grid.ColumnSpan="2" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <DataGrid x:Name="FundDb" Grid.ColumnSpan="6" Margin="0,226,10,124" Grid.Row="3" Grid.Column="1" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" FontSize="36">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Logo" Width="300">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="100" Source="{Binding CharityLogo}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Наименование" Binding="{Binding CharityName}" Width="360"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding CharityDescription}" Width="650"/>
+
+
+                <DataGridTemplateColumn Header="Edit" Width="250" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <TextBlock Height="100" HorizontalAlignment="Center" Background="WhiteSmoke" Foreground="Black">Edit</TextBlock>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

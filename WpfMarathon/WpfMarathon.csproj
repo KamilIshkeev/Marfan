@@ -141,6 +141,9 @@
     <Compile Include="Base\HowLong.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddCharity.xaml.cs">
+      <DependentUpon>AddCharity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\BMRcalculator.xaml.cs">
       <DependentUpon>BMRcalculator.xaml</DependentUpon>
     </Compile>
@@ -162,8 +165,17 @@
     <Compile Include="Pages\ContactCoordinator.xaml.cs">
       <DependentUpon>ContactCoordinator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditCharity.xaml.cs">
+      <DependentUpon>EditCharity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditProfile.xaml.cs">
+      <DependentUpon>EditProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HowLongs.xaml.cs">
       <DependentUpon>HowLongs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ImportVolunteers.xaml.cs">
+      <DependentUpon>ImportVolunteers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InfoMenu.xaml.cs">
       <DependentUpon>InfoMenu.xaml</DependentUpon>
@@ -174,9 +186,13 @@
     <Compile Include="Pages\ListFund.xaml.cs">
       <DependentUpon>ListFund.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ManageCharities.xaml.cs">
+      <DependentUpon>ManageCharities.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ManagRunner.xaml.cs">
       <DependentUpon>ManagRunner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MarathonCountdown.cs" />
     <Compile Include="Pages\MenuCoordinator.xaml.cs">
       <DependentUpon>MenuCoordinator.xaml</DependentUpon>
     </Compile>
@@ -195,7 +211,15 @@
     <Compile Include="Pages\UserManagement.xaml.cs">
       <DependentUpon>UserManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\VolunteerClas.cs" />
+    <Compile Include="Pages\VolunteerManagement.xaml.cs">
+      <DependentUpon>VolunteerManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validate.cs" />
+    <Page Include="Pages\AddCharity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\BMRcalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -304,7 +328,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EditCharity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HowLongs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ImportVolunteers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,6 +357,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ManageCharities.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -369,6 +409,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UserManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VolunteerManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

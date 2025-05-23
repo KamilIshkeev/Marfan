@@ -33,6 +33,10 @@ namespace WpfMarathon.Pages
             _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btn_newrunner_Click(object sender, RoutedEventArgs e)
         {
 

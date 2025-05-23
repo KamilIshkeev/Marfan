@@ -39,6 +39,10 @@ namespace WpfMarathon.Pages
         {
             _mainWindow.MainFrame.NavigationService.Navigate(new RunnerMenu(_mainWindow, Email));
         }
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
 
     }
 }

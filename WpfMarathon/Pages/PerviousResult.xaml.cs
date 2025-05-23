@@ -30,265 +30,228 @@ namespace WpfMarathon.Pages
         public PerviousResult(MainWindow mainWindow)
         {
             InitializeComponent();
-            var gender = db.Gender.Select(x=> x.Gender1).ToList(); 
-            List<string> age = new List<string> { "18-27", "27-36", "36-49" };
-            cmbMarathon.ItemsSource = db.Marathon.Select(x => x.MarathonName).ToList();
-            cmbDistance.ItemsSource = db.EventType.Select(x => x.EventTypeName).ToList();
-            cmbGender.ItemsSource = gender;
-            cmbAge.ItemsSource = age;
-            gridResult.ItemsSource = db.Event.ToList();
+            //countdown = new MarathonCountdown(UpdateCountdownText, marathonDate);
+            LoadResults();
+            LoadFilters();
+        }
+        private MarathonCountdown countdown;
+        private DateTime marathonDate = new DateTime(2025, 10, 20);
+
+
+        //private void UpdateCountdownText(string text)
+        //{
+        //    CountdownTextBlock.Text = text;
+        //}
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            countdown.Stop();
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private void LoadFilters()
         {
-            if (cmbGender.SelectedIndex != -1 && cmbAge.SelectedIndex != -1)
+            try
             {
-                var r = db.Runner.Where(x => x.Gender1 == cmbGender.SelectedValue).ToList();
-                List<Registration> rn = new List<Registration>();
-                var revent = db.RegistrationEvent.ToList();
-                foreach (var ru in r)
-                {
-                    rn.Add(db.Registration.FirstOrDefault(x => x.RunnerId == ru.RunnerId));
-                }
-                foreach (var re in rn)
-                {
-                    revent.Add(db.RegistrationEvent.FirstOrDefault(x => x.RegistrationId == re.RegistrationId));
-                }
-                foreach (var er in revent)
-                {
-                    var n = db.Registration.FirstOrDefault(x => x.RegistrationId == er.RegistrationId);
-                    var na = db.Runner.FirstOrDefault(x => x.RunnerId == n.RunnerId);
-                    var nam = db.User.FirstOrDefault(x => x.Email == na.Email);
-                    TimeSpan TS = new TimeSpan(0, 0, (int)er.RaceTime);
-                    Gonka go = new Gonka
-                    {
-                        Mesto = (short)er.BibNumber,
-                        Time = TS,
-                        Name = nam.FirstName,
-                        Country = na.CountryCode
-                    };
-                    gonka.Add(go);
-                }
-                gridResult.ItemsSource = gonka.ToList();
+                // Марафоны
+                MarathonComboBox.ItemsSource = db.Marathon
+                    .Select(m => new { m.MarathonId, m.MarathonName, m.YearHeld })
+                    .ToList();
+                MarathonComboBox.DisplayMemberPath = "MarathonName";
+                MarathonComboBox.SelectedValuePath = "MarathonId";
 
+                // Дистанции
+                DistanceComboBox.ItemsSource = db.EventType
+                    .Select(et => new { et.EventTypeId, et.EventTypeName })
+                    .ToList();
+                DistanceComboBox.DisplayMemberPath = "EventTypeName";
+                DistanceComboBox.SelectedValuePath = "EventTypeId";
+
+                // Пол
+                GenderComboBox.ItemsSource = db.Runner
+                    .Select(r => r.Gender)
+                    .Distinct()
+                    .ToList();
+
+                // Категории
+                CategoryComboBox.ItemsSource = new List<string>
+                {
+                    "до 18", "от 18 до 29", "от 30 до 39", "от 40 до 55", "от 56 до 70", "более 70"
+                };
             }
-            if (cmbGender.SelectedIndex != -1 && cmbAge.SelectedIndex == -1)
+            catch (Exception ex)
             {
-                var r =  db.Runner.Where(x => x.Gender1 == cmbGender.SelectedValue).ToList();
-                if (cmbAge.SelectedItem == "18-27")
-                {
-                    r.Where(x => x.DateOfBirth.Value.Year >= 18).Where(x => x.DateOfBirth.Value.Year <= 27).ToList();
-                }
-                if (cmbAge.SelectedItem == "27-36")
-                {
-                    r.Where(x => x.DateOfBirth.Value.Year >= 27).Where(x => x.DateOfBirth.Value.Year <= 36).ToList();
-                }
-                if (cmbAge.SelectedItem == "36-49")
-                {
-                    r.Where(x => x.DateOfBirth.Value.Year >= 36).Where(x => x.DateOfBirth.Value.Year <= 49).ToList();
-                }
-                List<Registration> rn = new List<Registration>();
-                var revent = db.RegistrationEvent.ToList();
-                foreach (var ru in r)
-                {
-                    rn.Add(db.Registration.FirstOrDefault(x => x.RunnerId == ru.RunnerId));
-                }
-                foreach (var re in rn)
-                {
-                    revent.Add(db.RegistrationEvent.FirstOrDefault(x=> x.RegistrationId == re.RegistrationId));
-                }
-                foreach (var er in revent)
-                {
-                    var n = db.Registration.FirstOrDefault(x=> x.RegistrationId == er.RegistrationId);
-                    var na = db.Runner.FirstOrDefault(x=> x.RunnerId == n.RunnerId);
-                    var nam = db.User.FirstOrDefault(x=> x.Email == na.Email);
-                    TimeSpan TS = new TimeSpan(0, 0, (int)er.RaceTime);
-                    Gonka go = new Gonka {
-                        Mesto = (short)er.BibNumber,
-                        Time = TS,
-                        Name = nam.FirstName,
-                        Country = na.CountryCode
-                    };
-                    gonka.Add(go);
-                }
-                gridResult.ItemsSource = gonka.ToList();
-
+                MessageBox.Show($"Ошибка при загрузке фильтров: {ex.Message}");
             }
-            if (cmbGender.SelectedIndex == -1 && cmbAge.SelectedIndex != -1)
+        }
+
+        private void LoadResults()
+        {
+            try
             {
-                var revent = db.RegistrationEvent.ToList();
-                var r = from rdate in db.Runner.ToList()
-                        select new { rdate.RunnerId, rdate.DateOfBirth};
-                if (cmbAge.SelectedItem == "18-27")
-                {
-                    r.Where(x=> x.DateOfBirth.Value.Year>=18).Where(x => x.DateOfBirth.Value.Year <= 27).ToList();
-                }
-                if (cmbAge.SelectedItem == "27-36")
-                {
-                    r.Where(x => x.DateOfBirth.Value.Year >= 27).Where(x => x.DateOfBirth.Value.Year <= 36).ToList();
-                }
-                if (cmbAge.SelectedItem == "36-49")
-                {
-                    r.Where(x => x.DateOfBirth.Value.Year >= 36).Where(x => x.DateOfBirth.Value.Year <= 49).ToList();
-                }
-                List<Registration> rn = new List<Registration>();
+                var marathonId = MarathonComboBox.SelectedValue as int?;
+                var distanceId = DistanceComboBox.SelectedValue as string;
+                var gender = GenderComboBox.SelectedValue as string;
+                var category = CategoryComboBox.SelectedValue as string;
 
-                foreach (var ru in r)
-                {
-                    rn.Add(db.Registration.FirstOrDefault(x => x.RunnerId == ru.RunnerId));
-                }
-                
-                foreach (var re in rn)
-                {
-                    revent.Add(db.RegistrationEvent.FirstOrDefault(x => x.RegistrationId == re.RegistrationId));
-                }
-                foreach (var er in revent)
-                {
-                    var n = db.Registration.FirstOrDefault(x => x.RegistrationId == er.RegistrationId);
-                    var na = db.Runner.FirstOrDefault(x => x.RunnerId == n.RunnerId);
-                    var nam = db.User.FirstOrDefault(x => x.Email == na.Email);
+                var query = db.RegistrationEvent
+                    .Where(re => re.RaceTime != null); // Только финишировавшие
 
-                    TimeSpan TS = new TimeSpan(0, 0, (int)er.RaceTime);
-                    Gonka go = new Gonka
+                if (marathonId != null)
+                    query = query.Where(re => re.Event.MarathonId == marathonId);
+
+                if (!string.IsNullOrEmpty(distanceId))
+                    query = query.Where(re => re.Event.EventTypeId == distanceId);
+
+                if (!string.IsNullOrEmpty(gender))
+                    query = query.Where(re => re.Registration.Runner.Gender == gender);
+
+                // Загружаем в память с нужными полями
+                var results = query
+                    .Select(re => new
                     {
-                        Mesto = (short)er.BibNumber,
-                        Time = TS,
-                        Name = nam.FirstName,
-                        Country = na.CountryCode
+                        RunnerId = re.Registration.RunnerId,
+                        RaceTime = re.RaceTime.Value,
+                        FullName = re.Registration.Runner.User.FirstName + " " + re.Registration.Runner.User.LastName,
+                        Country = re.Registration.Runner.CountryCode,
+                        DateOfBirth = re.Registration.Runner.DateOfBirth
+                    })
+                    .ToList();
+
+                // Фильтрация по возрасту
+                if (!string.IsNullOrEmpty(category))
+                {
+                    var today = DateTime.Today;
+
+                    results = results.Where(r =>
+                    {
+                        if (!r.DateOfBirth.HasValue) return false;
+
+                        var dob = r.DateOfBirth.Value;
+                        var age = today.Year - dob.Year;
+                        if (dob > today.AddYears(-age)) age--;
+
+                        switch (category)
+                        {
+                            case "до 18":
+                                return age < 18;
+                            case "от 18 до 29":
+                                return age >= 18 && age <= 29;
+                            case "от 30 до 39":
+                                return age >= 30 && age <= 39;
+                            case "от 40 до 55":
+                                return age >= 40 && age <= 55;
+                            case "от 56 до 70":
+                                return age >= 56 && age <= 70;
+                            case "более 70":
+                                return age > 70;
+                            default:
+                                return true;
+                        }
+                    }).ToList();
+                }
+
+                // Очистка UI
+                ResultsPanel.Children.Clear();
+
+                // Сортировка по времени (меньшее — выше)
+                var resultList = results.OrderBy(r => r.RaceTime).ToList();
+
+                int place = 1;
+                foreach (var result in resultList)
+                {
+                    var row = new Grid
+                    {
+                        Height = 36,
+                        Background = new SolidColorBrush(Colors.White),
+                        ColumnDefinitions =
+                        {
+                            new ColumnDefinition { Width = new GridLength(200)  },
+                            new ColumnDefinition { Width = new GridLength(350) },
+                            new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                            new ColumnDefinition { Width = new GridLength(160) }
+                        }
                     };
-                    gonka.Add(go);
-                }
-                gridResult.ItemsSource = gonka.ToList();
-            }
-            if (cmbDistance.SelectedIndex != -1 && cmbMarathon.SelectedIndex != -1)
-            {
-                var marathon = db.Marathon.FirstOrDefault(x => x.MarathonName == cmbMarathon.SelectedValue).MarathonId;
-                var distance = db.EventType.FirstOrDefault(x => x.EventTypeName == cmbDistance.SelectedValue).EventTypeId;
-                var even = db.Event.Where(x => x.EventTypeId == distance).Where(x => x.MarathonId == marathon).ToList();
-                var ev = db.RegistrationEvent.ToList();
-                string a1 = "";
-                if (distance != null || marathon != null)
-                {
-                    if (db.Event.FirstOrDefault(x => x.EventTypeId == distance && x.MarathonId == marathon) == null)
-                    {
 
-                        MessageBox.Show("Null", "Ошибка");
-                        return;
-                    }
-                    else
-                    {
-                        a1 = db.Event.FirstOrDefault(x => x.EventTypeId == distance && x.MarathonId == marathon).EventId;
-                    }
-                
-                foreach (var rev in ev)
-                {
-                    if (rev.EventId == a1)
-                    {
-                        cnt += 1;
-                    }
-                }
-                txtRunnerAllCount.Text = cnt.ToString();
-                txtRunnerFinishCount.Text = cnt.ToString();
+                    var time = TimeSpan.FromSeconds(result.RaceTime);
+                    string formattedTime = $"{(int)time.TotalHours}h {time.Minutes}m {time.Seconds}s";
 
-                //var evId = db.Event.FirstOrDefault(x => x.EventTypeId == distance && x.MarathonId == marathon);
-                //var Ev = db.RegistrationEvent.ToList();
-                //Ev = db.RegistrationEvent.Where(x => x.EventId == evId.EventId).ToList();
-                //txtRunnerFinishCount.Text = Ev.Count.ToString();
-                
-                var rv = db.RegistrationEvent.FirstOrDefault(x => x.EventId == a1).RaceTime;
-                if (rv != null)
-                {
-                    TimeSpan TS = new TimeSpan(0, 0, (int)rv);
-                    txtTime.Text = TS.ToString();
+                    // Место
+                    AddTextBlockToGrid(row, place.ToString(), 0, true);
+
+                    // Время
+                    AddTextBlockToGrid(row, formattedTime, 1);
+
+                    // Имя бегуна
+                    AddTextBlockToGrid(row, result.FullName, 2, false, HorizontalAlignment.Left);
+
+                    // Страна
+                    AddTextBlockToGrid(row, result.Country, 3);
+
+                    row.Tag = result.RunnerId;
+                    row.MouseLeftButtonUp += (s, e) =>
+                    {
+                        var id = (int)((Grid)s).Tag;
+                        //new RunnerPopupWindow(id).ShowDialog(); // Теперь должно работать
+                    };
+
+                    ResultsPanel.Children.Add(row);
+                    place++;
                 }
-                else 
+
+                // Обновление статистики
+                TotalRunnersText.Text = query.Count().ToString();
+                TotalFinishedText.Text = resultList.Count.ToString();
+
+                if (resultList.Any())
                 {
-                    TimeSpan TS = new TimeSpan(0, 0, 0);
-                    txtTime.Text = TS.ToString();
-                }
+                    var avgTime = TimeSpan.FromSeconds(resultList.Average(r => r.RaceTime));
+                    AverageTimeText.Text = $"{(int)avgTime.TotalHours}h {avgTime.Minutes}m {avgTime.Seconds}s";
                 }
                 else
                 {
-                    MessageBox.Show("Нет данных", "Ошибка");
-                    return;
+                    AverageTimeText.Text = "-";
                 }
             }
-            //if (cmbDistance.SelectedIndex != -1 && cmbMarathon.SelectedIndex == -1)
-            //{
-            //    var marathon = db.Marathon.FirstOrDefault(x => x.MarathonName == cmbMarathon.SelectedValue).MarathonId;
-            //    var distance = db.EventType.FirstOrDefault(x => x.EventTypeName == cmbDistance.SelectedValue).EventTypeId;
-            //    var even = db.Event.Where(x => x.EventTypeId == distance).Where(x => x.MarathonId == marathon);
-            //    var ev = db.RegistrationEvent.ToList();
-                
-            //    foreach (var rev in ev)
-            //    {
-            //        if (rev.EventId == even.Select(x => x.EventId).ToString())
-            //        {
-            //            cnt+=1;
-            //        }
-            //    }
-            //    txtRunnerAllCount.Text = cnt.ToString();
-            //    txtRunnerFinishCount.Text = cnt.ToString();
-
-            //    var evId = db.Event.FirstOrDefault(x => x.EventTypeId == distance && x.MarathonId == marathon);
-            //    var Ev = db.RegistrationEvent.ToList();
-            //    Ev = db.RegistrationEvent.Where(x => x.EventId == evId.EventId).ToList();
-            //    //txtRunnerFinishCount.Text = Ev.Count.ToString();
-            //    var rv = db.RegistrationEvent.FirstOrDefault(x=> x.EventId == even.Select(x1 => x1.EventId).ToString());
-            //    TimeSpan TS = new TimeSpan(0, 0, (int)rv.RaceTime);
-            //    txtTime.Text = TS.ToString();
-
-            //}
-            //if (cmbDistance.SelectedIndex == -1 && cmbMarathon.SelectedIndex != -1)
-            //{
-            //    var marathon = db.Marathon.FirstOrDefault(x => x.MarathonName == cmbMarathon.SelectedValue).MarathonId;
-            //    var even = db.Event.Where(x => x.MarathonId == marathon);
-            //    var ev = db.RegistrationEvent.ToList();
-
-            //    foreach (var rev in ev)
-            //    {
-            //        if (rev.EventId == even.Select(x => x.EventId).ToString())
-            //        {
-            //            cnt += 1;
-            //        }
-            //    }
-            //    txtRunnerAllCount.Text = cnt.ToString();
-            //    txtRunnerFinishCount.Text = cnt.ToString();
-
-            //    var evId = db.Event.FirstOrDefault(x => x.MarathonId == marathon);
-            //    var Ev = db.RegistrationEvent.ToList();
-            //    Ev = db.RegistrationEvent.Where(x => x.EventId == evId.EventId).ToList();
-            //    //txtRunnerFinishCount.Text = Ev.Count.ToString();
-            //    var rv = db.RegistrationEvent.FirstOrDefault(x => x.EventId == even.Select(x1 => x1.EventId).ToString());
-            //    TimeSpan TS = new TimeSpan(0, 0, (int)rv.RaceTime);
-            //    txtTime.Text = TS.ToString();
-            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке результатов: {ex.Message}");
+            }
         }
 
-        //private void btnSearch_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (cmbDistance.SelectedIndex != -1 && cmbMarathon.SelectedIndex != -1)
-        //    {
-        //        var distance = db.EventType.FirstOrDefault(x => x.EventTypeName == cmbDistance.SelectedValue); 
-        //        var marathon = db.Marathon.FirstOrDefault(x => x.MarathonName == cmbMarathon.SelectedValue);
-        //        gridResult.ItemsSource = db.Event.Where(x => x.EventTypeId == distance.EventTypeId).Where(y => y.MarathonId == marathon.MarathonId).ToList();
-        //    }
-        //    if (cmbDistance.SelectedIndex != -1 && cmbMarathon.SelectedIndex == -1)
-        //    {
+        private void AddTextBlockToGrid(Grid grid, string text, int column, bool bold = false,
+                                      HorizontalAlignment alignment = HorizontalAlignment.Center)
+        {
+            var textBlock = new TextBlock
+            {
+                Text = text,
+                FontSize = 32,
+                Foreground = new SolidColorBrush(Color.FromRgb(112, 112, 112)),
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = alignment,
+                FontFamily = new FontFamily("Arial"),
+                Padding = alignment == HorizontalAlignment.Left ? new Thickness(10, 0, 0, 0) : new Thickness(0)
+            };
 
-        //        var distance = db.EventType.FirstOrDefault(x => x.EventTypeName == cmbDistance.SelectedValue).EventTypeId;
-        //        gridResult.ItemsSource = db.Event.Where(x => x.EventTypeId == distance).ToList();
-        //    }
-        //    if (cmbDistance.SelectedIndex == -1 && cmbMarathon.SelectedIndex != -1)
-        //    {
-        //        var marathon = db.Marathon.FirstOrDefault(x => x.MarathonName == cmbMarathon.SelectedValue).MarathonId;
-        //        gridResult.ItemsSource = db.Event.Where(y => y.MarathonId == marathon).ToList();
-        //    }
-        //}
+            if (bold)
+            {
+                textBlock.FontWeight = FontWeights.Bold;
+            }
 
+            Grid.SetColumn(textBlock, column);
+            grid.Children.Add(textBlock);
+        }
 
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadResults();
+        }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
+
 
     public partial class Gonka
     {

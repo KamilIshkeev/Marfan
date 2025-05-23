@@ -20,30 +20,39 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class AdminMenu : Page
     {
-        public AdminMenu()
+        static MainWindow _mainWindow;
+        public AdminMenu(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Navigate(new Uri("Admin/UserManagement.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new UserManagement(_mainWindow));
         }
 
         private void btnValunteer_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Navigate(new Uri("Admin/VolunteerManagement.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new VolunteerManagement(_mainWindow));
 
         }
 
         private void btnFund_Click(object sender, RoutedEventArgs e)
         {
+            _mainWindow.MainFrame.NavigationService.Navigate(new ManageCharities(_mainWindow));
             //this.NavigationService.Navigate(new Uri("Admin/ManageCharities.xaml", UriKind.Relative));
         }
 
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Navigate(new Uri("Admin/InventoryMarathon.xaml", UriKind.Relative));
+            //_mainWindow.MainFrame.NavigationService.Navigate(new VolunteerManagement(_mainWindow));
+            ////this.NavigationService.Navigate(new Uri("Admin/InventoryMarathon.xaml", UriKind.Relative));
+        }
+
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -31,6 +31,10 @@ namespace WpfMarathon
             InitializeComponent();
             _mainWindow = mainWindow;
         }
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btnFemale_Click(object sender, RoutedEventArgs e)
         {
             btnMale.IsEnabled = true;

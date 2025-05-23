@@ -37,6 +37,11 @@ namespace WpfMarathon.Pages
             }
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
         public static MarafonEntities db = new MarafonEntities();
         List<string> pay = new List<string>() {
             "Оплата подтвержена",

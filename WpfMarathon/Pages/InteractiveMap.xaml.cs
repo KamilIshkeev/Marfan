@@ -42,6 +42,10 @@ namespace WpfMarathon.Pages
             imgInfo.Source = null;
 
         }
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
 
         private void btnCheck2_Click(object sender, RoutedEventArgs e)
         {

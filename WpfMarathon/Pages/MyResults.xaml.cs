@@ -53,6 +53,10 @@ namespace WpfMarathon.Pages
         {
             _mainWindow.MainFrame.NavigationService.Navigate(new PerviousResult(_mainWindow));
         }
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
 
     }
 }

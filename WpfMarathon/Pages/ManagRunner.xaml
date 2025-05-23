@@ -11,7 +11,7 @@
         <!-- Верхняя панель с заголовком -->
         <DockPanel LastChildFill="False">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
-                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" />
+                <Button x:Name="Back_btn" Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  Click="Back_btn_Click" />
                 <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
                 <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0" />
             </StackPanel>

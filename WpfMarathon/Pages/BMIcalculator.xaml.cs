@@ -40,6 +40,10 @@ namespace WpfMarathon.Pages
             imgmale.Visibility = Visibility.Hidden;
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btnMale_Click(object sender, RoutedEventArgs e)
         {
             btnFemale.IsEnabled = true;

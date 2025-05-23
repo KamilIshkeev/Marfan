@@ -57,6 +57,10 @@ namespace WpfMarathon.Pages
 
             gridSpeed.ItemsSource = query1;
         }
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
 
         private void gridDistance_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -11,10 +11,10 @@
         <Frame x:Name="MainFrame"/>
         <!-- Подвал с таймером -->
         <DockPanel LastChildFill="False">
-            <StackPanel DockPanel.Dock="Bottom" Background="#333333" Height="115">
-                <TextBlock x:Name="TimeStart" Text="" Foreground="White" FontSize="20" HorizontalAlignment="Center" Background="#333333" Margin="0,995,0,0" />
+            <StackPanel DockPanel.Dock="Bottom" Background="#333333" Height="115" >
+                <TextBlock  x:Name="TimeStart" Text=""  Foreground="White" FontSize="36" Background="#333333" Height="114" Width="870" />
             </StackPanel>
         </DockPanel>
-        
+
     </Grid>
 </Window>

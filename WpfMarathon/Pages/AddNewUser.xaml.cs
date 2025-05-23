@@ -21,6 +21,7 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class AddNewUser : Page
     {
+        static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
         List<string> role = new List<string>()
         {
@@ -28,10 +29,16 @@ namespace WpfMarathon.Pages
             "A",
             "C",
         };
-        public AddNewUser()
+        public AddNewUser(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             cmbRole.ItemsSource = role;
+        }
+
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
 
         private void txb_email_GotFocus(object sender, RoutedEventArgs e)

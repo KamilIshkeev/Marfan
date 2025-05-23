@@ -21,6 +21,7 @@ namespace WpfMarathon
     /// </summary>
     public partial class AdminEditUser : Page
     {
+        static MainWindow _mainWindow;
         List<string> role = new List<string>()
         {
             "R",
@@ -32,9 +33,12 @@ namespace WpfMarathon
         string pas = "";
         int id = 0;
         string email;
-        public AdminEditUser(User user)
+        private MainWindow mainWindow;
+
+        public AdminEditUser(MainWindow mainWindow,User user)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             txbEmail.Text = user.Email;
             txb_name.Text = user.FirstName;
             txb_surname.Text = user.LastName;
@@ -45,6 +49,10 @@ namespace WpfMarathon
             email = user.Email;
         }
 
+        public AdminEditUser(MainWindow mainWindow)
+        {
+            this.mainWindow = mainWindow;
+        }
 
         private void txb_pass_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -65,6 +73,10 @@ namespace WpfMarathon
             txb_surname.Foreground = Brushes.Black;
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btn_Reg_Click(object sender, RoutedEventArgs e)
         {
             if (txb_name.Text != "" && txb_pass.Password != "" && txb_repeatpass.Password != "" && txb_surname.Text != "" && cmbRole.SelectedItem != null)

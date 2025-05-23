@@ -39,5 +39,9 @@ namespace WpfMarathon.Pages
         {
             this.NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.Relative));
         }
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

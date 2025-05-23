@@ -17,37 +17,44 @@ using WpfMarathon.Base;
 namespace WpfMarathon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ListFund.xaml
+    /// Логика взаимодействия для ManageCharities.xaml
     /// </summary>
-    public partial class ListFund : Page
+    public partial class ManageCharities : Page
     {
         static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
-        public ListFund(MainWindow mainWindow)
+        public ManageCharities(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-
             var query = db.Charity
                 .ToList()
-                .Select(hl => new CharityItem
+                .Select(hl => new Charity
                 {
                     CharityLogo = $"C:/Users/222209/source/repos/Marfan/WpfMarathon/Images/{hl.CharityLogo}",
-                    CharityName = hl.CharityName,
-                    CharityDescription = hl.CharityDescription
+                    CharityName = hl.CharityName.ToString(),
+                    CharityDescription = hl.CharityDescription.ToString()
                 })
                 .ToList();
-            FundDb.ItemsSource = query;
+            FundDb.ItemsSource = query.ToList();
+        }
+
+        private void btnAddFund_Click(object sender, RoutedEventArgs e)
+        {
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new AddCharity(_mainWindow));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Charity fun = FundDb.SelectedValue as Charity;
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new EditCharity(_mainWindow, fun));
+
         }
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
-    }
-    public class CharityItem
-    {
-        public string CharityLogo { get; set; }
-        public string CharityName { get; set; }
-        public string CharityDescription { get; set; }
     }
 }

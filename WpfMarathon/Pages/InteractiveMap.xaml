@@ -46,7 +46,7 @@
         <!-- Верхняя панель с заголовком -->
         <DockPanel Grid.ColumnSpan="14" Grid.Row="12" LastChildFill="False" Margin="0,0,0,949">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10">
-                <Button Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0">
+                <Button x:Name="Back_btn" Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0" Click="Back_btn_Click" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>

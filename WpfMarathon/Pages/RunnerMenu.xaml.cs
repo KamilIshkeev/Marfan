@@ -38,6 +38,10 @@ namespace WpfMarathon.Pages
             _id = runner.RunnerId;
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
 
         private void btn_regmarathon_Click(object sender, RoutedEventArgs e)
         {

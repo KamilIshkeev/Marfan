@@ -21,7 +21,8 @@ namespace WpfMarathon.Pages
     /// </summary>
         public partial class UserManagement : Page
         {
-            public static MarafonEntities db = new MarafonEntities();
+        static MainWindow _mainWindow;
+        public static MarafonEntities db = new MarafonEntities();
             List<string> sort = new List<string>()
         {
             "Имени",
@@ -34,9 +35,10 @@ namespace WpfMarathon.Pages
             "A",
             "C",
         };
-            public UserManagement()
+            public UserManagement(MainWindow mainWindow)
             {
                 InitializeComponent();
+                _mainWindow = mainWindow;
                 UserInAdmin.ItemsSource = db.User.ToList();
                 cmbRole.ItemsSource = role;
                 cmbSortBy.ItemsSource = sort;
@@ -44,7 +46,7 @@ namespace WpfMarathon.Pages
 
             private void btnAddUser_Click(object sender, RoutedEventArgs e)
             {
-                this.NavigationService.Navigate(new Uri("AdminController/AddNewUser.xaml", UriKind.Relative));
+               _mainWindow.MainFrame.NavigationService.Navigate(new AddNewUser(_mainWindow));
             }
 
             private void btnUser_Copy_Click(object sender, RoutedEventArgs e)
@@ -128,19 +130,24 @@ namespace WpfMarathon.Pages
 
             }
 
-            private void btnClear_Click(object sender, RoutedEventArgs e)
-            {
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
                 UserInAdmin.ItemsSource = db.User.ToList();
                 cmbRole.SelectedItem = null;
                 cmbSortBy.SelectedItem = null;
-            }
+        }
 
-            private void Button_Click(object sender, RoutedEventArgs e)
-            {
-                //User user = UserInAdmin.SelectedValue as User;
-                //AdminEditUser aed = new AdminEditUser(user);
-                //this.NavigationService.Navigate(aed);
-            }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            User user = UserInAdmin.SelectedValue as User;
+            _mainWindow.MainFrame.NavigationService.Navigate(new AdminEditUser(_mainWindow, user));
+        }
+
         }
     
 }

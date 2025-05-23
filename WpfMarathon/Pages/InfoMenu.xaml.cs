@@ -26,7 +26,10 @@ namespace WpfMarathon.Pages
             InitializeComponent();
             _mainWindow = mainWindow;
         }
-
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btn_listfund_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.MainFrame.NavigationService.Navigate(new ListFund(_mainWindow));

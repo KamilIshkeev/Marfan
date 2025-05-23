@@ -58,6 +58,10 @@ namespace WpfMarathon.Pages
             }
         }
 
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void btn_Reg_Click(object sender, RoutedEventArgs e)
         {
             if (txb_email.Text != "" && txb_name.Text != "" && txb_pass.Text != "" && txb_repeatpass.Text != "" && txb_surname.Text != "" && txb_email.Text != "Email" && txb_surname.Text != "Фамилия")
