@@ -32,23 +32,87 @@ namespace WpfMarathon.Pages
             _mainWindow = mainWindow;
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
+
         private void btnAddInBd_Click(object sender, RoutedEventArgs e)
         {
-            Volunteer volbd = new Volunteer();
+            List<string> errorMessages = new List<string>();
+
             foreach (var vol in vol2)
             {
-                volbd.CountryCode = vol.CountryCode;
-                volbd.FirstName = vol.FirstName;
-                volbd.LastName = vol.LastName;
-                volbd.Gender = vol.Gender;
+                // Проверка длины CountryCode
+                if (vol.CountryCode.Length != 3)
+                {
+                    errorMessages.Add($"Некорректный код страны: {vol.CountryCode} для волонтёра {vol.FirstName} {vol.LastName}. Код должен быть длиной 2 символа.");
+                    continue;
+                }
+
+                // Проверка обязательных полей
+                if (string.IsNullOrWhiteSpace(vol.FirstName) ||
+                    string.IsNullOrWhiteSpace(vol.LastName) ||
+                    string.IsNullOrWhiteSpace(vol.CountryCode) ||
+                    string.IsNullOrWhiteSpace(vol.Gender))
+                {
+                    errorMessages.Add($"Обязательные поля недопустимы для волонтёра {vol.FirstName} {vol.LastName}.");
+                    continue;
+                }
+
+                // Проверка корректности пола
+                if (!new[] { "Male", "Female" }.Contains(vol.Gender))
+                {
+                    errorMessages.Add($"Некорректный пол: {vol.Gender} для волонтёра {vol.FirstName} {vol.LastName}. Пол должен быть 'Male' или 'Female'.");
+                    continue;
+                }
+
+                // Проверка на дубликаты
+                if (db.Volunteer.Any(v => v.CountryCode == vol.CountryCode &&
+                                          v.FirstName == vol.FirstName &&
+                                          v.LastName == vol.LastName &&
+                                          v.Gender == vol.Gender))
+                {
+                    errorMessages.Add($"Запись уже существует: {vol.FirstName} {vol.LastName}, CountryCode: {vol.CountryCode}");
+                    continue;
+                }
+
+                // Создание объекта Volunteer и добавление в БД
+                Volunteer volbd = new Volunteer()
+                {
+                    CountryCode = vol.CountryCode,
+                    FirstName = vol.FirstName,
+                    LastName = vol.LastName,
+                    Gender = vol.Gender
+                };
+
+                db.Volunteer.Add(volbd);
             }
 
-            db.Volunteer.Add(volbd);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
 
+                if (errorMessages.Count > 0)
+                {
+                    string errors = string.Join(Environment.NewLine, errorMessages);
+                    MessageBox.Show($"Импорт завершён частично. Не все данные были корректны:" + Environment.NewLine + errors);
+                }
+                else
+                {
+                    MessageBox.Show("Все данные успешно импортированы!");
+                }
 
-
-            _mainWindow.MainFrame.NavigationService.Navigate(new VolunteerManagement(_mainWindow));
+                _mainWindow.MainFrame.NavigationService.Navigate(new VolunteerManagement(_mainWindow));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}" +
+                                Environment.NewLine +
+                                "Внутреннее исключение:" +
+                                Environment.NewLine +
+                                $"{ex.InnerException?.Message ?? "Отсутствует"}");
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -60,25 +124,52 @@ namespace WpfMarathon.Pages
         {
             OpenFileDialog open = new OpenFileDialog();
             open.FilterIndex = 1;
-            open.Filter = "csv|*.csv";
+            open.Filter = "CSV файлы (*.csv)|*.csv|Все файлы (*.*)|*.*";
 
             if (open.ShowDialog() == true)
             {
-                var lines = File.ReadAllLines(open.FileName);
+                try
+                {
+                    var lines = File.ReadAllLines(open.FileName);
 
-                var data = from l in lines.Skip(1)
-                           let split = l.Split(',')
-                           select new VolunteerClas
-                           {
-                               FirstName = split[0],
-                               LastName = split[1],
-                               CountryCode = split[2],
-                               Gender = split[3]
-                           };
-                vol2 = data.ToList();
+                    var data = from l in lines.Skip(1) // Пропускаем заголовок
+                               let split = l.Split(',')
+                               where split.Length >= 5
+                               select new VolunteerClas
+                               {
+                                   FirstName = split[1],
+                                   LastName = split[2],
+                                   CountryCode = split[3],
+                                   Gender = NormalizeGender(split[4]) // Нормализуем значение Gender
+                               };
 
+                    vol2 = data.ToList();
 
-                txbFilePath.Text = open.FileName.ToString();
+                    txbFilePath.Text = open.FileName;
+
+                    MessageBox.Show($"Успешно загружено {vol2.Count} записей.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при чтении файла: " + ex.Message);
+                }
+            }
+        }
+
+        private string NormalizeGender(string genderInput)
+        {
+            switch (genderInput.Trim().ToUpper())
+            {
+                case "M":
+                case "MALE":
+                    return "Male";
+
+                case "F":
+                case "FEMALE":
+                    return "Female";
+
+                default:
+                    return genderInput; // Оставляем как есть, если не распознали
             }
         }
 

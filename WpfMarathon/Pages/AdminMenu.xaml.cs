@@ -44,15 +44,15 @@ namespace WpfMarathon.Pages
             //this.NavigationService.Navigate(new Uri("Admin/ManageCharities.xaml", UriKind.Relative));
         }
 
-        private void btnInventory_Click(object sender, RoutedEventArgs e)
-        {
-            //_mainWindow.MainFrame.NavigationService.Navigate(new VolunteerManagement(_mainWindow));
-            ////this.NavigationService.Navigate(new Uri("Admin/InventoryMarathon.xaml", UriKind.Relative));
-        }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
     }
 }

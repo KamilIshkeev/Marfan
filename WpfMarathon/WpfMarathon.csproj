@@ -196,6 +196,9 @@
     <Compile Include="Pages\MenuCoordinator.xaml.cs">
       <DependentUpon>MenuCoordinator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MySponsor.xaml.cs">
+      <DependentUpon>MySponsor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PerviousResult.xaml.cs">
       <DependentUpon>PerviousResult.xaml</DependentUpon>
     </Compile>
@@ -373,6 +376,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MyResults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MySponsor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

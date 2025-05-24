@@ -25,19 +25,22 @@ namespace WpfMarathon.Pages
         static MainWindow _mainWindow;
 
         public static MarafonEntities db = new MarafonEntities();
-        string Email;
+        int _id;
         public RegConfirm(MainWindow mainWindow, int id)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
             var run = db.Runner.FirstOrDefaultAsync(r => r.RunnerId == id);
-            Email = run.Result.Email;
+            _id = run.Result.RunnerId;
         }
 
-
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindow.MainFrame.NavigationService.Navigate(new RunnerMenu(_mainWindow, Email));
+            _mainWindow.MainFrame.NavigationService.Navigate(new RunnerMenu(_mainWindow, _id));
         }
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {

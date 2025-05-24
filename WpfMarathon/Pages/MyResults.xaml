@@ -14,7 +14,7 @@
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
                 <Button x:Name="Back_btn" Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  Click="Back_btn_Click" />
                 <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
-                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0" />
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0"  Click="Logout_Click" />
             </StackPanel>
         </DockPanel>
 
@@ -55,10 +55,10 @@
 
             <!-- Пол и возраст -->
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,616">
-                <TextBlock Text="Пол: " FontWeight="Bold" FontSize="35"/>
-                <TextBlock Name="txt_gender" Text="мужской" FontSize="35"/>
-                <TextBlock Text=" | Возрастная категория: " FontWeight="Bold" FontSize="35" Margin="20,0,0,0"/>
-                <TextBlock Name="txt_age" Text="18-29" FontSize="35"/>
+                <TextBlock Text="Пол: " FontWeight="Bold" FontSize="35" Height="64"/>
+                <TextBlock Name="txt_gender" Text="мужской" FontSize="35" Height="64"/>
+                <TextBlock Text=" | Возрастная категория: " FontWeight="Bold" FontSize="35" Margin="20,0,0,0" Height="64"/>
+                <TextBlock Name="txt_age" Text="18-29" FontSize="35" Height="64"/>
             </StackPanel>
 
             <!-- Таблица результатов -->
@@ -68,7 +68,7 @@
                       IsReadOnly="True"
                       FontSize="35"
                       
-                      Margin="0,84,0,156">
+                      Margin="0,90,0,150">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="RegEventId" Binding="{Binding RegistrationEventId}" Width="400"/>
                     <DataGridTextColumn Header="RegistrationId" Binding="{Binding RegistrationId}" Width="400"/>

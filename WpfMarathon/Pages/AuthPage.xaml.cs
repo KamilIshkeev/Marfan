@@ -54,10 +54,12 @@ namespace WpfMarathon.Pages
                         {
                             if (us.Email == txb_email.Text && us.Password == txb_pass.Password)
                             {
+
                                 i = 0;
                                 if (us.RoleId == "R")
                                 {
-                                    _mainWindow.MainFrame.NavigationService.Navigate(new RunnerMenu(_mainWindow, us.Email));
+                                    var runner = db.Runner.FirstOrDefault(x=> x.Email == us.Email).RunnerId;
+                                    _mainWindow.MainFrame.NavigationService.Navigate(new RunnerMenu(_mainWindow, runner));
                                     j = 1;
                                 }
                                 if (us.RoleId == "A")

@@ -35,6 +35,10 @@ namespace WpfMarathon
         {
             NavigationService.GoBack();
         }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
         private void btnFemale_Click(object sender, RoutedEventArgs e)
         {
             btnMale.IsEnabled = true;
@@ -95,6 +99,12 @@ namespace WpfMarathon
         private void txbAge_GotFocus(object sender, RoutedEventArgs e)
         {
             txbAge.Text = "";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new InfoMenu(_mainWindow));
         }
     }
 }

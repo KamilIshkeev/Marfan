@@ -25,6 +25,7 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class ManagRunner : Page
     {
+        static MainWindow _mainWindow;
         class SortUser : IEqualityComparer<User>
         {
             public bool Equals(User x, User y)
@@ -40,6 +41,11 @@ namespace WpfMarathon.Pages
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
         public static MarafonEntities db = new MarafonEntities();
@@ -62,9 +68,10 @@ namespace WpfMarathon.Pages
             public byte RegistrationStatusId { get; set; }
         }
 
-        public ManagRunner()
+        public ManagRunner(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             var us =new User();
             var rn =new Runner();
             var reg = new Registration();

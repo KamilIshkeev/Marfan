@@ -40,5 +40,9 @@ namespace WpfMarathon.Pages
         {
             NavigationService.GoBack();
         }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
     }
 }

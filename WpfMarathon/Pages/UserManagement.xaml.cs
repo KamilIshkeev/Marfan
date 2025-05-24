@@ -43,8 +43,12 @@ namespace WpfMarathon.Pages
                 cmbRole.ItemsSource = role;
                 cmbSortBy.ItemsSource = sort;
             }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
 
-            private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
             {
                _mainWindow.MainFrame.NavigationService.Navigate(new AddNewUser(_mainWindow));
             }

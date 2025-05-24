@@ -30,7 +30,7 @@ namespace WpfMarathon.Pages
             id = _id;
             InitializeComponent();
             _mainWindow = mainWindow;
-            txt_gender.Text = db.Runner.Where(x => x.RunnerId == id).Select(x => x.Gender).ToString();
+            txt_gender.Text = db.Runner.Where(x => x.RunnerId == id).Select(x => x.Gender).SingleOrDefault().ToString();
             DateTime birth = (DateTime)db.Runner.Where(x => x.RunnerId == id).Select(x => x.DateOfBirth).SingleOrDefault();
             DateTime date = DateTime.Now;
             TimeSpan d = date - birth;
@@ -46,6 +46,22 @@ namespace WpfMarathon.Pages
             {
                 txt_age.Text = "36-49";
             }
+
+            var query = db.RegistrationEvent
+                    .Where(re => re.RaceTime != null); // Только финишировавшие
+
+            // Загружаем в память с нужными полями
+            var results = query
+                .Select(re => new
+                {
+                    MarathonName = re.Registration.RunnerId,
+                    EventTypeName = re.RaceTime.Value,
+                    RaceTime = re.Registration.Runner.User.FirstName + " " + re.Registration.Runner.User.LastName,
+                    Country = re.Registration.Runner.CountryCode,
+                    DateOfBirth = re.Registration.Runner.DateOfBirth
+                })
+                .ToList();
+
             grid_Results.ItemsSource = db.RegistrationEvent.Where(x => x.RegistrationId == id).ToList();
         }
 
@@ -56,6 +72,10 @@ namespace WpfMarathon.Pages
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
     }

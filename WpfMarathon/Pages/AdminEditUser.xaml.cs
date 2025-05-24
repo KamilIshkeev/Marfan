@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfMarathon.Base;
+using WpfMarathon.Pages;
 
 namespace WpfMarathon
 {
@@ -52,6 +53,10 @@ namespace WpfMarathon
         public AdminEditUser(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
         private void txb_pass_GotFocus(object sender, RoutedEventArgs e)

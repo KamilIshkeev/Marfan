@@ -20,25 +20,25 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class ThanksPay : Page
     {
+        static MainWindow _mainWindow;
         public string S { get; }
-        public ThanksPay(string s, string fund, string user)
+        public ThanksPay(MainWindow mainWindow, string s, string fund, string user)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
             S = s;
             txt_price.Text = S;
             txt_fund.Text = fund;
             txbUser.Text = user;
         }
 
-        private void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
+        
+        
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
-
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
-        private void btn_cancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.Relative));
-        }
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

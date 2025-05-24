@@ -98,24 +98,6 @@
                 </Button>
 
                 <!-- Инвентарь -->
-                <Button x:Name="btnInventory"
-                        Content="Инвентарь"
-                        Background="#FFF2F2F2"
-                        FontFamily="Arial"
-                        FontSize="55"
-                        Foreground="#FF474747"
-                        FontStyle="Italic"
-                        Width="600"
-                        Height="175"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Click="btnInventory_Click">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="35"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
             </Grid>
         </Grid>
     </Grid>

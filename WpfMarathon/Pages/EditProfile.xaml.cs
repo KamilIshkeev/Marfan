@@ -26,17 +26,17 @@ namespace WpfMarathon.Pages
         static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
         public Runner rn;
-        public EditProfile(MainWindow mainWindow,List<User> user)
+        public EditProfile(MainWindow mainWindow,User user)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            var runner = db.Runner.FirstOrDefault(x=> x.Email == user.Select(x1 => x1.Email).SingleOrDefault());
+            var runner = db.Runner.FirstOrDefault(x=> x.Email == user.Email);
             rn = runner;
             string urgender = runner.Gender;
             string urcountry = runner.CountryCode;
-            txt_email.Text = user.Select(x => x.Email).SingleOrDefault();
-            txb_name.Text = user.Select(x => x.FirstName).SingleOrDefault();
-            txb_surname.Text = user.Select(x => x.LastName).SingleOrDefault();
+            txt_email.Text = user.Email;
+            txb_name.Text = user.FirstName;
+            txb_surname.Text = user.LastName;
             List<string> gender = new List<string> { "Male", "Female" };
             cmb_gender.ItemsSource = gender;
             cmb_gender.SelectedValue = gender.Find(x => x.Length == urgender.Length);

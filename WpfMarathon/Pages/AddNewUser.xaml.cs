@@ -35,7 +35,10 @@ namespace WpfMarathon.Pages
             _mainWindow = mainWindow;
             cmbRole.ItemsSource = role;
         }
-
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

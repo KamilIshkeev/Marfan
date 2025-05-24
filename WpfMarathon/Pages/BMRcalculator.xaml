@@ -123,7 +123,7 @@
         <!-- Кнопка информации -->
         <Button Content="i" Canvas.Left="1640" Canvas.Top="485"
                 Width="108" Height="109" FontSize="40" Foreground="#FFFFC000"
-                Background="White" BorderBrush="#FFFFC000" HorizontalAlignment="Center" VerticalAlignment="Top">
+                Background="White" BorderBrush="#FFFFC000" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="60"/>

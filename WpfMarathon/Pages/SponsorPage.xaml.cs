@@ -21,13 +21,19 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class SponsorPage : Page
     {
+        static MainWindow _mainWindow1;
         public static MarafonEntities db = new MarafonEntities();
         public SponsorPage(MainWindow _mainWindow)
         {
             InitializeComponent();
+            _mainWindow1 = _mainWindow;
             cmbRunner.ItemsSource = db.User.Where(x => x.RoleId == "R").Select(x=> x.Email).ToList();
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow1.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow1));
+        }
 
         private void btn_pay_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +73,7 @@ namespace WpfMarathon.Pages
                     money = count + countref;
                     db.Database.ExecuteSqlCommand($"UPDATE Sponsorship SET Amount = {money_int} WHERE SponsorshipId = {id_sponsor} And RegistrationId = {user}");
                     db.SaveChanges();
-                    ThanksPay thxForPay = new ThanksPay(txb_price_num.Text, txt_fund.Text, Convert.ToString(cmbRunner.SelectedValue));
+                    ThanksPay thxForPay = new ThanksPay(_mainWindow1,txb_price_num.Text, txt_fund.Text, Convert.ToString(cmbRunner.SelectedValue));
                     NavigationService.Navigate(thxForPay);
                 }
                 catch

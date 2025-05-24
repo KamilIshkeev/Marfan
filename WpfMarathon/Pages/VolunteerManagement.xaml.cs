@@ -46,7 +46,7 @@ namespace WpfMarathon.Pages
 
         private void btnAddVol_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("AdminController/ImportVolunteers.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new ImportVolunteers(_mainWindow));
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -72,7 +72,7 @@ namespace WpfMarathon.Pages
                 else if (cmbSort.SelectedItem == "Стране")
                 {
                     var sortByCountry = from b in bdList
-                                        orderby b.Country
+                                        orderby b.CountryCode
                                         select b;
                     VolunteerDG.ItemsSource = sortByCountry;
                 }
@@ -84,6 +84,11 @@ namespace WpfMarathon.Pages
                     VolunteerDG.ItemsSource = sortByGender;
                 }
             }
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
     }
 }

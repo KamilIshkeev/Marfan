@@ -28,19 +28,22 @@ namespace WpfMarathon.Pages
 
         string email;
         int _id;
-        public RunnerMenu(MainWindow mainWindow, string email1)
+        public RunnerMenu(MainWindow mainWindow, int id)
         {
             InitializeComponent();
+            _id = id;
             _mainWindow = mainWindow;
-            this.email = email1;
-            Runner runner = new Runner();
-            runner.Email = email;
-            _id = runner.RunnerId;
+            var mail = db.Runner.FirstOrDefault(x=> x.RunnerId == id).Email;
+            email = mail;
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
         }
 
         private void btn_regmarathon_Click(object sender, RoutedEventArgs e)
@@ -55,6 +58,8 @@ namespace WpfMarathon.Pages
 
         private void btn_editprofile_Click(object sender, RoutedEventArgs e)
         {
+            var user = db.User.Where(x => x.Email == email).SingleOrDefault();
+            _mainWindow.MainFrame.NavigationService.Navigate(new EditProfile(_mainWindow, user));
             //List<User> user = db.User.ToList();
 
             //EditProfile ep = new EditProfile(user.Where(x => x.ID == id).ToList());
@@ -63,8 +68,7 @@ namespace WpfMarathon.Pages
 
         private void btn_sponsor_Click(object sender, RoutedEventArgs e)
         {
-            //MySponsor rg = new MySponsor(_id);
-            //NavigationService.Navigate(rg);
+            _mainWindow.MainFrame.NavigationService.Navigate(new MySponsor(_mainWindow, _id));
         }
 
         private void btn_contact_Click(object sender, RoutedEventArgs e)
@@ -72,14 +76,6 @@ namespace WpfMarathon.Pages
             _mainWindow.MainFrame.NavigationService.Navigate(new ContactCoordinator(_mainWindow));
         }
 
-        private void btn_logout_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_back_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
     }
 }
