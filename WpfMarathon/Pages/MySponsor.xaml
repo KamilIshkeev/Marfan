@@ -52,10 +52,7 @@
         <TextBlock Name="txt_desc" HorizontalAlignment="Left" Grid.Row="11" TextWrapping="Wrap" Text="Это было бы длинным описание благотворительности. Это могло пойти для нескольких параграфов." VerticalAlignment="Top" Grid.ColumnSpan="5" Width="702" Height="152" Margin="226,117,0,0" FontSize="36"/>
         <TextBlock Name="txt_adddesc" HorizontalAlignment="Left" Grid.Row="11" TextWrapping="Wrap" Text="Это - больше описания здесь, и это - ещё часть описания также." VerticalAlignment="Top" Grid.ColumnSpan="5" Width="702" Height="131" Margin="226,279,0,0" FontSize="36"/>
         <DataGrid Name="grid_sponsor" Grid.ColumnSpan="5" Grid.Column="4" HorizontalAlignment="Left" Height="390" Grid.Row="6" Grid.RowSpan="6" VerticalAlignment="Top" Width="563" Margin="179,14,0,0" FontSize="36">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Спонсор" Binding="{Binding SponsorName}" Width="*"/>
-                <DataGridTextColumn Header="Взнос" Binding="{Binding Amount}" Width="180"/>
-            </DataGrid.Columns>
+            
         </DataGrid>
         <Line Stroke="#FF999999" StrokeThickness="5" X1="0" Y1="2" X2="470" Y2="2" Grid.Column="4" Margin="179,241,310,292" Grid.Row="11" Grid.ColumnSpan="5"/>
         <TextBlock x:Name="txt_fund_Copy" Grid.Column="8" HorizontalAlignment="Left" Grid.Row="11" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF999999" Width="309" TextAlignment="Center" Height="83" Margin="37,258,0,0" FontSize="44"><Run Text="Всего "/><Run Text="$680"/></TextBlock>

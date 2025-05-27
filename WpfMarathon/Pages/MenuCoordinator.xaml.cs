@@ -29,12 +29,13 @@ namespace WpfMarathon.Pages
 
         private void btnFund_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Navigate(new Uri("Coordinator/ShowFund.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new ShowFund(_mainWindow));
         }
 
         private void btnRun_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Navigate(new Uri("Coordinator/ManagRunner.xaml", UriKind.Relative));
+
+            _mainWindow.MainFrame.NavigationService.Navigate(new ManagRunner(_mainWindow)); 
         }
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {

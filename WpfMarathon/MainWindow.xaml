@@ -8,7 +8,7 @@
            Title="MainWindow" Height="1080" Width="1920">
     <Grid>
 
-        <Frame x:Name="MainFrame"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
         <!-- Подвал с таймером -->
         <DockPanel LastChildFill="False">
             <StackPanel DockPanel.Dock="Bottom" Background="#333333" Height="115" >

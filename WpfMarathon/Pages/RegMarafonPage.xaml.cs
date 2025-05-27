@@ -49,7 +49,7 @@ namespace WpfMarathon.Pages
             }
             var re = db.Charity.Select(x=> x.CharityName);
 
-            cmb_fund.ItemsSource = re;
+            cmb_fund.ItemsSource = re.ToList();
             txt_price.Text = "";
         }
 

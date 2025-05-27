@@ -37,7 +37,7 @@ namespace WpfMarathon.Pages
                 return (x.FirstName + "_" + x.LastName + "_" + x.Email).GetHashCode();
             }
         }
-
+        
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -49,10 +49,7 @@ namespace WpfMarathon.Pages
         }
 
         public static MarafonEntities db = new MarafonEntities();
-        List<string> pay = new List<string>() {
-            "Оплата подтвержена",
-            "Оплата не подтвержена",
-        };
+        List<string> pay = db.RegistrationStatus.Select(x=> x.RegistrationStatus1).ToList();
         List<string> sort = new List<string>()
         {
             "Имени",
@@ -65,9 +62,9 @@ namespace WpfMarathon.Pages
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Email { get; set; }
-            public byte RegistrationStatusId { get; set; }
+            public string RegistrationStatus { get; set; }
+            public string Distance { get; set; }
         }
-
         public ManagRunner(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -84,282 +81,402 @@ namespace WpfMarathon.Pages
                             FirstName = u.FirstName,
                             LastName = u.LastName,
                             Email = u.Email,
-                            RegistrationStatusId = g.RegistrationStatusId
+                            RegistrationStatus = g.RegistrationStatus.RegistrationStatus1
                         };
             UserInCoord.ItemsSource = query.ToList();
             cmbPayment.ItemsSource = pay;
             cmbSortBy.ItemsSource = sort;
-            cmbDistance.ItemsSource = db.EventType.ToList();
+            cmbDistance.ItemsSource = db.EventType.Select(x=> x.EventTypeName).ToList();
         }
-        private void btnUserUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            int pay = 0;
+        //private void btnUserUpdate_Click(object sender, RoutedEventArgs e)
+        //{
+        //    int pay = 0;
 
-            List<User> bdList = db.User.ToList();
-            List<Runner> rn = db.Runner.ToList();
-            List<Registration> stm = db.Registration.ToList();
-            List<Marathon> sm = db.Marathon.ToList();
+        //    List<User> bdList = db.User.ToList();
+        //    List<Runner> rn = db.Runner.ToList();
+        //    List<Registration> stm = db.Registration.ToList();
+        //    List<Marathon> sm = db.Marathon.ToList();
 
-            if (cmbPayment.SelectedItem != null)
-            {
-                if (cmbPayment.SelectedItem == "Оплата подтвержена")
-                {
-                    pay = 1;
-                }
+        //    if (cmbPayment.SelectedItem != null)
+        //    {
+        //        if (cmbPayment.SelectedItem == "Payment Confirmed")
+        //        {
+        //            pay = 1;
+        //        }
 
-                if (cmbDistance.SelectedItem != null)
-                {
-                    if (cmbSortBy.SelectedItem == "Имени")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         orderby n.User.FirstName
-                                         select n;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Фамилии")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         orderby n.User.LastName
-                                         select n;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Email")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         orderby n.User.Email
-                                         select n;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else if (cmbSortBy.SelectedItem == null)
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         select n.User;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct(st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else
-                    {
-                        UserInCoord.ItemsSource = db.User.ToList();
-                    }
-                }
-                else
-                {
-                    if (cmbSortBy.SelectedItem == "Имени")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where pay == b.Cost 
-                                         orderby n.User.FirstName
-                                         select b;
-                        UserInCoord.ItemsSource = sortByName;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Фамилии")
-                    {
-                        var sortBySurName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where pay == b.Cost 
-                                         orderby n.User.LastName
-                                         select b;
-                        UserInCoord.ItemsSource = sortBySurName;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Email")
-                    {
-                        var sortByEmail = from n in rn
-                                            from b in stm
-                                            from m in bdList
-                                            where pay == b.Cost 
-                                            orderby n.User.Email
-                                          select b;
-                        UserInCoord.ItemsSource = sortByEmail;
-                    }
-                    else if (cmbSortBy.SelectedItem == null)
-                    {
-                        var sortByNot = from n in rn
-                                          from b in stm
-                                          from m in bdList
-                                          where pay == b.Cost
-                                          select b;
-                        UserInCoord.ItemsSource = sortByNot;
-                    }
-                    else
-                    {
-                        UserInCoord.ItemsSource = db.User.ToList();
-                    }
-                }
-            }
-            else
-            {
-                if (cmbDistance.SelectedItem != null)
-                {
+        //        if (cmbDistance.SelectedItem != null)
+        //        {
+        //            if (cmbSortBy.SelectedItem == "Имени")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 orderby n.User.FirstName
+        //                                 select n;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Фамилии")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 orderby n.User.LastName
+        //                                 select n;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Email")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 orderby n.User.Email
+        //                                 select n;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == null)
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where pay == b.Cost && n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 select n.User;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct(st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else
+        //            {
+        //                UserInCoord.ItemsSource = db.User.ToList();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (cmbSortBy.SelectedItem == "Имени")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where pay == b.Cost 
+        //                                 orderby n.User.FirstName
+        //                                 select b;
+        //                UserInCoord.ItemsSource = sortByName;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Фамилии")
+        //            {
+        //                var sortBySurName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where pay == b.Cost 
+        //                                 orderby n.User.LastName
+        //                                 select b;
+        //                UserInCoord.ItemsSource = sortBySurName;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Email")
+        //            {
+        //                var sortByEmail = from n in rn
+        //                                    from b in stm
+        //                                    from m in bdList
+        //                                    where pay == b.Cost 
+        //                                    orderby n.User.Email
+        //                                  select b;
+        //                UserInCoord.ItemsSource = sortByEmail;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == null)
+        //            {
+        //                var sortByNot = from n in rn
+        //                                  from b in stm
+        //                                  from m in bdList
+        //                                  where pay == b.Cost
+        //                                  select b;
+        //                UserInCoord.ItemsSource = sortByNot;
+        //            }
+        //            else
+        //            {
+        //                UserInCoord.ItemsSource = db.User.ToList();
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (cmbDistance.SelectedItem != null)
+        //        {
 
-                    if (cmbSortBy.SelectedItem == "Имени")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         orderby n.User.FirstName
-                                         select n;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Фамилии")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         orderby n.User.LastName
-                                         select n;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Email")
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         orderby n.User.Email
-                                         select n;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else if (cmbSortBy.SelectedItem == null)
-                    {
-                        var sortByName = from n in rn
-                                         from b in stm
-                                         from m in bdList
-                                         where n.RunnerId == b.RunnerId && m.Email == n.Email
-                                         select n.User;
-                        SortUser st = new SortUser();
-                        var distinctsort = sortByName.Distinct(st);
-                        UserInCoord.ItemsSource = distinctsort;
-                    }
-                    else
-                    {
-                        UserInCoord.ItemsSource = db.User.ToList();
-                    }
-                }
-                else
-                {
-                    if (cmbSortBy.SelectedItem == "Имени")
-                    {
-                        var sortByName = from b in bdList
-                                         orderby b.FirstName
-                                         select b;
-                        UserInCoord.ItemsSource = sortByName;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Фамилии")
-                    {
-                        var sortBySurName = from b in bdList
-                                            orderby b.LastName
-                                            select b;
-                        UserInCoord.ItemsSource = sortBySurName;
-                    }
-                    else if (cmbSortBy.SelectedItem == "Email")
-                    {
-                        var sortByEmail = from b in bdList
-                                          orderby b.Email
-                                          select b;
-                        UserInCoord.ItemsSource = sortByEmail;
-                    }
-                    else if (cmbSortBy.SelectedItem == null)
-                    {
-                        var sortByNot = from b in bdList
-                                        select b;
-                        UserInCoord.ItemsSource = sortByNot;
+        //            if (cmbSortBy.SelectedItem == "Имени")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 orderby n.User.FirstName
+        //                                 select n;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Фамилии")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 orderby n.User.LastName
+        //                                 select n;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Email")
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 orderby n.User.Email
+        //                                 select n;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct((IEqualityComparer<Runner>)st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == null)
+        //            {
+        //                var sortByName = from n in rn
+        //                                 from b in stm
+        //                                 from m in bdList
+        //                                 where n.RunnerId == b.RunnerId && m.Email == n.Email
+        //                                 select n.User;
+        //                SortUser st = new SortUser();
+        //                var distinctsort = sortByName.Distinct(st);
+        //                UserInCoord.ItemsSource = distinctsort;
+        //            }
+        //            else
+        //            {
+        //                UserInCoord.ItemsSource = db.User.ToList();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (cmbSortBy.SelectedItem == "Имени")
+        //            {
+        //                var sortByName = from b in bdList
+        //                                 orderby b.FirstName
+        //                                 select b;
+        //                UserInCoord.ItemsSource = sortByName;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Фамилии")
+        //            {
+        //                var sortBySurName = from b in bdList
+        //                                    orderby b.LastName
+        //                                    select b;
+        //                UserInCoord.ItemsSource = sortBySurName;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == "Email")
+        //            {
+        //                var sortByEmail = from b in bdList
+        //                                  orderby b.Email
+        //                                  select b;
+        //                UserInCoord.ItemsSource = sortByEmail;
+        //            }
+        //            else if (cmbSortBy.SelectedItem == null)
+        //            {
+        //                var sortByNot = from b in bdList
+        //                                select b;
+        //                UserInCoord.ItemsSource = sortByNot;
 
-                    }
-                    else
-                    {
-                        UserInCoord.ItemsSource = db.User.ToList();
-                    }
-                }
-            }
+        //            }
+        //            else
+        //            {
+        //                UserInCoord.ItemsSource = db.User.ToList();
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
+
+
+
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            UserInCoord.ItemsSource = db.User.ToList();
+            cmbPayment.SelectedIndex = -1;
             cmbDistance.SelectedIndex = -1;
-            cmbPayment.SelectedIndex = -1;
-            cmbPayment.SelectedIndex = -1;
+            cmbSortBy.SelectedIndex = -1;
+
+            var originalData = from u in db.User
+                               join r in db.Runner on u.Email equals r.Email
+                               join g in db.Registration on r.RunnerId equals g.RunnerId
+                               join ev in db.Event on g.RegistrationEvent.Select(x => x.EventId).SingleOrDefault() equals ev.EventId
+                               where u.RoleId == "R"
+                               select new UserRunnerRegistrationView
+                               {
+                                   FirstName = u.FirstName,
+                                   LastName = u.LastName,
+                                   Email = u.Email,
+                                   RegistrationStatus = g.RegistrationStatus.RegistrationStatus1,
+                                   Distance = ev.EventType.EventTypeName
+                               };
+
+            UserInCoord.ItemsSource = originalData.ToList();
+            txbCountUser.Text = originalData.Count().ToString();
         }
+
+        //private void btnClear_Click(object sender, RoutedEventArgs e)
+        //{
+        //    UserInCoord.ItemsSource = db.User.ToList();
+        //    cmbDistance.SelectedIndex = -1;
+        //    cmbPayment.SelectedIndex = -1;
+        //}
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             User user = UserInCoord.SelectedValue as User;
             //EditUser aed = new EditUser(user);
             //this.NavigationService.Navigate(aed);
         }
-        private void btnInExecel_Click(object sender, RoutedEventArgs e)
+        private void btnUserUpdate_Click(object sender, RoutedEventArgs e)
         {
-            //Объявляем приложение
-            Microsoft.Office.Interop.Excel.Application ex = new Microsoft.Office.Interop.Excel.Application();
-            //Количество листов в рабочей книге
-            ex.SheetsInNewWorkbook = 2;
-            ex.Visible = true;
-            //Добавить рабочую книгу
-            Microsoft.Office.Interop.Excel.Workbook workBook = ex.Workbooks.Add(Type.Missing);
-            //Отключить отображение окон с сообщениями
-            ex.DisplayAlerts = false;
-            //Получаем первый лист документа (счет начинается с 1)
-            Microsoft.Office.Interop.Excel.Worksheet sheet = (Microsoft.Office.Interop.Excel.Worksheet)ex.Worksheets.get_Item(1);
-            //Название листа (вкладки снизу)
-            sheet.Name = $"Отчет";
-            //Пример заполнения ячеек
-            sheet.Cells[1, 1] = String.Format("Имя");
-            sheet.Cells[1, 2] = String.Format("Фамилия");
-            sheet.Cells[1, 3] = String.Format("E-mail");
-            sheet.Cells[1, 4] = String.Format("Статус");
-            int i = 2;
-            foreach (User b in UserInCoord.Items)
+            // Загружаем данные из базы один раз
+            var query = from u in db.User
+                        join r in db.Runner on u.Email equals r.Email
+                        join g in db.Registration on r.RunnerId equals g.RunnerId
+                        let eventId = g.RegistrationEvent
+                            .Select(re => re.EventId)
+                            .FirstOrDefault()
+                        join ev in db.Event on eventId equals ev.EventId into evGroup
+                        from ev in evGroup.DefaultIfEmpty() // Left Join
+                        select new UserRunnerRegistrationView
+                        {
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            Email = u.Email,
+                            RegistrationStatus = g.RegistrationStatus.RegistrationStatus1,
+                            Distance = ev.EventType != null ? ev.EventType.EventTypeName : "Неизвестно"
+                        };
+
+            var filteredList = query.ToList();
+
+            // Фильтр по статусу оплаты
+            if (cmbPayment.SelectedItem is string selectedPayment && !string.IsNullOrEmpty(selectedPayment))
             {
-                var rn = db.Runner.FirstOrDefault(x=> x.Email == b.Email).RunnerId;
-                var stm = db.Registration.FirstOrDefault(x => x.RunnerId == rn).Cost;
-                sheet.Cells[i, 1] = String.Format($"{b.FirstName}");
-                sheet.Cells[i, 2] = String.Format($"{b.LastName}");
-                sheet.Cells[i, 3] = String.Format($"{b.Email}");
-                if (stm == 0)
-                {
-                    sheet.Cells[i, 4] = String.Format($"Оплата не подтверждена");
-                }
-                else
-                {
-                    sheet.Cells[i, 4] = String.Format($"Оплата подтверждена");
-                }
-                i++;
+                filteredList = filteredList
+                    .Where(x => x.RegistrationStatus == selectedPayment)
+                    .ToList();
             }
 
-            ex.Application.ActiveWorkbook.SaveAs("otchet.csv");
-            //Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange,
-            //Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            // Фильтр по дистанции
+            if (cmbDistance.SelectedItem is string selectedDistance && !string.IsNullOrEmpty(selectedDistance))
+            {
+                filteredList = filteredList
+                    .Where(x => x.Distance == selectedDistance)
+                    .ToList();
+            }
 
+            // Сортировка
+            if (cmbSortBy.SelectedItem is string selectedSort)
+            {
+                switch (selectedSort)
+                {
+                    case "Имени":
+                        filteredList = filteredList.OrderBy(x => x.FirstName).ToList();
+                        break;
+                    case "Фамилии":
+                        filteredList = filteredList.OrderBy(x => x.LastName).ToList();
+                        break;
+                    case "Email":
+                        filteredList = filteredList.OrderBy(x => x.Email).ToList();
+                        break;
+                }
+            }
+
+            // Обновляем DataGrid
+            UserInCoord.ItemsSource = filteredList;
+
+            // Обновляем счётчик
+            txbCountUser.Text = filteredList.Count.ToString();
+        }
+
+        private void btnInExecel_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserInCoord.Items.Count == 0)
+            {
+                MessageBox.Show("Нет данных для выгрузки.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            try
+            {
+                // Создаем приложение Excel
+                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                excelApp.Visible = true;
+                excelApp.DisplayAlerts = false;
+
+                // Создаем рабочую книгу и лист
+                Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+                Worksheet worksheet = (Worksheet)workbook.Sheets[1];
+                worksheet.Name = "Список бегунов";
+
+                // Заголовки таблицы
+                worksheet.Cells[1, 1] = "Имя";
+                worksheet.Cells[1, 2] = "Фамилия";
+                worksheet.Cells[1, 3] = "Email";
+                worksheet.Cells[1, 4] = "Статус оплаты";
+                worksheet.Cells[1, 5] = "Дистанция";
+
+                // Автоширина заголовков
+                worksheet.Range["A1:E1"].Font.Bold = true;
+                worksheet.Range["A1:E1"].Interior.Color = XlRgbColor.rgbLightBlue;
+                worksheet.Range["A1:E1"].Borders.LineStyle = XlLineStyle.xlContinuous;
+
+                int row = 2;
+
+                foreach (var item in UserInCoord.Items)
+                {
+                    // Получаем объект через ItemsSource
+                    var obj = item.GetType().GetProperty("FirstName")?.GetValue(item)?.ToString() ?? "";
+                    var lastName = item.GetType().GetProperty("LastName")?.GetValue(item)?.ToString() ?? "";
+                    var email = item.GetType().GetProperty("Email")?.GetValue(item)?.ToString() ?? "";
+                    var status = item.GetType().GetProperty("RegistrationStatus")?.GetValue(item)?.ToString() ?? "";
+
+                    // Если нужна дистанция — добавляем её
+                    var distance = "";
+                    var distProp = item.GetType().GetProperty("Distance");
+                    if (distProp != null)
+                        distance = distProp.GetValue(item)?.ToString() ?? "";
+
+                    worksheet.Cells[row, 1] = obj;
+                    worksheet.Cells[row, 2] = lastName;
+                    worksheet.Cells[row, 3] = email;
+                    worksheet.Cells[row, 4] = status;
+                    worksheet.Cells[row, 5] = distance;
+
+                    row++;
+                }
+
+                // Автоподбор ширины столбцов
+                worksheet.Columns.AutoFit();
+
+                // Сохраняем файл
+                string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Список_бегунов.xlsx");
+
+                workbook.SaveAs(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                                Type.Missing, XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing);
+
+                workbook.Close(false, Type.Missing, Type.Missing);
+                excelApp.Quit();
+
+                MessageBox.Show($"Файл успешно сохранён:\n{filePath}", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при создании Excel-файла:\n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnEmail_Click(object sender, RoutedEventArgs e)

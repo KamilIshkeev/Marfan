@@ -54,11 +54,11 @@
             </TextBlock>
 
             <!-- Пол и возраст -->
-            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,616">
-                <TextBlock Text="Пол: " FontWeight="Bold" FontSize="35" Height="64"/>
-                <TextBlock Name="txt_gender" Text="мужской" FontSize="35" Height="64"/>
-                <TextBlock Text=" | Возрастная категория: " FontWeight="Bold" FontSize="35" Margin="20,0,0,0" Height="64"/>
-                <TextBlock Name="txt_age" Text="18-29" FontSize="35" Height="64"/>
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,592">
+                <TextBlock Text="Пол: " FontWeight="Bold" FontSize="35" Height="85"/>
+                <TextBlock Name="txt_gender" Text="мужской" FontSize="35" Height="85"/>
+                <TextBlock Text=" | Возрастная категория: " FontWeight="Bold" FontSize="35" Margin="20,0,0,0" Height="85"/>
+                <TextBlock Name="txt_age" Text="18-29" FontSize="35" Height="85"/>
             </StackPanel>
 
             <!-- Таблица результатов -->
@@ -70,11 +70,11 @@
                       
                       Margin="0,90,0,150">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="RegEventId" Binding="{Binding RegistrationEventId}" Width="400"/>
-                    <DataGridTextColumn Header="RegistrationId" Binding="{Binding RegistrationId}" Width="400"/>
-                    <DataGridTextColumn Header="EventId" Binding="{Binding EventId}" Width="300" />
-                    <DataGridTextColumn Header="BibNumber" Binding="{Binding BibNumber}" Width="350"/>
-                    <DataGridTextColumn Header="RaceTime" Binding="{Binding RaceTime}" Width="0.3*"/>
+                    <DataGridTextColumn Header="Мрафон" Binding="{Binding MarathonName}" Width="400"/>
+                    <DataGridTextColumn Header="Дистанция" Binding="{Binding EventTypeName}" Width="400"/>
+                    <DataGridTextColumn Header="Время" Binding="{Binding RaceTime}" Width="300" />
+                    <DataGridTextColumn Header="Страна" Binding="{Binding Country}" Width="350"/>
+                    <DataGridTextColumn Header="Возраст" Binding="{Binding DateOfBirth}" Width="0.3*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -88,7 +88,7 @@
                     Height="60"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Margin="0,20,0,0">
+                    Margin="0,20,0,0" Click="btn_showallresults_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="17.5"/>

@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="54ad24176a0c453184692c4366a7416a" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="MarafonModel.Charity" Width="1.5" PointX="6" PointY="17.125" />
+        <EntityTypeShape EntityType="MarafonModel.Charity" Width="1.5" PointX="7.25" PointY="13.125" />
         <EntityTypeShape EntityType="MarafonModel.Country" Width="1.5" PointX="0.75" PointY="6.5" />
         <EntityTypeShape EntityType="MarafonModel.Event" Width="1.5" PointX="5.25" PointY="12.75" />
         <EntityTypeShape EntityType="MarafonModel.EventType" Width="1.5" PointX="3" PointY="16.5" />

@@ -5,10 +5,69 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfMarathon.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ShowFund">
 
-    <Grid>
-        
+    <Grid Background="white">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="31"/>
+            <RowDefinition Height="49"/>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="26"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="34.333"/>
+            <ColumnDefinition Width="168.667"/>
+            <ColumnDefinition Width="117"/>
+            <ColumnDefinition Width="79.667"/>
+            <ColumnDefinition Width="104.333"/>
+            <ColumnDefinition Width="141.712"/>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Grid.ColumnSpan="10" Grid.RowSpan="3">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
+                <Button x:Name="Back_btn" Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  Click="Back_btn_Click" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0"  Click="Logout_Click" />
+            </StackPanel>
+        </DockPanel>
+
+        <TextBlock Margin="182,45,213,849" TextWrapping="Wrap" FontSize="44" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="8" Grid.Column="1" Text="Просмотр спонсоров" Grid.RowSpan="4" Grid.Row="2"/>
+
+        <DataGrid x:Name="FundDb" Grid.ColumnSpan="8" Margin="47,226,45,114" Grid.Row="5" Grid.Column="1" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" FontSize="36">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Logo" Width="400">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="100" Source="{Binding ChartyLogo}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Наименование" Binding="{Binding ChartyName}" Width="600"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding ChartySum}" Width="300"/>
+
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Margin="200,120,59,705" TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="5"><Run Text="Б"/><Run Text="лаготворительные организации:"/></TextBlock>
+        <TextBlock Margin="272,42,89,783" TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="5"><Run Language="ru-ru" Text="Отсортировать:"/></TextBlock>
+        <TextBlock Margin="200,168,69,655" TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="5"><Run Text="В"/><Run Text="с"/><Run Text="его спонсорских взносов:"/></TextBlock>
+        <TextBlock x:Name="txbCount" Margin="31,120,36,705" Text="" TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="txbMoney" Margin="58,168,36,657"  Text="" TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="txt_sum" Grid.Column="3" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="48" Margin="96,45,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Итоговая сумма" VerticalAlignment="Top" Width="311" FontSize="36" />
+        <Button x:Name="btn_sort" Grid.Column="7" Content="Сортировка" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="48" Margin="10,45,0,0" Grid.Row="5" VerticalAlignment="Top" Width="268" FontSize="36" Click="btn_sort_Click"/>
+        <Button x:Name="btn_reset" Content="Сбросить" Grid.Column="7" Grid.Row="5" Margin="10,135,294,690" Click="btn_reset_Click" Height="48" FontSize="36" Grid.ColumnSpan="2"/>
     </Grid>
 </Page>

@@ -130,7 +130,7 @@
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="325"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="350"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="475"/>
-                <DataGridTextColumn Header="Статус" Binding="{Binding Payment}" Width="325"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding RegistrationStatus}" Width="325"/>
 
                 <DataGridTemplateColumn Header="Действие">
                     <DataGridTemplateColumn.CellTemplate>
@@ -176,3 +176,5 @@
         </Button>
     </Grid>
 </Page>
+    
+    

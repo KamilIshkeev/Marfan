@@ -39,14 +39,21 @@ namespace WpfMarathon.Pages
                 BitmapImage bitmapImage = new BitmapImage(new Uri($"C:/Users/222209/source/repos/Marfan/WpfMarathon/Images/{logo}"));
                 Logo.Source = bitmapImage;
                 txt_fund.Text = db.Charity.Where(x => x.CharityId == reg.CharityId).Select(x => x.CharityName).SingleOrDefault();
-                txt_fund_Copy.Text = Convert.ToString(db.Registration.Where(x => x.CharityId == reg.CharityId).Select(x => x.SponsorshipTarget).SingleOrDefault());
+                txt_fund_Copy.Text = "";
+                var a1 = db.Registration.Where(x => x.CharityId == reg.CharityId).Select(x => x.SponsorshipTarget).ToList();
+                int sum = 0;
+                foreach (var a in a1)
+                {
+                    sum += (int)a;
+                }
+                txt_fund_Copy.Text = Convert.ToString(sum);
                 if (reg.RegistrationId == 0)
                 {
                     MessageBox.Show("Нет спонсора", "Ошибка сервера");
                 }
                 else
                 {
-                    grid_sponsor.ItemsSource = db.Sponsorship.Where(x => x.RegistrationId == reg.RegistrationId).ToList();
+                    grid_sponsor.ItemsSource = db.Sponsorship.Where(x => x.RegistrationId == reg.RegistrationId).Select(x => new { SponsorName = x.SponsorName, SponsorshipTarget = x.Registration.SponsorshipTarget }).ToList();
                 }
 
             }

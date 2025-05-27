@@ -52,17 +52,29 @@ namespace WpfMarathon.Pages
 
             // Загружаем в память с нужными полями
             var results = query
-                .Select(re => new
-                {
-                    MarathonName = re.Registration.RunnerId,
-                    EventTypeName = re.RaceTime.Value,
-                    RaceTime = re.Registration.Runner.User.FirstName + " " + re.Registration.Runner.User.LastName,
-                    Country = re.Registration.Runner.CountryCode,
-                    DateOfBirth = re.Registration.Runner.DateOfBirth
-                })
-                .ToList();
+    .Select(re => new
+    {
+        MarathonName = re.Event.Marathon.MarathonName,
+        EventTypeName = re.Event.EventType.EventTypeName,
+        RaceTimeSeconds = re.RaceTime, // Получаем просто значение в секундах
+        Country = re.Registration.Runner.CountryCode,
+        DateOfBirth = re.Registration.Runner.DateOfBirth.Value.Year
+    })
+    .ToList() // Загружаем в память
+    .Select(re => new
+    {
+        re.MarathonName,
+        re.EventTypeName,
+        RaceTime = re.RaceTimeSeconds.HasValue
+                   ? TimeSpan.FromSeconds(re.RaceTimeSeconds.Value)
+                   : (TimeSpan?)null,
+        re.Country,
+        DateOfBirth = DateTime.Now.Year - re.DateOfBirth
+    })
+    .ToList();
 
-            grid_Results.ItemsSource = db.RegistrationEvent.Where(x => x.RegistrationId == id).ToList();
+
+            grid_Results.ItemsSource = results.ToList();
         }
 
         private void btn_showallresults_Click(object sender, RoutedEventArgs e)
