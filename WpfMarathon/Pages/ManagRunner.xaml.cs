@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using WpfMarathon.Base;
 using Microsoft.Office.Interop.Excel;
 using Page = System.Windows.Controls.Page;
+using Path = System.IO.Path;
 
 namespace WpfMarathon.Pages
 {
@@ -482,15 +483,22 @@ namespace WpfMarathon.Pages
         private void btnEmail_Click(object sender, RoutedEventArgs e)
         {
             string writePath = @"emails.txt";
-            using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+
+            if (UserInCoord.ItemsSource is List<UserRunnerRegistrationView> users)
             {
-                foreach (User b in UserInCoord.Items)
+                using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
                 {
-                    sw.WriteLine(b.Email);
+                    foreach (var user in users)
+                    {
+                        if (!string.IsNullOrEmpty(user.Email))
+                        {
+                            sw.WriteLine(user.Email);
+                        }
+                    }
                 }
             }
 
-            MessageBox.Show("Фаил в директории\nMarfan/WpfMarathon/bin/emails", "Успешно");
+            MessageBox.Show("Файл с email-ами успешно сохранён в директории:\n" + Path.GetFullPath(writePath), "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
