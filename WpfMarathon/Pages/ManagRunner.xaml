@@ -46,7 +46,8 @@
 
             <!-- Дистанция -->
             <TextBlock Text="Дистанция:" Grid.Row="1" Grid.Column="0" FontSize="42" HorizontalAlignment="Right"/>
-            <ComboBox Name="cmbDistance" DisplayMemberPath="Name" Grid.Row="1" Grid.Column="1" FontSize="35" Width="375" Margin="25,0,0,0" TextBlock.FontSize="44"/>
+            <ComboBox Name="cmbDistance" Grid.Row="1" Grid.Column="1" FontSize="35" Width="375" Margin="25,0,0,0" TextBlock.FontSize="44"/>
+            <!--<ComboBox Name="cmbDistance" DisplayMemberPath="Name" Grid.Row="1" Grid.Column="1" FontSize="35" Width="375" Margin="25,0,0,0" TextBlock.FontSize="44" BorderBrush="Red" />-->
 
             <!-- Сортировка -->
             <TextBlock Text="Сортировать:" Grid.Row="2" Grid.Column="0" FontSize="42" HorizontalAlignment="Right"/>

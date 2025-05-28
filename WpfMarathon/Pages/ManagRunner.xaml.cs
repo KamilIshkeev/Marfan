@@ -26,6 +26,30 @@ namespace WpfMarathon.Pages
     /// </summary>
     public partial class ManagRunner : Page
     {
+        public ManagRunner(MainWindow mainWindow)
+        {
+            InitializeComponent();
+            _mainWindow = mainWindow;
+            var us = new User();
+            var rn = new Runner();
+            var reg = new Registration();
+            var query = from u in db.User
+                        join r in db.Runner on u.Email equals r.Email
+                        join g in db.Registration on r.RunnerId equals g.RunnerId
+                        where u.RoleId == "R"
+                        select new UserRunnerRegistrationView
+                        {
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            Email = u.Email,
+                            RegistrationStatus = g.RegistrationStatus.RegistrationStatus1
+                        };
+
+            UserInCoord.ItemsSource = query.ToList();
+            cmbPayment.ItemsSource = pay;
+            cmbSortBy.ItemsSource = sort;
+            cmbDistance.ItemsSource = string1;
+        }
         static MainWindow _mainWindow;
         class SortUser : IEqualityComparer<User>
         {
@@ -58,6 +82,8 @@ namespace WpfMarathon.Pages
             "Email",
         };
 
+        List<string> string1 = db.EventType.Select(x => x.EventTypeName).ToList();
+
         public partial class UserRunnerRegistrationView
         {
             public string FirstName { get; set; }
@@ -66,29 +92,7 @@ namespace WpfMarathon.Pages
             public string RegistrationStatus { get; set; }
             public string Distance { get; set; }
         }
-        public ManagRunner(MainWindow mainWindow)
-        {
-            InitializeComponent();
-            _mainWindow = mainWindow;
-            var us =new User();
-            var rn =new Runner();
-            var reg = new Registration();
-            var query = from u in db.User
-                        join r in db.Runner on u.Email equals r.Email
-                        join g in db.Registration on r.RunnerId equals g.RunnerId
-                        where u.RoleId == "R"
-                        select new UserRunnerRegistrationView
-                        {
-                            FirstName = u.FirstName,
-                            LastName = u.LastName,
-                            Email = u.Email,
-                            RegistrationStatus = g.RegistrationStatus.RegistrationStatus1
-                        };
-            UserInCoord.ItemsSource = query.ToList();
-            cmbPayment.ItemsSource = pay;
-            cmbSortBy.ItemsSource = sort;
-            cmbDistance.ItemsSource = db.EventType.Select(x=> x.EventTypeName).ToList();
-        }
+        
         //private void btnUserUpdate_Click(object sender, RoutedEventArgs e)
         //{
         //    int pay = 0;
@@ -500,5 +504,7 @@ namespace WpfMarathon.Pages
 
             MessageBox.Show("Файл с email-ами успешно сохранён в директории:\n" + Path.GetFullPath(writePath), "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        
     }
 }
