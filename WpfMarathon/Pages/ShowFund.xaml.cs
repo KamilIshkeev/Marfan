@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,14 +38,14 @@ namespace WpfMarathon.Pages
         ChartyNameFromDB = c.CharityName,
         ChartySumFromDB = c.Registration
             .Where(r => r.SponsorshipTarget != null)
-            .Sum(r => r.SponsorshipTarget)
+            .Sum(r => (decimal?)r.SponsorshipTarget) // Явно приводим к decimal?
     })
     .ToList()
     .Select(c => new CharityViewModel
     {
         ChartyLogo = $"C:/Users/222209/source/repos/Marfan/WpfMarathon/Images/{c.ChartyLogoFromDB}",
         ChartyName = c.ChartyNameFromDB,
-        ChartySum = c.ChartySumFromDB
+        ChartySum = c.ChartySumFromDB ?? 0 // Можно заменить на 0, если сумма отсутствует
     })
     .ToList();
 
@@ -110,6 +112,6 @@ namespace WpfMarathon.Pages
     {
         public string ChartyLogo { get; set; }
         public string ChartyName { get; set; }
-        public decimal? ChartySum { get; set; }
+        public decimal? ChartySum { get; set; } // Поддерживает null
     }
 }

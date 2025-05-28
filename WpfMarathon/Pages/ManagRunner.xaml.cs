@@ -92,7 +92,7 @@ namespace WpfMarathon.Pages
             public string RegistrationStatus { get; set; }
             public string Distance { get; set; }
         }
-        
+
         //private void btnUserUpdate_Click(object sender, RoutedEventArgs e)
         //{
         //    int pay = 0;
@@ -341,9 +341,28 @@ namespace WpfMarathon.Pages
         //}
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User user = UserInCoord.SelectedValue as User;
-            //EditUser aed = new EditUser(user);
-            //this.NavigationService.Navigate(aed);
+            // Получаем выбранный элемент как объект UserRunnerRegistrationView
+            var selectedItem = UserInCoord.SelectedItem as UserRunnerRegistrationView;
+
+            if (selectedItem != null)
+            {
+                // Находим настоящего пользователя по Email (или другому уникальному полю)
+                var user = db.User.FirstOrDefault(u => u.Email == selectedItem.Email);
+
+                if (user != null)
+                {
+                    // Переход на страницу редактирования с найденным пользователем
+                    _mainWindow.MainFrame.NavigationService.Navigate(new EditUser(_mainWindow, user));
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя из списка.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
         private void btnUserUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -406,7 +425,6 @@ namespace WpfMarathon.Pages
             // Обновляем счётчик
             txbCountUser.Text = filteredList.Count.ToString();
         }
-
         private void btnInExecel_Click(object sender, RoutedEventArgs e)
         {
             if (UserInCoord.Items.Count == 0)

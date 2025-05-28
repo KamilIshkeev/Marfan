@@ -56,7 +56,7 @@
                 <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
             </StackPanel>
         </DockPanel>
-        <TextBlock Margin="517,149,362,857" TextWrapping="Wrap" FontSize="44" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="14" Grid.Row="12"><Run Text="Информация о "/><Run Text="Marathon Skills 2016"/></TextBlock>
+        <TextBlock Margin="517,149,362,857" TextWrapping="Wrap" FontSize="44" Foreground="#FF6C6C6C" TextAlignment="Center" Grid.ColumnSpan="14" Grid.Row="12"><Run Text="Информация о "/><Run Text="Marathon Skills 2025"/></TextBlock>
 
 
         <Image HorizontalAlignment="Left" Height="97" Margin="296,470,0,0" Grid.Row="12" VerticalAlignment="Top" Width="178"/>

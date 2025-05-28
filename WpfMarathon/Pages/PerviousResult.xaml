@@ -103,12 +103,13 @@
                         <TextBlock Grid.Column="2" Text="Имя бегуна" FontWeight="Bold" FontSize="36" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" Height="42" Width="202"/>
                         <TextBlock Grid.Column="3" Text="Страна" FontWeight="Bold" FontSize="36" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" Height="42" Width="128"/>
                     </Grid>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" MaxHeight="500" Margin="0,21,0,-360" Grid.Row="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible" Margin="0,21,0,-360" Grid.Row="1">
                         <!-- Строки -->
-                        <StackPanel x:Name="ResultsPanel" Grid.Row="1" Width="1577" Margin="4,0,3,-686"/>
+                        <StackPanel x:Name="ResultsPanel" Grid.Row="1" Width="1577" Height="350"/>
                     </ScrollViewer>
                 </Grid>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>
 </Page>
+    

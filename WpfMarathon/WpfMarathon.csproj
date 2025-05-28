@@ -171,6 +171,9 @@
     <Compile Include="Pages\EditProfile.xaml.cs">
       <DependentUpon>EditProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditUser.xaml.cs">
+      <DependentUpon>EditUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HowLongs.xaml.cs">
       <DependentUpon>HowLongs.xaml</DependentUpon>
     </Compile>
@@ -339,6 +342,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HowLongs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -493,6 +500,8 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Pages\icons\cross-icon.png" />
+    <Resource Include="Pages\icons\tick-icon.png" />
     <Resource Include="Images\arise-logo.png" />
     <Resource Include="Images\aves-do-brazil-logo.png" />
     <Resource Include="Images\clara-santos-oliveira-institute-logo.png" />
