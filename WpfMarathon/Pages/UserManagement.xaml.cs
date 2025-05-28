@@ -129,7 +129,7 @@ namespace WpfMarathon.Pages
                 }
                 else
                 {
-                    UserInAdmin.ItemsSource = db.User.Where(itemF => itemF.FirstName == txbFind.Text).ToList();
+                    UserInAdmin.ItemsSource = db.User.Where(itemF => itemF.FirstName.StartsWith(txbFind.Text)).ToList();
                 }
 
             }
