@@ -35,7 +35,9 @@ namespace WpfMarathon.Pages
             "A",
             "C",
         };
-            public UserManagement(MainWindow mainWindow)
+        private object user;
+
+        public UserManagement(MainWindow mainWindow)
             {
                 InitializeComponent();
                 _mainWindow = mainWindow;
@@ -43,6 +45,12 @@ namespace WpfMarathon.Pages
                 cmbRole.ItemsSource = role;
                 cmbSortBy.ItemsSource = sort;
             }
+
+        public UserManagement(MainWindow mainWindow, object user) : this(mainWindow)
+        {
+            this.user = user;
+        }
+
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
@@ -138,6 +146,7 @@ namespace WpfMarathon.Pages
         {
             NavigationService.GoBack();
         }
+
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {

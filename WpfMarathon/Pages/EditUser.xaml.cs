@@ -101,5 +101,14 @@ namespace WpfMarathon.Pages
         {
             _mainWindow.MainFrame.NavigationService.Navigate(new AdminEditUser(_mainWindow, _user));
         }
+
+        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.NavigationService.Navigate(new AuthPage(_mainWindow));
+        }
     }
 }

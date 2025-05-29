@@ -108,7 +108,7 @@ namespace WpfMarathon
                                         }
                                     }
                                     db.SaveChanges();
-                                    this.NavigationService.Navigate(new Uri("Admin/UserManagement.xaml", UriKind.Relative));
+                                    _mainWindow.MainFrame.NavigationService.Navigate(new UserManagement(_mainWindow));
                                 }
                                 catch
                                 {
@@ -143,7 +143,7 @@ namespace WpfMarathon
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Admin/UserManagement.xaml", UriKind.Relative));
+            _mainWindow.MainFrame.NavigationService.Navigate(new UserManagement(_mainWindow)); 
         }
     }
 }

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfMarathon.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ContactCoordinator">
 
     <Grid Background="white">
@@ -20,12 +20,20 @@
             <RowDefinition Height="250"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="9,37,0,0" TextWrapping="Wrap" Text="Контакты" VerticalAlignment="Top" FontSize="24" Grid.Column="2" Width="107"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="55,30,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Для получения дополнительной информации пожалуйста свяжитесь с координаторами" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="361" FontSize="16"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="55,86,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Телефон: " VerticalAlignment="Top" Width="92" FontSize="16" FontWeight="Bold"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="55,123,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="92" FontSize="16" FontWeight="Bold"/>
-        <TextBlock x:Name="txt_tel" Grid.Column="1" HorizontalAlignment="Left" Margin="127,86,0,0" Grid.Row="1" TextWrapping="Wrap" Text="+55 11 9988 7766" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="272" FontSize="16"/>
-        <TextBlock Name="txt_email" Grid.Column="1" HorizontalAlignment="Left" Margin="117,123,0,0" Grid.Row="1" TextWrapping="Wrap" Text="coordinators@marathonskills.org" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="288" FontSize="16"/>
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Margin="0,0,0,189" Grid.RowSpan="2" Grid.ColumnSpan="4">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
+                <Button x:Name="Back_btn" Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0"  />
+            </StackPanel>
+        </DockPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="304,180,0,0" TextWrapping="Wrap" Text="Контакты" VerticalAlignment="Top" FontSize="44" Grid.Column="1" Width="212" Height="70" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,50,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Для получения дополнительной информации пожалуйста свяжитесь с координаторами" VerticalAlignment="Top" Width="770" FontSize="36" Height="122" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,210,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Телефон: " VerticalAlignment="Top" Width="197" FontSize="36" FontWeight="Bold" Height="61" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,316,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="197" FontSize="36" FontWeight="Bold" Height="61" Grid.Column="1"/>
+        <TextBlock x:Name="txt_tel" Grid.Column="1" HorizontalAlignment="Left" Margin="181,210,0,0" Grid.Row="2" TextWrapping="Wrap" Text="+55 11 9988 7766" VerticalAlignment="Top" Width="581" FontSize="36" Height="61"/>
+        <TextBlock Name="txt_email" Grid.Column="1" HorizontalAlignment="Left" Margin="161,316,0,0" Grid.Row="2" TextWrapping="Wrap" Text="coordinators@marathonskills.org" VerticalAlignment="Top" Width="613" FontSize="36" Height="61"/>
 
     </Grid>
 </Page>

@@ -42,6 +42,15 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с заголовком -->
+        <DockPanel LastChildFill="False" Margin="0,0,0,29" Grid.RowSpan="2" Grid.ColumnSpan="12">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#333333" Margin="0,0,0,10" Width="1919">
+                <Button x:Name="Back_btn" Content="Назад" Width="150" Height="55" FontSize="36" Margin="50,0,0,0"  Click="Back_btn_Click" />
+                <TextBlock Text="MARATHON SKILLS 2025" Foreground="White" FontSize="56" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="160,20,0,20"/>
+                <Button Content="Logout" Width="198" Height="55" FontSize="36" Margin="650,0,0,0"  Click="Logout_Click" />
+            </StackPanel>
+        </DockPanel>
         <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Email:" Margin="29,7,216,65" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" RenderTransformOrigin="0.307,0.935" Grid.RowSpan="2"/>
         <TextBlock Margin="29,2,216,3" Grid.Row="4" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right"><Run Text="Имя"/><Run Text=":"/></TextBlock>
         <TextBlock Grid.Row="4" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,63,216,8" Grid.RowSpan="2"><Run Text="Фамилия"/><Run Text=":"/></TextBlock>
