@@ -58,7 +58,7 @@
                     <TextBox x:Name="txb_name" Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Ваше имя" Width="600" Height="55" FontSize="36" Margin="280,10,156,10"/>
                     <!-- Бегун -->
                     <TextBlock x:Name="txt_runner" Grid.Row="2" Text="Бегун:" VerticalAlignment="Top" Margin="170,3,10,0" FontSize="36"/>
-                    <ComboBox x:Name="cmbRunner" DisplayMemberPath="Name" Grid.Row="2" Width="600" Height="55" FontSize="36" Margin="220,0,20,10" SelectionChanged="cmbRunner_SelectionChanged"/>
+                    <ComboBox x:Name="cmbRunner" Grid.Row="2" Width="600" Height="55" FontSize="36" Margin="220,0,20,10" SelectionChanged="cmbRunner_SelectionChanged"/>
 
                     <!-- Владелец карты -->
                     <TextBlock x:Name="txt_cardholder" Grid.Row="3" Text="Карта:" VerticalAlignment="Top" Margin="168,3,10,0" FontSize="36"/>

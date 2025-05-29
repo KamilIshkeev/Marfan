@@ -42,10 +42,10 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Email:" Margin="29,1,216,4" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" RenderTransformOrigin="0.307,0.935"/>
-        <TextBlock Margin="29,63,216,9" Grid.Row="2" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Grid.RowSpan="2"><Run Text="Имя"/><Run Text=":"/></TextBlock>
-        <TextBlock Grid.Row="3" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,58,216,13" Grid.RowSpan="2"><Run Text="Фамилия"/><Run Text=":"/></TextBlock>
-        <TextBlock Margin="29,53,220,17" Grid.Row="4" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Grid.RowSpan="2"><Run Text="Пол"/><Run Text=":"/></TextBlock>
+        <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Email:" Margin="29,7,216,65" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" RenderTransformOrigin="0.307,0.935" Grid.RowSpan="2"/>
+        <TextBlock Margin="29,2,216,3" Grid.Row="4" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right"><Run Text="Имя"/><Run Text=":"/></TextBlock>
+        <TextBlock Grid.Row="4" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,63,216,8" Grid.RowSpan="2"><Run Text="Фамилия"/><Run Text=":"/></TextBlock>
+        <TextBlock Margin="29,59,220,11" Grid.Row="5" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Grid.RowSpan="2"><Run Text="Пол"/><Run Text=":"/></TextBlock>
         <Grid Grid.Column="2" HorizontalAlignment="Left" Height="58" Margin="16,58,0,0" Grid.Row="1" VerticalAlignment="Top" Width="591" Grid.ColumnSpan="8" Grid.RowSpan="2">
             <TextBlock Margin="70,40,69,-41" TextWrapping="Wrap" FontSize="44" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="Управление бегуном" TextAlignment="Center">
                 <TextBlock.RenderTransform>
@@ -59,30 +59,14 @@
 
 
         </Grid>
+        <TextBlock Grid.Row="6" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,54,216,17" Grid.RowSpan="2"><Run Text="Дата рождения"/><Run Text=":"/></TextBlock>
+        <TextBlock Grid.Row="7" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,50,216,20" Grid.RowSpan="2"><Run Text="Страна"/><Run Text=":"/></TextBlock>
+        <TextBlock Grid.Row="8" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,46,216,25" Grid.RowSpan="2"><Run Text="Благотворит"/><Run Text=":"/></TextBlock>
+        <TextBlock Grid.Row="9" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,41,216,33" Text="Пожертвовано:" Grid.RowSpan="2"/>
+        <TextBlock Grid.Row="10" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,30,216,45" Grid.RowSpan="2"><Run Text="Дистанция"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="txbEmail" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="3" Margin="354,6,4,65" Grid.ColumnSpan="4" Grid.RowSpan="2" />
 
-        <Button x:Name="btnShowSerf" Content="Показ&#xD;&#xA;сертификата" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="36" Foreground="#FF474747" Grid.Row="11" Margin="193,58,104,34" Click="btnShowSerf_Click" Grid.RowSpan="2">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="btnPrintB" Content="Печать бейджа" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="36" Foreground="#FF474747" Grid.Column="4" Grid.Row="11" Margin="43,60,49,30" Click="btnPrintB_Click" Grid.ColumnSpan="5" Grid.RowSpan="2">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBlock Grid.Row="5" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,49,216,22" Grid.RowSpan="2"><Run Text="Дата рождения"/><Run Text=":"/></TextBlock>
-        <TextBlock Grid.Row="6" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,44,216,26" Grid.RowSpan="2"><Run Text="Страна"/><Run Text=":"/></TextBlock>
-        <TextBlock Grid.Row="7" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,41,216,30" Grid.RowSpan="2"><Run Text="Благотворит"/><Run Text=":"/></TextBlock>
-        <TextBlock Grid.Row="8" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,35,216,36" Text="Пожертвовано:" Grid.RowSpan="2"/>
-        <TextBlock Grid.Row="9" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,32,216,38" Text="Выбранный пакет:" Grid.RowSpan="2"/>
-        <TextBlock Grid.Row="10" TextWrapping="Wrap" FontFamily="Open Sans Light" FontSize="36" TextAlignment="Right" Margin="29,48,216,27" Grid.RowSpan="2"><Run Text="Дистанция"/><Run Text=":"/></TextBlock>
-        <TextBlock x:Name="txbEmail" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="2" Margin="354,0,4,4" Grid.ColumnSpan="4" />
-
-        <Button x:Name="btnEditProf" Content="Редактирование&#xD;&#xA;профиля" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="36" Foreground="#FF474747" Grid.Column="11" Grid.Row="11" Margin="61,60,239,30" Click="btnEditProf_Click" Grid.RowSpan="2">
+        <Button x:Name="btnEditProf" Content="Редактирование&#xD;&#xA;профиля" Background="#FFF2F2F2" FontFamily="Open Sans Light" FontSize="36" Foreground="#FF474747" Grid.Column="4" Grid.Row="12" Margin="46,0,10,21" Click="btnEditProf_Click" Grid.ColumnSpan="5">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -91,16 +75,15 @@
         </Button>
         <Image x:Name="imgUser" Grid.Column="4" Margin="53,66,47,69" Grid.Row="2" Grid.RowSpan="9" Grid.ColumnSpan="7"/>
 
-        <TextBlock x:Name="txbName" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="2" Margin="354,61,116,9" Grid.RowSpan="2" Grid.ColumnSpan="5" />
+        <TextBlock x:Name="txbName" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="4" Margin="354,0,116,3" Grid.ColumnSpan="5" />
 
-        <TextBlock x:Name="txbSurName" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="3" Margin="354,58,116,13" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-        <TextBlock x:Name="txbGender" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="4" Margin="354,53,116,17" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
-        <TextBlock x:Name="txbDateOf" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="5" Margin="354,49,116,22" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-        <TextBlock x:Name="txbCountry" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="6" Margin="354,44,116,26" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
-        <TextBlock x:Name="txbFund" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="7" Margin="354,41,116,30" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-        <TextBlock x:Name="txbMoney" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="8" Margin="354,35,116,35" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
-        <TextBlock x:Name="txbTypeInv" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="9" Margin="354,32,116,40" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-        <TextBlock x:Name="txbDistance" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="10" Margin="354,48,116,35" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+        <TextBlock x:Name="txbSurName" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="4" Margin="354,63,116,8" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+        <TextBlock x:Name="txbGender" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="5" Margin="354,59,116,11" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
+        <TextBlock x:Name="txbDateOf" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="6" Margin="354,54,116,17" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+        <TextBlock x:Name="txbCountry" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="7" Margin="354,50,116,20" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
+        <TextBlock x:Name="txbFund" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="8" Margin="354,46,116,25" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+        <TextBlock x:Name="txbMoney" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="9" Margin="354,41,116,32" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
+        <TextBlock x:Name="txbDistance" TextWrapping="Wrap" FontSize="18" Foreground="#FF6C6C6C" RenderTransformOrigin="0.5,0.5" Text="" Grid.Row="10" Margin="354,30,116,53" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
         <TextBlock Margin="0,0,22,0" TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" Text="Регистрационный статус" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="10" Grid.Row="2" />
         <TextBlock TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Right" Grid.Column="11" Grid.Row="4" Margin="88,0,266,0" ><Run Text="Зареги"/><Run Text="с"/><Run Text="трирован"/></TextBlock>
         <TextBlock TextWrapping="Wrap" FontSize="36" Foreground="#FF6C6C6C" TextAlignment="Right" Grid.Column="11" Grid.Row="6" Grid.RowSpan="3" Margin="88,0,266,66" ><Run Text="Подтверждена"/><LineBreak/><Run Text="оплата"/></TextBlock>

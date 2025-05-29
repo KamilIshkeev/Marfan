@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfMarathon.Base;
+using System.Globalization;
 
 namespace WpfMarathon.Pages
 {
@@ -24,27 +25,26 @@ namespace WpfMarathon.Pages
     {
         static MainWindow _mainWindow;
         public static MarafonEntities db = new MarafonEntities();
-        private MainWindow mainWindow;
         Runner u;
-        private User user;
+        public User _user;
 
         // Основной конструктор, который работает с данными
         public EditUser(User user)
         {
             InitializeComponent();
-            this.user = user;
+            _user = user;
             LoadUserData();
         }
 
         // Второй конструктор, используемый при переходе через NavigationService
         public EditUser(MainWindow mainWindow, User user) : this(user)
         {
-            this.mainWindow = mainWindow;
+            _mainWindow = mainWindow;
         }
 
         private void LoadUserData()
         {
-            var runner = db.Runner.FirstOrDefault(x => x.Email == user.Email);
+            var runner = db.Runner.FirstOrDefault(x => x.Email == _user.Email);
             if (runner == null)
             {
                 MessageBox.Show("Бегун не найден.");
@@ -60,8 +60,8 @@ namespace WpfMarathon.Pages
                 return;
             }
 
-            Uri tickIcon = new Uri($"pack://application:,,,/WpfMarathon;component/Resources/tick-icon.png");
-            Uri crossIcon = new Uri($"pack://application:,,,/WpfMarathon;component/Resources/cross-icon.png");
+            Uri tickIcon = new Uri("C:/Users/222209/source/repos/Marfan/WpfMarathon/Pages/icons/tick-icon.png");
+            Uri crossIcon = new Uri("C:/Users/222209/source/repos/Marfan/WpfMarathon/Pages/icons/cross-icon.png");
 
             imgReg.Source = new BitmapImage(tickIcon); // Зарегистрирован всегда true?
 
@@ -77,37 +77,29 @@ namespace WpfMarathon.Pages
             imgInv.Source = new BitmapImage(crossIcon); // Пример
             imgStart.Source = new BitmapImage(crossIcon); // Пример
 
-            txbEmail.Text = user.Email;
-            txbName.Text = user.FirstName;
-            txbSurName.Text = user.LastName;
+            txbEmail.Text = _user.Email;
+            txbName.Text = _user.FirstName;
+            txbSurName.Text = _user.LastName;
             txbGender.Text = u.Gender;
             txbDateOf.Text = u.DateOfBirth?.ToString("yyyy-MM-dd");
             txbCountry.Text = u.CountryCode;
-            txbFund.Text = reg.Charity?.CharityName ?? "Не выбрано";
-            txbMoney.Text = "$" + (reg.SponsorshipTarget ?? 0).ToString();
+            txbFund.Text = reg.Charity?.CharityName ?? "Не выбрано"; 
+            txbMoney.Text = "$" + ((int?)reg.SponsorshipTarget ?? 0).ToString();
 
             var marathonNames = db.RegistrationEvent
                 .Where(re => re.RegistrationId == reg.RegistrationId && re.Event != null)
-                .Select(re => re.Event.Marathon.MarathonName)
+                .Select(re => re.Event.EventType.EventTypeName)
                 .Distinct()
                 .ToList();
 
             txbDistance.Text = string.Join(", ", marathonNames);
         }
 
-        private void btnShowSerf_Click(object sender, RoutedEventArgs e)
-        {
-            // Реализация показа сертификата
-        }
-
-        private void btnPrintB_Click(object sender, RoutedEventArgs e)
-        {
-            // Реализация печати бейджа
-        }
+        
 
         private void btnEditProf_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindow.MainFrame.NavigationService.Navigate(new AdminEditUser(_mainWindow, user));
+            _mainWindow.MainFrame.NavigationService.Navigate(new AdminEditUser(_mainWindow, _user));
         }
     }
 }
